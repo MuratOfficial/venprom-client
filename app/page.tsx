@@ -7,9 +7,8 @@ import React from "react";
 
 function HomePage() {
   return (
-    <div className="">
+    <div className="flex flex-col items-center min-h-screen gap-y-4">
       <ClientHeader />
-      <PhotoCollage />
       <PopularCategory />
       <ProductLinks />
       {/**Animated Blocks */}
