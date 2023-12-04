@@ -20,14 +20,14 @@ function ClientHeader() {
               <Link
                 href={item.href}
                 key={index}
-                className="text-sm text-neutral-200 hover:text-blue-600 transition duration-500 delay-150"
+                className="text-base text-neutral-200 hover:text-blue-600 transition duration-500 delay-150"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="#"
-              className="py-2 px-12 text-sm rounded-lg text-center bg-slate-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
+              className="py-2 px-12 text-base rounded-lg text-center bg-slate-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
             >
               Заказать
             </Link>

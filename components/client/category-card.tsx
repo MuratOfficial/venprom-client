@@ -8,7 +8,7 @@ interface CategoryCardProps {
 
 function CategoryCard({ img, label }: CategoryCardProps) {
   return (
-    <div className="flex flex-row gap-x-4 col-span-1 py-8 transition delay-150 duration-500 cursor-pointer rounded-xl px-8 items-center justify-between bg-gradient-to-t from-blue-600 to-blue-400 hover:shadow-xl hover:scale-[1.01] hover:brightness-75">
+    <div className="flex flex-row gap-x-4 col-span-1 py-8 transition delay-150 duration-500 cursor-pointer rounded-xl px-8 items-center justify-between bg-gradient-to-t from-blue-900 to-blue-700 hover:shadow-xl  hover:brightness-75">
       <p className="uppercase text-neutral-200 font-semibold text-2xl text-left">
         {label}
       </p>

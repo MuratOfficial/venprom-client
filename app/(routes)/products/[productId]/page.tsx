@@ -8,6 +8,7 @@ import React from "react";
 function ProductItemPage({ params }: { params: { productId: string } }) {
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
+      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
       <ClientNav />
       <div className="h-8 w-full text-left py-8 flex flex-row items-center px-48 gap-x-4 text-slate-800 text-sm ">
         <Link href="/" className="hover:text-blue-600">

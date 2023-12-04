@@ -5,6 +5,7 @@ import React from "react";
 function ContactsPage() {
   return (
     <div className="flex flex-col items-center min-h-screen gap-y-8">
+      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
       <ClientNav />
       <div className="flex flex-col gap-y-8 px-48 w-full">
         <p className="uppercase text-2xl text-center font-semibold text-blue-600">

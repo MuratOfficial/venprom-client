@@ -1,3 +1,4 @@
+import { MapPin, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -22,19 +23,16 @@ function LayoutHeader() {
             <li> По комплексному оснащению предприятий</li>
           </ul>
         </div>
-        <div className="py-4 px-4 text-neutral-200 flex flex-col gap-y-1 bg-blue-700 relative">
-          <p className="text-xs">Связаться с нами:</p>
-          <p className="text-xs">//(831)228-05-60//</p>
-          <p className="text-xs">//(831)228-05-61// </p>
-          <p className="text-xs">//(831)279-98-35//</p>
-        </div>
-        <div className="py-4 px-4 text-neutral-200 flex flex-col gap-y-1 bg-slate-800 relative">
-          <p className="text-xs">Адрес:</p>
-          <p className="text-xs">Lorem lorem</p>
-          <p className="text-xs">Lorem Ipsum Lorem </p>
-          <Link href="#" className="text-xs underline underline-offset-2">
-            info@stpi.ru
-          </Link>
+        <div className="py-4 px-4 text-neutral-200 flex flex-col gap-y-1  relative w-fit before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 inline-block relative">
+          <p className="text-xs relative">Связаться с нами:</p>
+          <p className="text-xs flex flex-row gap-x-2 relative">
+            <PhoneCall size={12} /> +7 705 752 71 51 <MapPin size={12} /> Семей,
+            Усть-Каменогорск, Павлодар
+          </p>
+          <p className="text-xs flex flex-row gap-x-2 relative">
+            <PhoneCall size={12} /> +7 701 999 68 67 <MapPin size={12} />{" "}
+            Астана, Караганда, Кокшетау
+          </p>
         </div>
       </div>
     </div>

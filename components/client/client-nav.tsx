@@ -9,7 +9,7 @@ function ClientNav() {
     { label: "Контакты", href: "/contacts" },
   ];
   return (
-    <div className="  flex px-48 flex-col w-full justify-center bg-blue-800 bg-opacity-80">
+    <div className="  flex px-48 flex-col w-full justify-center bg-blue-800 ">
       <ul className="flex flex-row justify-between py-8 items-center">
         {nav.map((item, index) => (
           <Link
