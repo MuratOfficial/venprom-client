@@ -2,8 +2,9 @@ import ClientFooter from "@/components/client/client-footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import LayoutHeader from "@/components/client/layout-header";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["cyrillic"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} `}>
+      <body className={`${inter.variable} font-sans`}>
+        <LayoutHeader />
         {children}
         <ClientFooter />
       </body>

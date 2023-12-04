@@ -7,12 +7,15 @@ import React from "react";
 
 function HomePage() {
   return (
-    <div className="flex flex-col items-center min-h-screen gap-y-4">
+    <div className="flex flex-col items-center min-h-screen gap-y-8">
       <ClientHeader />
-      <PopularCategory />
-      <ProductLinks />
+      <div className=" flex flex-col items-center gap-y-8 px-48 w-full before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-white inline-block relative">
+        <PopularCategory />
+        <ProductLinks />
+        <ProcessChain />
+      </div>
+
       {/**Animated Blocks */}
-      <ProcessChain />
     </div>
   );
 }
