@@ -1,3 +1,4 @@
+import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import { ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -27,8 +28,8 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
           {params.productId}
         </Link>
       </div>
-      <div className="px-48">
-        <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-6">
+      <div className="px-48 flex flex-col gap-y-8">
+        <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
           <p className="text-3xl font-semibold uppercase">{params.productId}</p>
           <div className="flex flex-row justify-between">
             <Image
@@ -84,7 +85,7 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
               <p>Остаток: </p> <p>0</p>
             </div>
             <div className="flex flex-row justify-evenly items-center text-xl">
-              <p>Цена</p> <p>20000 KZT</p>
+              <p>Цена</p> <p className="font-bold">20000 KZT</p>
             </div>
             <div className="items-center flex justify-center text-neutral-100">
               <button className="flex flex-row gap-x-2 bg-blue-600  transition delay-150 duration-500 rounded-lg py-3 px-8 hover:bg-sky-800  shadow-xl">
@@ -103,6 +104,7 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
             <p>4546546 kg</p>
           </div>
         </div>
+        <ClientForm />
       </div>
     </div>
   );
