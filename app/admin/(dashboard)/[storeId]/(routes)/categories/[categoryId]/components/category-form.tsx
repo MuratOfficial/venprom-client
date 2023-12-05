@@ -53,16 +53,19 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit category" : "Create category";
-  const description = initialData ? "Edit a category." : "Add a new category";
-  const toastMessage = initialData ? "Category updated." : "Category created.";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "Настроить подкатегорию" : "Создать подкатегорию";
+  const description = initialData
+    ? "Настройка подкатегории."
+    : "Добавление новой подкатегории";
+  const toastMessage = initialData
+    ? "Подкатегория обновлена."
+    : "Подкатегория создана.";
+  const action = initialData ? "Сохранить изменения" : "Создать";
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
-      billboardId: "",
     },
   });
 
@@ -78,10 +81,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
         await axios.post(`/api/${params.storeId}/categories`, data);
       }
       router.refresh();
-      router.push(`/${params.storeId}/categories`);
+      router.push(`/admin/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (error: any) {
-      toast.error("Something went wrong.");
+      toast.error("Что-то пошло не так ...");
     } finally {
       setLoading(false);
     }
@@ -95,11 +98,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       );
       router.refresh();
       router.push(`/${params.storeId}/categories`);
-      toast.success("Category deleted.");
+      toast.success("Подкатегория удалена.");
     } catch (error: any) {
-      toast.error(
-        "Make sure you removed all products using this category first."
-      );
+      toast.error("Убедитесь что вы удалили внутри подкатегорий");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -143,42 +144,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Category name"
+                      placeholder="Название подкатегорий"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="billboardId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Billboard</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Select a billboard"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {billboards.map((billboard) => (
-                        <SelectItem key={billboard.id} value={billboard.id}>
-                          {billboard.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

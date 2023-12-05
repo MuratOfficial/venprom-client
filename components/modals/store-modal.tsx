@@ -43,7 +43,7 @@ export const StoreModal = () => {
 
       window.location.assign(`${response.data.id}`);
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Что-то пошло не так ...");
     } finally {
       setLoading(false);
     }
@@ -51,8 +51,8 @@ export const StoreModal = () => {
 
   return (
     <Modal
-      title="Create Store"
-      description="Add new store to manage categories"
+      title="Создать категорию"
+      description="Добавьте новую категорию для управления"
       isOpen={storeModal.isOpen}
       onClose={storeModal.onClose}
     >
@@ -69,7 +69,7 @@ export const StoreModal = () => {
                     <FormControl>
                       <Input
                         disabled={loading}
-                        placeholder="E-commerce"
+                        placeholder="Категория"
                         {...field}
                       />
                     </FormControl>
@@ -83,10 +83,10 @@ export const StoreModal = () => {
                   variant="outline"
                   onClick={storeModal.onClose}
                 >
-                  Cancel
+                  Отмена
                 </Button>
                 <Button disabled={loading} type="submit">
-                  Continue
+                  Подтвердить
                 </Button>
               </div>
             </form>

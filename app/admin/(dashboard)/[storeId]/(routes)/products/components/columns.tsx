@@ -7,55 +7,30 @@ import { CellAction } from "./cell-action";
 export type ProductColumn = {
   id: string;
   name: string;
-  isFeatured: boolean;
   isArchived: boolean;
   category: string;
   price: string;
-  size: string;
-  color: string;
   createdAt: string;
 };
 
 export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Наименование",
   },
-  {
-    accessorKey: "isArchived",
-    header: "Archived",
-  },
-  {
-    accessorKey: "isFeatured",
-    header: "Featured",
-  },
+
   {
     accessorKey: "price",
-    header: "Price",
+    header: "Цена",
   },
   {
     accessorKey: "category",
-    header: "Category",
+    header: "Подкатегория",
   },
-  {
-    accessorKey: "size",
-    header: "Size",
-  },
-  {
-    accessorKey: "color",
-    header: "Color",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-x-2">
-        <div
-          className="w-6 h-6 rounded-full border"
-          style={{ backgroundColor: row.original.color }}
-        />
-      </div>
-    ),
-  },
+
   {
     accessorKey: "createdAt",
-    header: "Date",
+    header: "Дата",
   },
   {
     id: "actions",

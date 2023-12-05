@@ -16,7 +16,7 @@ export default async function HomeLayout({
   const { userId } = auth();
 
   if (!userId) {
-    redirect("/sign-in");
+    redirect("/admin/sign-in");
   }
 
   const store = await prismadb.store.findFirst({
@@ -26,7 +26,7 @@ export default async function HomeLayout({
   });
 
   if (store) {
-    redirect(`/${store.id}`);
+    redirect(`/admin/${store.id}`);
   }
 
   return <>{children}</>;

@@ -52,9 +52,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success("Store updated");
+      toast.success("Категория обновилась");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Что-то пошло не так ...");
     } finally {
       setLoading(false);
     }
@@ -65,9 +65,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(true);
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
-      toast.success("Store deleted");
+      toast.success("Категория удалена");
     } catch (error) {
-      toast.error("Make sure that you deleted all products in this store");
+      toast.error("Убадитесь что удалили все надлещашие товары и подкатегории");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -83,7 +83,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         onConfirm={onDelete}
       />
       <div className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage preferences" />
+        <Heading title="Настройки" description="Управляйте категорией" />
         <Button
           disabled={loading}
           variant="destructive"
@@ -106,11 +106,11 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Название</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Store name"
+                      placeholder="Название категорий"
                       {...field}
                     />
                   </FormControl>
@@ -120,7 +120,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
             />
           </div>
           <Button disabled={loading} type="submit" className="ml-auto">
-            Save changes
+            Сохранить
           </Button>
         </form>
       </Form>

@@ -11,7 +11,11 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
     },
   });
 
-  return <div>Active store: {store?.name}</div>;
+  return (
+    <div className="px-16 py-8 flex flex-col justify-evenly items-center min-h-screen">
+      <p>Категория: {store?.name}</p>
+    </div>
+  );
 };
 
 export default DashboardPage;

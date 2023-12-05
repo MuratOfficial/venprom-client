@@ -48,7 +48,7 @@ function StoreSwitcher({ className, items = [] }: StoreSwitcherProps) {
   const [open, setOpen] = useState(false);
 
   const onStoreSelect = (store: { value: string; label: string }) => {
-    setOpen(true), router.push(`/${store.value}`);
+    setOpen(true), router.push(`/admin/${store.value}`);
   };
 
   return (
@@ -70,9 +70,9 @@ function StoreSwitcher({ className, items = [] }: StoreSwitcherProps) {
       <PopoverContent className="w=[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store" />
-            <CommandEmpty>No store found.</CommandEmpty>
-            <CommandGroup heading="Stores">
+            <CommandInput placeholder="Искать категорию" />
+            <CommandEmpty>Ничего не найдено.</CommandEmpty>
+            <CommandGroup heading="Категории">
               {formattedItems.map((item) => (
                 <CommandItem
                   key={item.value}
@@ -103,7 +103,7 @@ function StoreSwitcher({ className, items = [] }: StoreSwitcherProps) {
                 }}
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
-                Create Store
+                Создать категорию
               </CommandItem>
             </CommandGroup>
           </CommandList>

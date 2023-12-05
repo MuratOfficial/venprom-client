@@ -1,6 +1,5 @@
 "use client";
 
-import { Billboard } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
@@ -22,14 +21,14 @@ export const CategoryClient: React.FC<CategoryClientParams> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Categories (${data.length})`}
-          description="Manage categories for your store"
+          title={`Подкатегории (${data.length})`}
+          description="Управляйте подкатегориями вашего магазина"
         />
         <Button
-          onClick={() => router.push(`/${params.storeId}/categories/new`)}
+          onClick={() => router.push(`/admin/${params.storeId}/categories/new`)}
         >
           <Plus className="mr-2 h-4 w-4" />
-          Add New
+          Добавить
         </Button>
       </div>
       <Separator />
