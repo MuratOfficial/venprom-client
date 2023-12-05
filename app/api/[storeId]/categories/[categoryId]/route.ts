@@ -73,7 +73,7 @@ export async function PATCH(
 
     const body = await req.json();
 
-    const { name, billboardId } = body;
+    const { name, description } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -83,8 +83,8 @@ export async function PATCH(
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+    if (!description) {
+      return new NextResponse("Description is required", { status: 400 });
     }
 
     if (!params.categoryId) {
@@ -108,7 +108,7 @@ export async function PATCH(
       },
       data: {
         name,
-        billboardId,
+        description,
       },
     });
 

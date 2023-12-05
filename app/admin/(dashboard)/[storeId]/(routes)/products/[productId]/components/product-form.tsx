@@ -16,7 +16,7 @@ import ImageUpload from "@/components/ui/image-upload";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Category, Color, Image, Product, Size } from "@prisma/client";
+import { Category, Image, Product } from "@prisma/client";
 import {
   Select,
   SelectContent,
@@ -36,11 +36,22 @@ import { Checkbox } from "@/components/ui/checkbox";
 const formSchema = z.object({
   name: z.string().min(1),
   images: z.object({ url: z.string() }).array(),
-  price: z.coerce.number().min(1),
+  detailId: z.string().min(1),
   categoryId: z.string().min(1),
-  colorId: z.string().min(1),
-  sizeId: z.string().min(1),
-  isFeatured: z.boolean().default(false).optional(),
+  characteristics1: z.string().min(1),
+  characteristics2: z.string().min(1),
+  characteristics3: z.string().min(1),
+  characteristics4: z.string().min(1),
+  characteristics5: z.string().min(1),
+  characteristics6: z.string().min(1),
+  characteristics7: z.string().min(1),
+  characteristics8: z.string().min(1),
+  characteristics9: z.string().min(1),
+  characteristics10: z.string().min(1),
+  characteristics11: z.string().min(1),
+  characteristics12: z.string().min(1),
+  characteristics13: z.string().min(1),
+
   isArchived: z.boolean().default(false).optional(),
 });
 
@@ -53,15 +64,11 @@ interface ProductFormProps {
       })
     | null;
   categories: Category[];
-  sizes: Size[];
-  colors: Color[];
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
-  sizes,
-  colors,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -69,26 +76,37 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit product" : "Create product";
-  const description = initialData ? "Edit a product" : "Add new product";
-  const toastMessage = initialData ? "Product updated" : "Product created";
-  const action = initialData ? "Save changes" : "Create product";
+  const title = initialData ? "Изменить продукт" : "Создать продукт";
+  const description = initialData
+    ? "Изменение продукта"
+    : "Добавить новый продукт";
+  const toastMessage = initialData ? "Продукт обновлен" : "Продукт создан";
+  const action = initialData ? "Сохранить изменения" : "Создать продукт";
 
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData
       ? {
           ...initialData,
-          price: parseFloat(String(initialData.price)),
         }
       : {
           name: "",
           images: [],
-          price: 0,
           categoryId: "",
-          colorId: "",
-          sizeId: "",
-          isFeatured: false,
+          detailId: "",
+          characteristics1: "",
+          characteristics2: "",
+          characteristics3: "",
+          characteristics4: "",
+          characteristics5: "",
+          characteristics6: "",
+          characteristics7: "",
+          characteristics8: "",
+          characteristics9: "",
+          characteristics10: "",
+          characteristics11: "",
+          characteristics12: "",
+          characteristics13: "",
           isArchived: false,
         },
   });
@@ -106,10 +124,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       }
 
       router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success("Store updated");
+      router.push(`/admin/${params.storeId}/products`);
+      toast.success("Категория обновлена");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Что-то пошло не так...");
     } finally {
       setLoading(false);
     }
@@ -120,10 +138,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/products`);
-      toast.success("Product deleted");
+      router.push(`/admin/${params.storeId}/products`);
+      toast.success("Продукт удален");
     } catch (error) {
-      toast.error("Make sure that you deleted all");
+      toast.error("Убедитесь что вы удалили все");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -163,7 +181,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>Изображения</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value.map((image) => image.url)}
@@ -188,29 +206,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Название</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Product Name"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="price"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Price</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      disabled={loading}
-                      placeholder="990.00"
+                      placeholder="Название продукта"
                       {...field}
                     />
                   </FormControl>
@@ -223,7 +223,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Подкатегория</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -234,7 +234,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a category"
+                          placeholder="Выберите подкатегорию"
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -252,88 +252,247 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="sizeId"
+              name="detailId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Select a size"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {sizes.map((size) => (
-                        <SelectItem key={size.id} value={size.id}>
-                          {size.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="colorId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Color</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Select a color"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {colors.map((color) => (
-                        <SelectItem key={color.id} value={color.id}>
-                          {color.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="isFeatured"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                  <FormLabel>Id детали</FormLabel>
                   <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
+                    <Input
+                      disabled={loading}
+                      placeholder="Id детали"
+                      {...field}
                     />
                   </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel>Featured</FormLabel>
-                    <FormDescription>
-                      This product will appear on the home page
-                    </FormDescription>
-                  </div>
+                  <FormMessage />
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="characteristics1"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 1</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 1"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 2</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 2"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics3"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 3</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 3"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics4"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 4</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 4"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics5"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 5</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 5"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics6"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 6</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 6"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics7"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 7</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 7"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="characteristics8"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 8</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 8"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="characteristics9"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 9</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 9"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="characteristics10"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 10</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 10"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="characteristics11"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 11</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 11"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics12"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 12</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 12"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="characteristics13"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Характеристика 13</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Характеристика 13"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="isArchived"
@@ -346,9 +505,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Archived</FormLabel>
+                    <FormLabel>В архив</FormLabel>
                     <FormDescription>
-                      This product will not appear on store
+                      Продукт не будет отображаться
                     </FormDescription>
                   </div>
                 </FormItem>

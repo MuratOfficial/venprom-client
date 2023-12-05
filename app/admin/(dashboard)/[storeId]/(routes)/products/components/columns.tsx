@@ -9,7 +9,7 @@ export type ProductColumn = {
   name: string;
   isArchived: boolean;
   category: string;
-  price: string;
+  detailId: string;
   createdAt: string;
 };
 
@@ -20,14 +20,13 @@ export const columns: ColumnDef<ProductColumn>[] = [
   },
 
   {
-    accessorKey: "price",
-    header: "Цена",
-  },
-  {
     accessorKey: "category",
     header: "Подкатегория",
   },
-
+  {
+    accessorKey: "detailId",
+    header: "Id деталей",
+  },
   {
     accessorKey: "createdAt",
     header: "Дата",

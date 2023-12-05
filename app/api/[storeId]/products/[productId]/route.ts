@@ -19,8 +19,6 @@ export async function GET(
       include: {
         images: true,
         category: true,
-        size: true,
-        color: true,
       },
     });
 
@@ -81,12 +79,23 @@ export async function PATCH(
 
     const {
       name,
-      price,
       categoryId,
       images,
-      colorId,
-      sizeId,
-      isFeatured,
+      detailId,
+      characteristics1,
+      characteristics2,
+      characteristics3,
+      characteristics4,
+      characteristics5,
+      characteristics6,
+      characteristics7,
+      characteristics8,
+      characteristics9,
+      characteristics10,
+      characteristics11,
+      characteristics12,
+      characteristics13,
+
       isArchived,
     } = body;
 
@@ -106,20 +115,8 @@ export async function PATCH(
       return new NextResponse("Images are required", { status: 400 });
     }
 
-    if (!price) {
-      return new NextResponse("Price is required", { status: 400 });
-    }
-
     if (!categoryId) {
       return new NextResponse("Category id is required", { status: 400 });
-    }
-
-    if (!colorId) {
-      return new NextResponse("Color id is required", { status: 400 });
-    }
-
-    if (!sizeId) {
-      return new NextResponse("Size id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -139,14 +136,26 @@ export async function PATCH(
       },
       data: {
         name,
-        price,
+
         categoryId,
-        colorId,
-        sizeId,
+        detailId,
+        characteristics1,
+        characteristics2,
+        characteristics3,
+        characteristics4,
+        characteristics5,
+        characteristics6,
+        characteristics7,
+        characteristics8,
+        characteristics9,
+        characteristics10,
+        characteristics11,
+        characteristics12,
+        characteristics13,
+
         images: {
           deleteMany: {},
         },
-        isFeatured,
         isArchived,
       },
     });
