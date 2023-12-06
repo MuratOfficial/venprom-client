@@ -1,8 +1,12 @@
+"use client";
 import { Search } from "lucide-react";
 import React from "react";
 import ProductCard from "./product-card";
+import useProducts from "@/hooks/use-products";
 
 function ProductItems() {
+  const productsList = useProducts().items;
+  const amount = useProducts().numsum;
   return (
     <div className="w-full h-full flex flex-col gap-y-4">
       <div className="w-full h-12 flex flex-row justify-between px-2 rounded-xl bg-opacity-80 shadow-xl items-center bg-blue-600 relative">
@@ -18,37 +22,20 @@ function ProductItems() {
           />
         </div>
 
-        <p className="text-neutral-100 w-60">Всего найдено:</p>
+        <p className="text-neutral-100 w-60">Всего найдено: {amount}</p>
       </div>
-      <div className="grid grid-flow-row grid-cols-3 gap-2">
-        <ProductCard
-          productId="1"
-          name="Something kiokjkjfdgdfg lkdlfklkg"
-          price="20000"
-          balance="12"
-          img=""
-        />
-        <ProductCard
-          productId="2"
-          name="Something kiokjkjfdgdfg lkdlfklkg 456 KLDFGKdfgl"
-          price="25000"
-          img=""
-          balance="0"
-        />
-        <ProductCard
-          productId="3"
-          name="Something kiokjkjfdgdfg "
-          price="20000"
-          balance="10"
-          img=""
-        />
-        <ProductCard
-          productId="4"
-          name="Something kiokjkjfdgdfg lkdlfklkg Kelma ommmammmmmjhsdfsdf"
-          price="20000"
-          balance="5"
-          img=""
-        />
+      <div className="grid grid-flow-row grid-cols-3 gap-2 grid-rows-1">
+        {productsList.map((item, key) => (
+          <ProductCard
+            key={key}
+            productId={item.id}
+            name={item.name}
+            price="20000"
+            balance="12"
+            img={item.images[0].url}
+            detailId={item.detailId}
+          />
+        ))}
       </div>
     </div>
   );

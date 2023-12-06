@@ -8,6 +8,7 @@ interface ProductCardProps {
   price: string;
   name: string;
   balance: string;
+  detailId: string;
 }
 
 function ProductCard({
@@ -16,10 +17,11 @@ function ProductCard({
   price,
   name,
   balance,
+  detailId,
 }: ProductCardProps) {
   return (
     <Link href={`/products/${productId}`}>
-      <div className="w-full  relative flex flex-col h-full bg-blue-50 justify-between hover:brightness-90 transition duration-500 delay-100">
+      <div className="w-full   relative flex flex-col h-[360px] bg-blue-50 justify-between hover:brightness-90 transition duration-500 delay-100">
         <p className="w-full text-right px-4 absolute bg-transparent top-0">
           logo
         </p>
@@ -30,10 +32,12 @@ function ProductCard({
           src={img}
           className="bg-blue-500 w-full h-fit"
         />
-        <p className="px-4 py-1 text-sm uppercase">{name}</p>
-        <div className="px-4 flex flex-row justify-between items-center py-2">
-          <p className="text-lg font-semibold">{price} KZT</p>
-          <p className="text-sm">Наличие: {balance}</p>
+        <div className="flex flex-col">
+          <p className="px-4 py-1 text-lg font-semibold uppercase">{name}</p>
+          <div className="px-4 flex flex-row justify-between items-center py-2">
+            <p className="text-lg font-semibold">{price} KZT</p>
+            <p className="text-sm">Наличие: {balance}</p>
+          </div>
         </div>
       </div>
     </Link>

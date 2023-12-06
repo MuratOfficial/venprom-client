@@ -1,11 +1,35 @@
 import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
+import getCategories from "@/services/get-categories";
+import getProducts from "@/services/get-products";
 import { ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function ProductItemPage({ params }: { params: { productId: string } }) {
+const ProductItemPage = async ({
+  params,
+}: {
+  params: { productId: string };
+}) => {
+  const cabelsUrl =
+    "http://localhost:3000/api/a14e50a2-95bc-4c0b-bc24-6bbefd1cf178";
+
+  const podUrl =
+    "http://localhost:3000/api/a14e50a2-95bc-4c0b-bc24-6bbefd1cf178";
+  const cabelproducts = await getProducts(`${cabelsUrl}/products`);
+  const podProducts = await getProducts(`${podUrl}/products`);
+  const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
+
+  const podCategories = await getCategories(`${podUrl}/categories`);
+
+  const data = [...cabelproducts, ...podProducts];
+  const categories = [...cabelCategories, ...podCategories];
+
+  const product = data.findLast((el) => el.id === params.productId);
+  const descript = categories.findLast(
+    (el) => el.name === product?.category.name
+  )?.description;
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
       <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
@@ -20,26 +44,28 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
           Продукция
         </Link>
         <ChevronRight size={15} />
-        <p>/CategoryName/</p>
+        <p>{product?.category.name}</p>
         <ChevronRight size={15} />
         <Link
           href={`/products/${params.productId}`}
           className="hover:text-blue-600 font-semibold"
         >
-          {params.productId}
+          {product?.name}
         </Link>
       </div>
       <div className="px-48 flex flex-col gap-y-8">
         <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
-          <p className="text-3xl font-semibold uppercase">{params.productId}</p>
+          <p className="text-3xl font-semibold uppercase">{product?.name}</p>
           <div className="flex flex-row justify-between">
-            <Image
-              height={200}
-              width={200}
-              alt=""
-              src=""
-              className="bg-blue-500 w-[360px] h-[360px]"
-            />
+            <div className="flex items-center w-[360px] h-[360px]">
+              <Image
+                height={400}
+                width={400}
+                alt=""
+                src={product?.images[0].url || ""}
+              />
+            </div>
+
             <div className="flex flex-col text-left">
               <div className=" bg-blue-100 w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
                 <p>Text1</p>
@@ -67,20 +93,7 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
               </div>
             </div>
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto
-            perspiciatis numquam molestias corporis praesentium dolorum deserunt
-            esse repellendus impedit eius, harum iure ipsam cumque quod vitae
-            facilis explicabo, voluptatem laudantium. Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Iusto perspiciatis numquam
-            molestias corporis praesentium dolorum deserunt esse repellendus
-            impedit eius, harum iure ipsam cumque quod vitae facilis explicabo,
-            voluptatem laudantium. Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Iusto perspiciatis numquam molestias corporis
-            praesentium dolorum deserunt esse repellendus impedit eius, harum
-            iure ipsam cumque quod vitae facilis explicabo, voluptatem
-            laudantium.
-          </p>
+          <p>{descript}</p>
           <div className="grid grid-flow-row grid-cols-3 gap-4 pt-8 w-full">
             <div className="flex flex-row justify-evenly items-center text-xl">
               <p>Остаток: </p> <p>0</p>
@@ -109,6 +122,6 @@ function ProductItemPage({ params }: { params: { productId: string } }) {
       </div>
     </div>
   );
-}
+};
 
 export default ProductItemPage;

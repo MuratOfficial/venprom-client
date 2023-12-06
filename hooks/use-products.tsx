@@ -1,7 +1,6 @@
 import { Category, CategoryList, Product } from "@/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import prismadb from "@/lib/prismadb";
 import getCategories from "@/services/get-categories";
 import getProducts from "@/services/get-products";
 
@@ -12,7 +11,7 @@ interface ProductProps {
   filterItems: (store: string, category: string) => void;
   activeStore: string;
   activeCategory: string;
-  numsum: Number;
+  numsum: number;
 }
 
 const cabelsUrl =
@@ -29,6 +28,8 @@ const fetchDataForStore = async () => {
   const podProducts = await getProducts(`${podUrl}/products`);
   return { cabelCategories, cabelproducts, podCategories, podProducts };
 };
+
+export const revalidate = 10;
 
 const useProducts = create(
   persist<ProductProps>(
@@ -77,21 +78,21 @@ const useProducts = create(
             categoryList = cabelCategories.map((item) => ({
               label: item.name,
               listItems: cabelproducts
-                .filter((item) => item.category === category)
+                .filter((item) => item.category.name === category)
                 .map((item) => item.name),
             }));
             formattedProducts = cabelproducts.filter(
-              (item) => item.category === category
+              (item) => item.category.name === category
             );
           } else {
             categoryList = podCategories.map((item) => ({
               label: item.name,
               listItems: podProducts
-                .filter((item) => item.category === category)
+                .filter((item) => item.category.name === category)
                 .map((item) => item.name),
             }));
             formattedProducts = podProducts.filter(
-              (item) => item.category === category
+              (item) => item.category.name === category
             );
           }
 
