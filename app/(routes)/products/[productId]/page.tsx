@@ -1,5 +1,6 @@
 import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
+import { cn } from "@/lib/utils";
 import getCategories from "@/services/get-categories";
 import getProducts from "@/services/get-products";
 import { ChevronRight, ShoppingCart } from "lucide-react";
@@ -13,10 +14,10 @@ const ProductItemPage = async ({
   params: { productId: string };
 }) => {
   const cabelsUrl =
-    "http://localhost:3000/api/a14e50a2-95bc-4c0b-bc24-6bbefd1cf178";
+    "http://localhost:3000/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
 
   const podUrl =
-    "http://localhost:3000/api/a14e50a2-95bc-4c0b-bc24-6bbefd1cf178";
+    "http://localhost:3000/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
   const podProducts = await getProducts(`${podUrl}/products`);
   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
@@ -29,7 +30,7 @@ const ProductItemPage = async ({
   const product = data.findLast((el) => el.id === params.productId);
   const descript = categories.findLast(
     (el) => el.name === product?.category.name
-  )?.description;
+  )?.description1;
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
       <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
@@ -56,44 +57,102 @@ const ProductItemPage = async ({
       <div className="px-48 flex flex-col gap-y-8">
         <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
           <p className="text-3xl font-semibold uppercase">{product?.name}</p>
-          <div className="flex flex-row justify-between">
-            <div className="flex items-center w-[360px] h-[360px]">
+          {/**Content Description */}
+          <div className="grid grid-flow-row-dense grid-cols-2 gap-4 grid-rows-auto">
+            <div className="flex flex-col gap-y-4 items-center justify-center">
               <Image
                 height={400}
                 width={400}
                 alt=""
                 src={product?.images[0].url || ""}
+                className=" w-full h-fit "
+              />
+              <Image
+                height={400}
+                width={400}
+                alt=""
+                src={product?.images[1]?.url || ""}
+                className={cn(
+                  " w-full h-0 collapse",
+                  product?.images[1] && "visible h-fit"
+                )}
               />
             </div>
 
-            <div className="flex flex-col text-left">
-              <div className=" bg-blue-100 w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
-              </div>
-              <div className="  w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
-              </div>
-              <div className=" bg-blue-100 w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
-              </div>
-              <div className="  w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
-              </div>
-              <div className=" bg-blue-100 w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
-              </div>
-              <div className="  w-[480px] items-center px-4 h-16 grid grid-flow-row grid-cols-2">
-                <p>Text1</p>
-                <p>Text2</p>
+            <div className="flex flex-row justify-between">
+              <div className="flex flex-col text-left">
+                <p className="dropdown-shadow-sm py-6 w-full text-center text-lg font-semibold">
+                  Характеристики
+                </p>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Влажность воздуха при 35° C [%]</p>
+                  <p className="text-right">{product?.characteristics1}</p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Гарантийный срок эксплуатации [месяц]</p>
+                  <p className="text-right">{product?.characteristics2}</p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Испытательное переменное напряжение частотой 50 Гц, 5 мин.
+                    [кВ]
+                  </p>
+                  <p className="text-right">{product?.characteristics3}</p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Максимальная рабочая температура жилы при перегрузке [°С]
+                  </p>
+                  <p className="text-right">{product?.characteristics4}</p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Максимальная рабочая температура жилы [°С]</p>
+                  <p className="text-right">{product?.characteristics5}</p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Монтаж при температуре, не ниже [°C]</p>
+                  <p className="text-right">{product?.characteristics6}</p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Номинальное переменное напряжение частотой 50 Гц [кВ]
+                  </p>
+                  <p className="text-right">{product?.characteristics7}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Номинальное постоянное напряжение [кВ]</p>
+                  <p className="text-right">{product?.characteristics8}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Радиус изгиба кабелей [наружных диаметров]</p>
+                  <p className="text-right">{product?.characteristics9}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">Разность уровней, не более [м]</p>
+                  <p className="text-right">{product?.characteristics10}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Температура окружающей среды, верхний предел [°C]
+                  </p>
+                  <p className="text-right">{product?.characteristics11}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Температура окружающей среды, нижний предел [°C]
+                  </p>
+                  <p className="text-right">{product?.characteristics12}</p>
+                </div>
+                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                  <p className="">
+                    Электрическое сопротивление изоляции, не менее [МОм*км]
+                  </p>
+                  <p className="text-right">{product?.characteristics13}</p>
+                </div>
               </div>
             </div>
           </div>
-          <p>{descript}</p>
+          <p className="whitespace-normal p-4 bg-blue-100">{descript}</p>
           <div className="grid grid-flow-row grid-cols-3 gap-4 pt-8 w-full">
             <div className="flex flex-row justify-evenly items-center text-xl">
               <p>Остаток: </p> <p>0</p>

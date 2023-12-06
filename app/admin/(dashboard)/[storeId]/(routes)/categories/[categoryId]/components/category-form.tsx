@@ -27,7 +27,12 @@ import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   name: z.string().min(2),
-  description: z.string().min(2),
+  heading1: z.string().min(2),
+  description1: z.string().min(2),
+  heading2: z.string().min(2),
+  description2: z.string().min(2),
+  heading3: z.string().min(2),
+  description3: z.string().min(2),
 });
 
 type CategoryFormValues = z.infer<typeof formSchema>;
@@ -56,7 +61,12 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
-      description: "",
+      heading1: "",
+      description1: "",
+      heading2: "",
+      description2: "",
+      heading3: "",
+      description3: "",
     },
   });
 
@@ -131,7 +141,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Название подкатегорий</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -145,14 +155,99 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
             />
             <FormField
               control={form.control}
-              name="description"
+              name="heading1"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Описание</FormLabel>
+                  <FormLabel>Наименование 1</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Название описании подкатегорий"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description1"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Описание 1</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Напишите описание подкатегорий"
-                      className="resize-none"
+                      disabled={loading}
+                      placeholder="Описании подкатегорий"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="heading2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Наименование 2</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Название описании подкатегорий"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Описание 2</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      disabled={loading}
+                      placeholder="Описании подкатегорий"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="heading3"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Наименование 3</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Название описании подкатегорий"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description3"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Описание 3</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      disabled={loading}
+                      placeholder="Описании подкатегорий"
                       {...field}
                     />
                   </FormControl>

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { ColorColumn } from "./columns";
+import { DetailColumn } from "./columns";
 
 import {
   DropdownMenu,
@@ -18,7 +18,7 @@ import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: ColorColumn;
+  data: DetailColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -29,7 +29,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Id Copied");
+    toast.success("Id скопирован");
   };
 
   const onDelete = async () => {
@@ -37,9 +37,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/colors/${data.id}`);
       router.refresh();
-      toast.success("Color deleted");
+      toast.success("Детали удалены");
     } catch (error) {
-      toast.error("Make sure that you deleted all products in this color");
+      toast.error("Убедитесь что вы удалили все");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -57,25 +57,27 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="w-8 h-8 p-0">
-            <span className=" sr-only">Open Menu</span>
+            <span className=" sr-only">Открыть меню</span>
             <MoreHorizontal className="w-4 h-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Действия</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => router.push(`/${params.storeId}/colors/${data.id}`)}
+            onClick={() =>
+              router.push(`/admin/${params.storeId}/details/${data.id}`)
+            }
           >
             <Edit className="mr-2 h-4 w-4" />
-            Update
+            Обновить
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            Copy Id
+            Скопировать Id
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />
-            Delete
+            Удалить
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

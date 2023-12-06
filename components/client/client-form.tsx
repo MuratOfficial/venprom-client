@@ -39,13 +39,13 @@ function ClientForm() {
   }
 
   return (
-    <div className="w-full xs:h-full lg:h-full rounded-[36px] border-8 bg-slate-50 lg:px-16 xs:px-6 sm:px-6 py-10 border-slate-700 grid grid-flow-row-dense lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-2">
+    <div className="w-full xs:h-full lg:h-full rounded-[36px] border-8 bg-blue-50 lg:px-16 xs:px-6 sm:px-6 py-10 border-blue-700 grid grid-flow-row-dense lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-2">
       <div className="flex flex-col col-span-1 gap-y-8">
         <p className="text-lg text-center">
           Остались вопросы? Оставьте нам сообщение, либо свяжитесь с нами по
           ниже приведенным контактам
         </p>
-        <div className=" w-full font-semibold text-slate-700  justify-center text-base">
+        <div className=" w-full font-semibold text-blue-700  justify-center text-base">
           <span className="flex flex-row gap-x-4">
             <PhoneCall /> +77472156675{" "}
           </span>
@@ -57,10 +57,10 @@ function ClientForm() {
           </Link>
         </div>
 
-        <div className="text-slate-800 flex lg:flex-row xs:flex-col sm:flex-col gap-y-2 gap-x-8 text-base ">
+        <div className="text-blue-800 flex lg:flex-row xs:flex-col sm:flex-col gap-y-2 gap-x-8 text-base ">
           {links.map((item, index) => (
             <Link key={index} href={item.href} className="w-fit">
-              <p className="hover:text-blue-700 hover:border-blue-700 px-3 py-1 rounded-lg border-2 border-slate-800 transition-colors font-semibold duration-500 delay-150 w-fit">
+              <p className="hover:text-blue-700 hover:border-blue-700 px-3 py-1 rounded-lg border-2 border-blue-800 transition-colors font-semibold duration-500 delay-150 w-fit">
                 {item.name}
               </p>
             </Link>
@@ -83,7 +83,7 @@ function ClientForm() {
               id="name"
               name="name"
               type="text"
-              className="peer h-10 w-full bg-slate-50 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-slate-600 focus:outline-none"
+              className="peer h-10 w-full bg-blue-50 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-blue-600 focus:outline-none"
               placeholder="john@doe.com"
               autoComplete="off"
             />
@@ -104,7 +104,7 @@ function ClientForm() {
               id="contact"
               name="contact"
               type="text"
-              className="peer h-10 w-full border-b-2 bg-slate-50 border-gray-300 text-gray-900 placeholder-transparent focus:border-slate-600 focus:outline-none"
+              className="peer h-10 w-full border-b-2 bg-blue-50 border-gray-300 text-gray-900 placeholder-transparent focus:border-blue-600 focus:outline-none"
               placeholder="john@doe.com"
               autoComplete="off"
             />
@@ -125,7 +125,7 @@ function ClientForm() {
               id="textArea"
               name="textArea"
               type="text"
-              className="peer h-10 w-full border-b-2 border-gray-300 bg-slate-50 text-gray-900 placeholder-transparent focus:border-slate-600 focus:outline-none"
+              className="peer h-10 w-full border-b-2 border-gray-300 bg-blue-50 text-gray-900 placeholder-transparent focus:border-blue-600 focus:outline-none"
               placeholder="john@doe.com"
               autoComplete="off"
             />
@@ -146,13 +146,13 @@ function ClientForm() {
           <button
             type="submit"
             disabled={!isDirty || !isValid || isSubmitting}
-            className=" block w-full cursor-pointer rounded bg-slate-900 px-4 py-2 text-center font-semibold text-white hover:bg-slate-700 focus:outline-none focus:ring focus:ring-slate-500 focus:ring-opacity-80 focus:ring-offset-2 disabled:opacity-70"
+            className=" block w-full cursor-pointer rounded bg-blue-900 px-4 py-2 text-center font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-80 focus:ring-offset-2 disabled:opacity-70"
           >
             {isSubmitting ? (
               <div role="status">
                 <svg
                   aria-hidden="true"
-                  className="inline w-6 h-6 mr-2 text-white animate-spin fill-slate-600 opacity-100"
+                  className="inline w-6 h-6 mr-2 text-white animate-spin fill-blue-600 opacity-100"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +168,7 @@ function ClientForm() {
 
         <a
           href="https://www.freeprivacypolicy.com/live/f8a33699-3c7d-4d06-954f-ded481021df4"
-          className="mt-4 block text-center text-sm font-medium text-slate-600 hover:underline focus:outline-none focus:ring-2 focus:ring-slate-500"
+          className="mt-4 block text-center text-sm font-medium text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Нажимая на кнопку "Отправить", вы соглашаетесь с политикой
           конфиденциальности

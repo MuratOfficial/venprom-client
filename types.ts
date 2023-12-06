@@ -33,7 +33,12 @@ export interface Category {
   id: string;
   name: string;
   store: Store;
-  description: string;
+  heading1?: string;
+  description1?: string;
+  heading2?: string;
+  description2?: string;
+  heading3?: string;
+  description3?: string;
 }
 
 export interface CategoryList {

@@ -12,7 +12,7 @@ export async function POST(
 
     const body = await req.json();
 
-    const { name, value } = body;
+    const { name, detailId, price, price1, value1, value2 } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -22,7 +22,7 @@ export async function POST(
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!value) {
+    if (!value1) {
       return new NextResponse("Value is required", { status: 400 });
     }
 
@@ -41,17 +41,21 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const color = await prismadb.color.create({
+    const detail = await prismadb.detail.create({
       data: {
         name,
-        value,
+        detailId,
+        price,
+        price1,
+        value1,
+        value2,
         storeId: params.storeId,
       },
     });
 
-    return NextResponse.json(color);
+    return NextResponse.json(detail);
   } catch (error) {
-    console.log("[COLORS_POST]", error);
+    console.log("[detailS_POST]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
@@ -65,15 +69,15 @@ export async function GET(
       return new NextResponse("Store id is required", { status: 400 });
     }
 
-    const colors = await prismadb.color.findMany({
+    const details = await prismadb.detail.findMany({
       where: {
         storeId: params.storeId,
       },
     });
 
-    return NextResponse.json(colors);
+    return NextResponse.json(details);
   } catch (error) {
-    console.log("[COLORS_GET]", error);
+    console.log("[detailS_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

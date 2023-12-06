@@ -23,9 +23,9 @@ export function MainNav({
       active: pathname === `/admin/${params.storeId}/categories`,
     },
     {
-      href: `/admin/${params.storeId}/colors`,
-      label: "Сообщения",
-      active: pathname === `/${params.storeId}/colors`,
+      href: `/admin/${params.storeId}/details`,
+      label: "Детали",
+      active: pathname === `/${params.storeId}/details`,
     },
     {
       href: `/admin/${params.storeId}/products`,

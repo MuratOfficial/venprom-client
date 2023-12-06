@@ -28,10 +28,11 @@ function ProductCard({
         <Image
           height={200}
           width={200}
-          alt=""
+          alt="productImg"
           src={img}
-          className="bg-blue-500 w-full h-fit"
+          className=" w-full h-fit"
         />
+
         <div className="flex flex-col">
           <p className="px-4 py-1 text-lg font-semibold uppercase">{name}</p>
           <div className="px-4 flex flex-row justify-between items-center py-2">

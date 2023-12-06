@@ -16,7 +16,7 @@ model Store {
   name       String
   userId     String
   categories Category[] @relation("StoreToCategory")
-  colors     Color[]    @relation("StoreToColor")
+  details    Detail[]   @relation("StoreToDetail")
   products   Product[]  @relation("StoreToProduct")
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
@@ -27,21 +27,30 @@ model Category {
   storeId String
   store   Store  @relation("StoreToCategory", fields: [storeId], references: [id])
 
-  name        String
-  description String    @db.LongText
-  product     Product[] @relation("CategoryToProduct")
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  name         String
+  heading1     String
+  description1 String    @db.LongText
+  heading2     String
+  description2 String    @db.LongText
+  heading3     String
+  description3 String    @db.LongText
+  product      Product[] @relation("CategoryToProduct")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 
   @@index([storeId])
 }
 
-model Color {
+model Detail {
   id        String   @id @default(uuid())
   storeId   String
-  store     Store    @relation("StoreToColor", fields: [storeId], references: [id])
+  detailId  String
+  price     String
+  price1    String
+  store     Store    @relation("StoreToDetail", fields: [storeId], references: [id])
   name      String
-  value     String
+  value1    String
+  value2    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
