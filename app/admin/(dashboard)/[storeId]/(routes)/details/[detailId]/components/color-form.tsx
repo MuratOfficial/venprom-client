@@ -27,9 +27,9 @@ const formSchema = z.object({
   name: z.string().min(1),
   detailId: z.string().min(1),
   price: z.string().min(1),
-  price1: z.string().min(1),
+  price1: z.string(),
   value1: z.string().min(1),
-  value2: z.string().min(1),
+  value2: z.string(),
 });
 
 type DetailFormValues = z.infer<typeof formSchema>;

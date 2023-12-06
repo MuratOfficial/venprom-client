@@ -72,7 +72,8 @@ function ProductsList() {
           <div
             className={cn(
               "flex flex-col transition opacity-100 duration-500 delay-100 collapse h-0",
-              activeStore === "Кабели" && "visible h-full"
+              (activeStore === "Кабели" || activeStore === "Подшипники") &&
+                "visible h-full"
             )}
           >
             {itemListExam.map((item, index) => (
@@ -80,7 +81,7 @@ function ProductsList() {
                 <p
                   onClick={() => handleItems(activeStore, item.label)}
                   className={cn(
-                    "cursor-pointer text-slate-800 transition duration-500 delay-150 hover:text-neutral-100 hover:bg-slate-800 p-2 px-2 rounded-md",
+                    "cursor-pointer text-slate-800 transition bg-slate-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-slate-800 p-2 px-2 rounded-md",
                     activeCategory === item.label &&
                       "bg-slate-800 text-neutral-100"
                   )}

@@ -25,12 +25,9 @@ function ProductCard({
         <p className="w-full text-right px-4 absolute bg-transparent top-0">
           logo
         </p>
-        <Image
-          height={200}
-          width={200}
-          alt="productImg"
-          src={img}
-          className=" w-full h-fit"
+        <div
+          className="w-full h-[280px] bg-cover"
+          style={{ backgroundImage: `url(${img})` }}
         />
 
         <div className="flex flex-col">

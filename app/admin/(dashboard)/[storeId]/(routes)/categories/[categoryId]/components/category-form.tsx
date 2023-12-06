@@ -27,12 +27,12 @@ import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   name: z.string().min(2),
-  heading1: z.string().min(2),
-  description1: z.string().min(2),
-  heading2: z.string().min(2),
-  description2: z.string().min(2),
-  heading3: z.string().min(2),
-  description3: z.string().min(2),
+  heading1: z.string(),
+  description1: z.string(),
+  heading2: z.string(),
+  description2: z.string(),
+  heading3: z.string(),
+  description3: z.string(),
 });
 
 type CategoryFormValues = z.infer<typeof formSchema>;
