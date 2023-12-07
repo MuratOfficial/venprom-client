@@ -6,6 +6,24 @@ import getProducts from "@/services/get-products";
 import getDetails from "@/services/get-details";
 
 interface ProductProps {
+  data:
+    | {
+        cabelCategories: Category[];
+        cabelproducts: Product[];
+        podCategories: Category[];
+        podProducts: Product[];
+        cabelDetails: Detail[];
+        podDetails: Detail[];
+      }
+    | {
+        cabelCategories: [];
+        cabelproducts: [];
+        podCategories: [];
+        podProducts: [];
+        cabelDetails: [];
+        podDetails: [];
+      };
+  fetchDataForStore: () => Promise<void>;
   items: Product[];
   filterCategories: (store: string) => void;
   categories: CategoryList[];
@@ -14,134 +32,169 @@ interface ProductProps {
   activeStore: string;
   activeCategory: string;
   numsum: number;
+  searchTerm: string;
+  updateSearchTerm: (term: string) => void;
 }
 
 const cabelsUrl =
   "http://localhost:3000/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
 
 const podUrl = "http://localhost:3000/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
+// const fetchDataForStore = async () => {
+//   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
+//   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
+//   const podCategories = await getCategories(`${podUrl}/categories`);
+//   const podProducts = await getProducts(`${podUrl}/products`);
+//   const cabelDetails = await getDetails(`${cabelsUrl}/colors`);
+//   const podDetails = await getDetails(`${podUrl}/colors`);
+//   return {
+//     cabelCategories,
+//     cabelproducts,
+//     podCategories,
+//     podProducts,
+//     cabelDetails,
+//     podDetails,
+//   };
+// };
 
 // ... (import statements)
 
-const fetchDataForStore = async () => {
-  const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
-  const cabelproducts = await getProducts(`${cabelsUrl}/products`);
-  const podCategories = await getCategories(`${podUrl}/categories`);
-  const podProducts = await getProducts(`${podUrl}/products`);
-  const cabelDetails = await getDetails(`${cabelsUrl}/colors`);
-  const podDetails = await getDetails(`${podUrl}/colors`);
-  return {
-    cabelCategories,
-    cabelproducts,
-    podCategories,
-    podProducts,
-    cabelDetails,
-    podDetails,
-  };
-};
-
-export const revalidate = 10;
+export const revalidate = 60;
 
 const useProducts = create(
   persist<ProductProps>(
-    (set) => ({
+    (set, get) => ({
+      data: {
+        cabelCategories: [],
+        cabelproducts: [],
+        podCategories: [],
+        podProducts: [],
+        cabelDetails: [],
+        podDetails: [],
+      },
+      fetchDataForStore: async () => {
+        try {
+          const cabelCategories = await getCategories(
+            `${cabelsUrl}/categories`
+          );
+          const cabelproducts = await getProducts(`${cabelsUrl}/products`);
+          const podCategories = await getCategories(`${podUrl}/categories`);
+          const podProducts = await getProducts(`${podUrl}/products`);
+          const cabelDetails = await getDetails(`${cabelsUrl}/colors`);
+          const podDetails = await getDetails(`${podUrl}/colors`);
+
+          set({
+            data: {
+              cabelCategories,
+              cabelproducts,
+              podCategories,
+              podProducts,
+              cabelDetails,
+              podDetails,
+            },
+            items: [],
+            categories: [],
+            details: [],
+            activeStore: "",
+            activeCategory: "",
+            numsum: 0,
+            searchTerm: "",
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      },
       items: [],
       categories: [],
       details: [],
-      filterCategories: async (storeName) => {
-        try {
-          const {
-            cabelCategories,
-            cabelproducts,
-            podCategories,
-            podProducts,
-            cabelDetails,
-            podDetails,
-          } = await fetchDataForStore();
-          let categoryList: CategoryList[] = [];
-          let formattedProducts: Product[] = [];
-          let detailsList: Detail[] = [];
-          if (storeName === "Кабели") {
-            categoryList = cabelCategories.map((item) => ({
-              label: item.name,
-              listItems: [],
-            }));
-            formattedProducts = cabelproducts;
-            detailsList = cabelDetails;
-          } else {
-            categoryList = podCategories.map((item) => ({
-              label: item.name,
-              listItems: [],
-            }));
-            formattedProducts = podProducts;
-            detailsList = podDetails;
-          }
+      filterCategories: (storeName) => {
+        const cabelCategories = get().data.cabelCategories || [];
+        const podCategories = get().data.podCategories || [];
+        const cabelproducts = get().data.cabelproducts || [];
+        const podProducts = get().data.podProducts || [];
+        const cabelDetails = get().data.cabelDetails || [];
+        const podDetails = get().data.podDetails || [];
+        const categoryList = (
+          storeName === "Кабели" ? cabelCategories : podCategories
+        ).map((item) => ({
+          label: item.name,
+          listItems: [],
+        }));
 
-          set({
-            items: [...formattedProducts],
-            categories: [...categoryList],
-            details: [...detailsList],
-            activeStore: storeName,
-            activeCategory: "",
-            numsum: formattedProducts.length,
-          });
-        } catch (error: any) {
-          console.error(error.message);
-        }
+        const formattedProducts =
+          storeName === "Кабели" ? cabelproducts : podProducts;
+
+        const detailsList = storeName === "Кабели" ? cabelDetails : podDetails;
+
+        set({
+          items: [...formattedProducts],
+          categories: [...categoryList],
+          details: [...detailsList],
+          activeStore: storeName,
+          activeCategory: "",
+          numsum: formattedProducts.length,
+          searchTerm: "",
+        });
       },
 
-      filterItems: async (storeName, category) => {
-        try {
-          const {
-            cabelCategories,
-            cabelproducts,
-            podCategories,
-            podProducts,
-            cabelDetails,
-            podDetails,
-          } = await fetchDataForStore();
-          let categoryList: CategoryList[] = [];
-          let formattedProducts: Product[] = [];
-          let detailsList: Detail[] = [];
-          if (storeName === "Кабели") {
-            categoryList = cabelCategories.map((item) => ({
-              label: item.name,
-              listItems: cabelproducts
-                .filter((item) => item.category.name === category)
-                .map((item) => item.name),
-            }));
-            formattedProducts = cabelproducts.filter(
-              (item) => item.category.name === category
-            );
-            detailsList = cabelDetails;
-          } else {
-            categoryList = podCategories.map((item) => ({
-              label: item.name,
-              listItems: podProducts
-                .filter((item) => item.category.name === category)
-                .map((item) => item.name),
-            }));
-            formattedProducts = podProducts.filter(
-              (item) => item.category.name === category
-            );
-            detailsList = podDetails;
-          }
+      filterItems: (storeName, category) => {
+        const cabelCategories = get().data.cabelCategories || [];
+        const podCategories = get().data.podCategories || [];
+        const cabelproducts = get().data.cabelproducts || [];
+        const podProducts = get().data.podProducts || [];
+        const cabelDetails = get().data.cabelDetails || [];
+        const podDetails = get().data.podDetails || [];
 
-          set({
-            items: [...formattedProducts],
-            categories: [...categoryList],
-            details: [...detailsList],
-            activeStore: storeName,
-            activeCategory: category,
-            numsum: formattedProducts.length,
-          });
-        } catch (error: any) {
-          console.error(error.message);
-        }
+        const categoryList = (
+          storeName === "Кабели" ? cabelCategories : podCategories
+        ).map((item) => ({
+          label: item.name,
+          listItems: (storeName === "Кабели" ? cabelproducts : podProducts)
+            .filter((item) => item.category.name === category)
+            .map((item) => item.name),
+        }));
+
+        const formattedProducts = (
+          storeName === "Кабели" ? cabelproducts : podProducts
+        ).filter((item) => item.category.name === category);
+
+        const detailsList = storeName === "Кабели" ? cabelDetails : podDetails;
+
+        set({
+          items: [...formattedProducts],
+          categories: [...categoryList],
+          details: [...detailsList],
+          activeStore: storeName,
+          activeCategory: category,
+          numsum: formattedProducts.length,
+          searchTerm: "",
+        });
       },
       activeStore: "",
       activeCategory: "",
       numsum: 0,
+      searchTerm: "",
+      updateSearchTerm: (term) => {
+        const cabelproducts = get().data.cabelproducts || [];
+        const podProducts = get().data.podProducts || [];
+
+        const allProducts = [...cabelproducts, ...podProducts];
+        const filteredList = allProducts.filter((el) =>
+          el.name.toLowerCase().includes(term.toLowerCase())
+        );
+        if (term === "") {
+          set({
+            searchTerm: term,
+            items: [...allProducts],
+            numsum: allProducts.length,
+          });
+        }
+        set({
+          searchTerm: term,
+          items: [...filteredList],
+          numsum: filteredList.length,
+        });
+      },
     }),
     {
       name: "project-storage",

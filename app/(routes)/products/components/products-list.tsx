@@ -5,6 +5,11 @@ import { Category, CategoryList, Product } from "@/types";
 import React, { useEffect, useState } from "react";
 
 function ProductsList() {
+  const { data, fetchDataForStore } = useProducts();
+
+  useEffect(() => {
+    fetchDataForStore();
+  }, []);
   const activeStore = useProducts().activeStore;
   const activeCategory = useProducts().activeCategory;
 
@@ -12,7 +17,6 @@ function ProductsList() {
 
   const handleStores = (store: string) => {
     categoryFilter(store);
-    console.log(itemListExam);
   };
 
   const listElements = useProducts().categories;
@@ -27,8 +31,6 @@ function ProductsList() {
 
   const handleItems = (store: string, category: string) => {
     itemsFilter(store, category);
-    console.log(itemListExam);
-    console.log(items);
   };
 
   // const onVisible = (label: string) => {
