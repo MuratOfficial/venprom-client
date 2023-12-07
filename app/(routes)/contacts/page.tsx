@@ -12,7 +12,9 @@ function ContactsPage() {
           Контакты
         </p>
         <div className="py-4 px-6 bg-slate-300 bg-opacity-80 rounded-lg  w-full">
-          <p className="text-xl text-center font-semibold">ТОО "ВенПром"</p>
+          <p className="text-xl text-center font-semibold">
+            ТОО &ldquo;ВенПром&rdquo;
+          </p>
 
           <p className="text-lg text-center">
             Юр. адрес: Казахстан, город Алматы, Ауэзовский район, Микрорайон 9,
@@ -23,7 +25,7 @@ function ContactsPage() {
             Директор Утегенова Татьяна Борисовна
           </p>
           <p className="text-lg text-center">
-            Филиал АО "ForteBank" в г. Алматы БИК IRTYKZKA
+            Филиал АО &ldquo;ForteBank&rdquo; в г. Алматы БИК IRTYKZKA
           </p>
           <p className="text-lg text-center">
             БИН: 230940038234 Расчетный счет-ИИК KZ7596502F0016889107

@@ -8,7 +8,9 @@ function LayoutHeader() {
       <div className="px-48 flex flex-row h-fit w-full justify-between items-start before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-white inline-block relative">
         <div className="text-4xl uppercase relative">Logo</div>
         <div className="flex flex-col justify-between items-center w-fit relative">
-          <p className="font-bold text-lg text-left w-80">ТОО "ВенПром"</p>
+          <p className="font-bold text-lg text-left w-80">
+            ТОО &ldquo;ВенПром&rdquo;
+          </p>
           <p className="text-sm text-left font-semibold w-80">
             Поставляем по оптовым ценам:
           </p>

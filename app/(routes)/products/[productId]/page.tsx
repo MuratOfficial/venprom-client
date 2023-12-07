@@ -2,6 +2,7 @@ import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import { cn } from "@/lib/utils";
 import getCategories from "@/services/get-categories";
+import getDetails from "@/services/get-details";
 import getProducts from "@/services/get-products";
 import { ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -24,13 +25,18 @@ const ProductItemPage = async ({
 
   const podCategories = await getCategories(`${podUrl}/categories`);
 
+  const cabelDetails = await getDetails(`${cabelsUrl}/colors`);
+  const podDetails = await getDetails(`${podUrl}/colors`);
+
   const data = [...cabelproducts, ...podProducts];
   const categories = [...cabelCategories, ...podCategories];
+  const details = [...cabelDetails, ...podDetails];
 
   const product = data.findLast((el) => el.id === params.productId);
+  const detail = details.findLast((el) => el.detailId === product?.detailId);
   const descript = categories.findLast(
     (el) => el.name === product?.category.name
-  )?.description1;
+  );
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
       <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
@@ -58,7 +64,7 @@ const ProductItemPage = async ({
         <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
           <p className="text-3xl font-semibold uppercase">{product?.name}</p>
           {/**Content Description */}
-          <div className="grid grid-flow-row-dense grid-cols-2 gap-4 grid-rows-auto">
+          <div className=" columns-2">
             <div className="flex flex-col gap-y-4 items-center justify-center">
               <Image
                 height={400}
@@ -79,8 +85,90 @@ const ProductItemPage = async ({
               />
             </div>
 
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-col text-left">
+            {product?.characteristics10 === "" ? (
+              <div
+                className={cn(" flex flex-col justify-between visible w-full")}
+              >
+                <p className="dropdown-shadow-sm py-4 w-full  text-center text-lg font-semibold">
+                  Характеристики подшипника {product.name}
+                </p>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-center font-semibold col-span-2">
+                    Параметр
+                  </p>
+                  <p className="text-center font-semibold col-span-1">
+                    Обозначение
+                  </p>
+                  <p className="text-center font-semibold col-span-1">
+                    Значение
+                  </p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">
+                    Внутренний диаметр подшипника, мм
+                  </p>
+                  <p className="text-center  col-span-1">д</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics1}
+                  </p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">
+                    Наружный диаметр подшипника, мм
+                  </p>
+                  <p className="text-center  col-span-1">Д</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics2}
+                  </p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">Ширина подшипника, мм</p>
+                  <p className="text-center  col-span-1">Б</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics3}
+                  </p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">
+                    Радиус монтажной фаски , мм
+                  </p>
+                  <p className="text-center  col-span-1">р</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics4}
+                  </p>
+                </div>
+                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">
+                    Статическая грузоподъемность, Н
+                  </p>
+                  <p className="text-center relative  col-span-1">
+                    С<span className="text-[8px] absolute top-2">0</span>
+                  </p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics5}
+                  </p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">
+                    Динамическая грузоподъемность, Н
+                  </p>
+                  <p className="text-center  col-span-1">C</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics6}
+                  </p>
+                </div>
+                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                  <p className="text-left  col-span-2">Масса подшипника, кг</p>
+                  <p className="text-center  col-span-1">м</p>
+                  <p className="text-center  col-span-1">
+                    {product?.characteristics7}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div
+                className={cn("flex flex-col justify-between visible w-full")}
+              >
                 <p className="dropdown-shadow-sm py-6 w-full text-center text-lg font-semibold">
                   Характеристики
                 </p>
@@ -123,7 +211,7 @@ const ProductItemPage = async ({
                   <p className="">Номинальное постоянное напряжение [кВ]</p>
                   <p className="text-right">{product?.characteristics8}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Радиус изгиба кабелей [наружных диаметров]</p>
                   <p className="text-right">{product?.characteristics9}</p>
                 </div>
@@ -131,7 +219,7 @@ const ProductItemPage = async ({
                   <p className="">Разность уровней, не более [м]</p>
                   <p className="text-right">{product?.characteristics10}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Температура окружающей среды, верхний предел [°C]
                   </p>
@@ -143,22 +231,122 @@ const ProductItemPage = async ({
                   </p>
                   <p className="text-right">{product?.characteristics12}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Электрическое сопротивление изоляции, не менее [МОм*км]
                   </p>
                   <p className="text-right">{product?.characteristics13}</p>
                 </div>
               </div>
+            )}
+            {/**For cabels */}
+
+            {/**For pods */}
+          </div>
+          <div
+            className={cn(
+              "flex flex-col   collapse h-0 w-0 p-0",
+              descript?.heading1 && " visible w-full h-fit"
+            )}
+          >
+            <div
+              className={cn(
+                "whitespace-normal flex flex-col gap-y-4 p-0 bg-blue-100  collapse",
+                descript?.heading1 && "p-6 visible w-full h-fit"
+              )}
+            >
+              <p className="text-center text-base font-semibold w-full">
+                {descript?.heading1}
+              </p>
+              <p className="">{descript?.description1}</p>
+            </div>
+            <div
+              className={cn(
+                "whitespace-normal flex flex-col gap-y-4 p-0 bg-blue-100  collapse",
+                descript?.heading2 && "p-6 visible w-full h-fit"
+              )}
+            >
+              <p className="text-center text-base font-semibold w-full">
+                {descript?.heading2}
+              </p>
+              <p className="">{descript?.description2}</p>
+            </div>
+            <div
+              className={cn(
+                "whitespace-normal flex flex-col gap-y-4 p-0 bg-blue-100  collapse",
+                descript?.heading3 && "p-6 visible w-full h-fit"
+              )}
+            >
+              <p className="text-center text-base font-semibold w-full">
+                {descript?.heading3}
+              </p>
+              <p className="">{descript?.description3}</p>
             </div>
           </div>
-          <p className="whitespace-normal p-4 bg-blue-100">{descript}</p>
+
           <div className="grid grid-flow-row grid-cols-3 gap-4 pt-8 w-full">
             <div className="flex flex-row justify-evenly items-center text-xl">
-              <p>Остаток: </p> <p>0</p>
+              <p>Остаток: </p>{" "}
+              <p
+                className={cn(
+                  "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500",
+                  detail?.value2 && "collapse w-0"
+                )}
+              >
+                {detail?.value1} шт.
+              </p>
+              <p
+                className={cn(
+                  "collapse w-0",
+                  detail?.value2 &&
+                    "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
+                )}
+              >
+                {detail?.value1} км
+              </p>
+              <p
+                className={cn(
+                  "collapse w-0",
+                  detail?.value2 &&
+                    "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
+                )}
+              >
+                {detail?.value1} кг
+              </p>
             </div>
-            <div className="flex flex-row justify-evenly items-center text-xl">
-              <p>Цена</p> <p className="font-bold">20000 KZT</p>
+            <div className="flex flex-row justify-evenly text-blue-500 items-center text-xl">
+              <p className="font-medium">
+                Цена за{" "}
+                <span
+                  className={cn(
+                    "visible w-fit",
+                    detail?.value2 && "collapse w-0"
+                  )}
+                >
+                  {" "}
+                  шт.
+                </span>{" "}
+                <span
+                  className={cn(
+                    "collapse w-0",
+                    detail?.value2 && "visible w-fit"
+                  )}
+                >
+                  {" "}
+                  км
+                </span>
+              </p>{" "}
+              <div className="font-black flex flex-col gap-y-1 items-center px-4 py-3 text-2xl rounded-md bg-white ">
+                <p>{detail?.price} ₸</p>
+                <p
+                  className={cn(
+                    " text-white collapse h-0 w-0 text-lg flex bg-red-700 p-0 rounded-md text-center",
+                    detail?.price1 && "visible h-fit w-fit p-2"
+                  )}
+                >
+                  распродажа {detail?.price1} ₸
+                </p>
+              </div>
             </div>
             <div className="items-center flex justify-center text-neutral-100">
               <button className="flex flex-row gap-x-2 bg-blue-600  transition delay-150 duration-500 rounded-lg py-3 px-8 hover:bg-sky-800  shadow-xl">
@@ -167,7 +355,12 @@ const ProductItemPage = async ({
               </button>{" "}
             </div>
           </div>
-          <div className="border-2 border-sky-900 shadow-inner text-center shadow-xl p-6 rounded-lg w-full flex flex-row gap-x-4 items-center justify-center">
+          <div
+            className={cn(
+              "border-2 border-sky-900 shadow-inner text-center shadow-xl  rounded-lg collapse w-0 h-0 flex flex-row gap-x-4 items-center justify-center ",
+              detail?.value2 && "visible w-full h-fit p-6"
+            )}
+          >
             <p>Калькулятор массы: </p>
             <input
               type="text"
