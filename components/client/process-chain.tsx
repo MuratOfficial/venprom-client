@@ -7,13 +7,19 @@ import {
   Truck,
 } from "lucide-react";
 import React from "react";
+import { FadeInBlocks } from "../animations/basic-animations";
 
 function ProcessChain() {
   return (
-    <div className="flex flex-col px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-gradient-to-r before:from-slate-900 before:to-blue-900 inline-block relative">
-      <p className="uppercase text-4xl py-6 text-left w-full font-semibold text-neutral-100 relative">
-        Схема работы
-      </p>
+    <div className="flex flex-col px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-gradient-to-r before:from-blue-700 before:to-sky-500 inline-block relative">
+      <div className="w-full flex flex-row justify-start">
+        <FadeInBlocks>
+          <p className="uppercase text-4xl py-6 text-left w-fit font-semibold text-neutral-100 ">
+            Схема работы
+          </p>
+        </FadeInBlocks>
+      </div>
+
       <div className="flex flex-row items-center gap-x-8 relative">
         <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
           <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">

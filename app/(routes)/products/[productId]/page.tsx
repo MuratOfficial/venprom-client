@@ -39,7 +39,6 @@ const ProductItemPage = async ({
   );
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
-      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
       <ClientNav />
       <div className="h-8 w-full text-left py-8 flex flex-row items-center px-48 gap-x-4 text-slate-800 text-sm ">
         <Link href="/" className="hover:text-blue-600">
@@ -92,7 +91,7 @@ const ProductItemPage = async ({
                 <p className="dropdown-shadow-sm py-4 w-full  text-center text-lg font-semibold">
                   Характеристики подшипника {product.name}
                 </p>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-center font-semibold col-span-2">
                     Параметр
                   </p>
@@ -103,7 +102,7 @@ const ProductItemPage = async ({
                     Значение
                   </p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">
                     Внутренний диаметр подшипника, мм
                   </p>
@@ -112,7 +111,7 @@ const ProductItemPage = async ({
                     {product?.characteristics1}
                   </p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">
                     Наружный диаметр подшипника, мм
                   </p>
@@ -121,14 +120,14 @@ const ProductItemPage = async ({
                     {product?.characteristics2}
                   </p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">Ширина подшипника, мм</p>
                   <p className="text-center  col-span-1">Б</p>
                   <p className="text-center  col-span-1">
                     {product?.characteristics3}
                   </p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">
                     Радиус монтажной фаски , мм
                   </p>
@@ -137,7 +136,7 @@ const ProductItemPage = async ({
                     {product?.characteristics4}
                   </p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">
                     Статическая грузоподъемность, Н
                   </p>
@@ -148,7 +147,7 @@ const ProductItemPage = async ({
                     {product?.characteristics5}
                   </p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">
                     Динамическая грузоподъемность, Н
                   </p>
@@ -157,7 +156,7 @@ const ProductItemPage = async ({
                     {product?.characteristics6}
                   </p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-4 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-4 gap-4">
                   <p className="text-left  col-span-2">Масса подшипника, кг</p>
                   <p className="text-center  col-span-1">м</p>
                   <p className="text-center  col-span-1">
@@ -172,66 +171,66 @@ const ProductItemPage = async ({
                 <p className="dropdown-shadow-sm py-6 w-full text-center text-lg font-semibold">
                   Характеристики
                 </p>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Влажность воздуха при 35° C [%]</p>
                   <p className="text-right">{product?.characteristics1}</p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Гарантийный срок эксплуатации [месяц]</p>
                   <p className="text-right">{product?.characteristics2}</p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Испытательное переменное напряжение частотой 50 Гц, 5 мин.
                     [кВ]
                   </p>
                   <p className="text-right">{product?.characteristics3}</p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Максимальная рабочая температура жилы при перегрузке [°С]
                   </p>
                   <p className="text-right">{product?.characteristics4}</p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Максимальная рабочая температура жилы [°С]</p>
                   <p className="text-right">{product?.characteristics5}</p>
                 </div>
-                <div className="text-sm  w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm  w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Монтаж при температуре, не ниже [°C]</p>
                   <p className="text-right">{product?.characteristics6}</p>
                 </div>
-                <div className="text-sm bg-blue-100 w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm bg-blue-100 w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Номинальное переменное напряжение частотой 50 Гц [кВ]
                   </p>
                   <p className="text-right">{product?.characteristics7}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Номинальное постоянное напряжение [кВ]</p>
                   <p className="text-right">{product?.characteristics8}</p>
                 </div>
-                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Радиус изгиба кабелей [наружных диаметров]</p>
                   <p className="text-right">{product?.characteristics9}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">Разность уровней, не более [м]</p>
                   <p className="text-right">{product?.characteristics10}</p>
                 </div>
-                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Температура окружающей среды, верхний предел [°C]
                   </p>
                   <p className="text-right">{product?.characteristics11}</p>
                 </div>
-                <div className="text-sm w-full items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Температура окружающей среды, нижний предел [°C]
                   </p>
                   <p className="text-right">{product?.characteristics12}</p>
                 </div>
-                <div className="text-sm w-full bg-blue-100 items-center px-4 h-16 grid grid-flow-row grid-cols-2 gap-4">
+                <div className="text-sm w-full bg-blue-100 items-center px-4 py-2 grid grid-flow-row grid-cols-2 gap-4">
                   <p className="">
                     Электрическое сопротивление изоляции, не менее [МОм*км]
                   </p>

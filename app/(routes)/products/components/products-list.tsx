@@ -9,7 +9,7 @@ function ProductsList() {
 
   useEffect(() => {
     fetchDataForStore();
-  }, []);
+  }, [fetchDataForStore]);
   const activeStore = useProducts().activeStore;
   const activeCategory = useProducts().activeCategory;
 
@@ -40,17 +40,17 @@ function ProductsList() {
   // };
 
   return (
-    <div className="h-full shadow-inner flex flex-col gap-y-2 border-2 border-blue-800 rounded-lg p-4 w-80">
-      <p className="text-xl uppercase text-center font-semibold text-slate-800">
+    <div className="h-full  flex flex-col gap-y-2  rounded-lg p-4 w-80">
+      <p className="text-2xl uppercase text-center font-semibold text-blue-900">
         Продукция
       </p>
-      <div className=" px-2 w-full h-1 rounded-md bg-blue-700" />
-      <p className="text-center text-slate-800">По оптовым ценам</p>
+      <div className=" px-2 w-full h-1 rounded-md bg-blue-900" />
+      <p className="text-center text-blue-900">По оптовым ценам</p>
       <button
         onClick={() => handleStores("Кабели")}
         className={cn(
-          "py-2 transition duration-500 delay-150 px-12 text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-slate-800 ",
-          activeStore === "Кабели" && "bg-slate-800"
+          "py-2 transition duration-500 delay-150 px-12 text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
+          activeStore === "Кабели" && "bg-blue-950"
         )}
       >
         Кабели
@@ -58,15 +58,15 @@ function ProductsList() {
       <button
         onClick={() => handleStores("Подшипники")}
         className={cn(
-          "py-2 transition duration-500 delay-150 px-12 text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-slate-800 ",
-          activeStore === "Подшипники" && "bg-slate-800"
+          "py-2 transition duration-500 delay-150 px-12 text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
+          activeStore === "Подшипники" && "bg-blue-950"
         )}
       >
         Подшипники
       </button>
-      <div className=" px-2 w-full h-1 rounded-md bg-blue-700" />{" "}
+      <div className=" px-2 w-full h-1 rounded-md bg-blue-900" />{" "}
       {activeStore === "" ? (
-        <p className="text-center text-base text-slate-700">
+        <p className="text-center text-base text-blue-900">
           Выберите категорию
         </p>
       ) : (
@@ -83,9 +83,9 @@ function ProductsList() {
                 <p
                   onClick={() => handleItems(activeStore, item.label)}
                   className={cn(
-                    "cursor-pointer text-slate-800 transition bg-slate-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-slate-800 p-2 px-2 rounded-md",
+                    "cursor-pointer text-blue-950 transition bg-slate-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
                     activeCategory === item.label &&
-                      "bg-slate-800 text-neutral-100"
+                      "bg-blue-950 text-neutral-100"
                   )}
                 >
                   {item.label}

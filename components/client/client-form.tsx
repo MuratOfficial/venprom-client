@@ -7,6 +7,11 @@ import { RiInstagramFill } from "react-icons/ri";
 import Link from "next/link";
 
 import React from "react";
+import {
+  FadeInBlocks,
+  FadeInBlocksVertical,
+} from "../animations/basic-animations";
+import AnimateFadeIn from "../animations/fade-in";
 
 function ClientForm() {
   const links = [
@@ -30,34 +35,41 @@ function ClientForm() {
         {/* Form Body */}
       </div>
       <div className="flex flex-col col-span-3 gap-y-8 text-neutral-100 items-center">
-        <p className="text-lg text-center">
-          Остались вопросы? <br /> Свяжитесь с нами по ниже приведенным
-          контактам
-        </p>
-        <div className=" w-fit font-semibold  flex flex-col gap-y-2  justify-center text-base">
-          <span className="flex flex-row gap-x-4">
-            <PhoneCall /> +7 705 752 71 51{" "}
-          </span>
-          <span className="flex flex-row gap-x-4">
-            <PhoneCall /> +7 701 999 68 67{" "}
-          </span>
-          <Link
-            href="mailto:toimetm@gmail.com"
-            className="flex flex-row gap-x-4"
-          >
-            <Mail size={25} /> venprom@inbox.ru
-          </Link>
-        </div>
+        <FadeInBlocks>
+          <p className="text-lg text-center">
+            Остались вопросы? <br /> Свяжитесь с нами по ниже приведенным
+            контактам
+          </p>
+        </FadeInBlocks>
 
-        <div className=" flex lg:flex-row xs:flex-col sm:flex-col gap-y-2 gap-x-6 text-base ">
-          {links.map((item, index) => (
-            <Link key={index} href={item.href} className="w-fit">
-              <p className="hover:text-slate-700 transition-colors font-semibold duration-500 delay-150 w-fit">
-                {item.name}
-              </p>
+        <FadeInBlocksVertical>
+          <div className=" w-fit font-semibold  flex flex-col gap-y-2  justify-center text-base">
+            <span className="flex flex-row gap-x-4">
+              <PhoneCall /> +7 705 752 71 51{" "}
+            </span>
+            <span className="flex flex-row gap-x-4">
+              <PhoneCall /> +7 701 999 68 67{" "}
+            </span>
+            <Link
+              href="mailto:toimetm@gmail.com"
+              className="flex flex-row gap-x-4"
+            >
+              <Mail size={25} /> venprom@inbox.ru
             </Link>
-          ))}
-        </div>
+          </div>
+        </FadeInBlocksVertical>
+
+        <FadeInBlocksVertical>
+          <div className=" flex lg:flex-row xs:flex-col sm:flex-col gap-y-2 gap-x-6 text-base ">
+            {links.map((item, index) => (
+              <Link key={index} href={item.href} className="w-fit">
+                <p className="hover:text-slate-700 transition-colors font-semibold duration-500 delay-150 w-fit">
+                  {item.name}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </FadeInBlocksVertical>
       </div>
     </div>
   );

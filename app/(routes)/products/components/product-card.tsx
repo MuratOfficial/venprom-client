@@ -1,3 +1,4 @@
+import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -20,25 +21,37 @@ function ProductCard({
   detailId,
 }: ProductCardProps) {
   return (
-    <Link href={`/products/${productId}`}>
-      <div className="w-full   relative flex flex-col h-[360px] bg-blue-50 justify-between hover:brightness-90 transition duration-500 delay-100">
-        <p className="w-full text-right px-4 absolute bg-transparent top-0">
-          logo
-        </p>
-        <div
-          className="w-full h-[280px] bg-cover"
-          style={{ backgroundImage: `url(${img})` }}
-        />
+    <div className="w-full   relative flex flex-col h-[420px] bg-blue-50 justify-between hover:brightness-95 transition duration-500 delay-100">
+      <p className="w-full text-right px-4 absolute bg-transparent top-0">
+        logo
+      </p>
+      <div
+        className="w-full h-[280px] bg-cover"
+        style={{ backgroundImage: `url(${img})` }}
+      />
 
-        <div className="flex flex-col">
-          <p className="px-4 py-1 text-lg font-semibold uppercase">{name}</p>
-          <div className="px-4 flex flex-row justify-between items-center py-2">
-            <p className="text-lg font-semibold">{price} KZT</p>
-            <p className="text-sm">Наличие: {balance}</p>
-          </div>
+      <div className="flex flex-col text-blue-950 py-2">
+        <p className="px-6 py-2 text-lg font-medium uppercase">{name}</p>
+        <div className="px-6 flex flex-row justify-between items-center py-2">
+          <p className="text-xl font-bold">{price} ₸</p>
+          <p className="text-sm">Наличие: {balance}</p>
+        </div>
+        <div className="px-4 flex flex-row justify-evenly items-center py-2 ">
+          <Link
+            href={`/products/${productId}`}
+            className="py-2 px-6 text-base transition delay-100 duration-500 border-2 border-blue-800 rounded-sm text-center w-fit text-blue-800 hover:text-blue-50  hover:bg-blue-800"
+          >
+            Подробнее
+          </Link>
+          <Link
+            href={`/products/${productId}`}
+            className="py-2 px-6 text-base transition delay-100 duration-500 bg-blue-50 border-2 border-sky-800 rounded-sm text-center w-fit  text-sky-800  hover:bg-sky-800 hover:text-blue-50"
+          >
+            <ShoppingCart size={24} />
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

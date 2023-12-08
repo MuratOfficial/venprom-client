@@ -17,8 +17,7 @@ function ProductsPage() {
     return null;
   }
   return (
-    <div className="h-full w-full flex flex-col h-min-screen">
-      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
+    <div className="h-full w-full flex flex-col h-min-screen bg-slate-50">
       <ClientNav />
       <div className="flex flex-row justify-between px-16 py-4 gap-x-4">
         <ProductsList />

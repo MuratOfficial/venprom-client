@@ -14,20 +14,20 @@ function ClientHeader() {
       <PhotoCollage />
 
       <div className="flex px-48 flex-row w-full h-[320px] justify-end items-center relative">
-        <div className="p-6 bg-slate-800 bg-opacity-80 backdrop-blur-sm rounded-lg">
+        <div className="p-6 bg-blue-900 bg-opacity-80 backdrop-blur-sm rounded-lg">
           <ul className="flex flex-col gap-y-4">
             {nav.map((item, index) => (
               <Link
                 href={item.href}
                 key={index}
-                className="text-base text-neutral-200 hover:text-blue-600 transition duration-500 delay-150"
+                className="text-base font-medium text-neutral-200 hover:text-blue-950 transition duration-500 delay-150"
               >
                 {item.label}
               </Link>
             ))}
             <Link
-              href="#"
-              className="py-2 px-12 text-base rounded-lg text-center bg-slate-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
+              href="/products"
+              className="py-2 px-12 font-semibold text-base rounded-lg text-center bg-blue-950 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
             >
               Заказать
             </Link>

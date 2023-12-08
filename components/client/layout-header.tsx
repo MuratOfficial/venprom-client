@@ -4,10 +4,11 @@ import React from "react";
 
 function LayoutHeader() {
   return (
-    <div className="  flex flex flex-col w-full ">
-      <div className="px-48 flex flex-row h-fit w-full justify-between items-start before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-white inline-block relative">
-        <div className="text-4xl uppercase relative">Logo</div>
-        <div className="flex flex-col justify-between items-center w-fit relative">
+    <div className="  flex flex flex-col w-full relative ">
+      <div className="bg-slate-50 absolute top-0 w-full py-12"></div>
+      <div className="px-48 flex flex-row h-fit py-2  w-full justify-between items-start before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-slate-50 inline-block relative">
+        <div className="text-4xl uppercase relative text-blue-900">Logo</div>
+        <div className="flex flex-col justify-between items-center w-fit relative text-blue-900">
           <p className="font-bold text-lg text-left w-80">
             ТОО &ldquo;ВенПром&rdquo;
           </p>
@@ -25,7 +26,7 @@ function LayoutHeader() {
             <li> По комплексному оснащению предприятий</li>
           </ul>
         </div>
-        <div className="py-4 px-4 text-neutral-200 flex flex-col gap-y-1  relative w-fit before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 inline-block relative">
+        <div className="py-4 px-4 text-neutral-200 flex flex-col gap-y-1  relative w-fit  bg-blue-700 rounded-lg relative">
           <p className="text-xs relative">Связаться с нами:</p>
           <p className="text-xs flex flex-row gap-x-2 relative">
             <PhoneCall size={12} /> +7 705 752 71 51 <MapPin size={12} /> Семей,

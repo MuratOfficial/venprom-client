@@ -1,3 +1,4 @@
+import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import ProductLinks from "@/components/client/product-links";
 import React from "react";
@@ -5,13 +6,12 @@ import React from "react";
 function ContactsPage() {
   return (
     <div className="flex flex-col items-center min-h-screen gap-y-8">
-      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
       <ClientNav />
       <div className="flex flex-col gap-y-8 px-48 w-full">
-        <p className="uppercase text-2xl text-center font-semibold text-blue-600">
+        <p className="uppercase text-4xl text-center font-bold text-blue-900">
           Контакты
         </p>
-        <div className="py-4 px-6 bg-slate-300 bg-opacity-80 rounded-lg  w-full">
+        <div className="py-4 px-6 bg-sky-100 bg-opacity-80 rounded-lg text-blue-900 w-full">
           <p className="text-xl text-center font-semibold">
             ТОО &ldquo;ВенПром&rdquo;
           </p>
@@ -32,6 +32,7 @@ function ContactsPage() {
           </p>
         </div>
       </div>
+      <ClientForm />
     </div>
   );
 }

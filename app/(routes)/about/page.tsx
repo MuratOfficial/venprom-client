@@ -1,27 +1,27 @@
+import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import ProductLinks from "@/components/client/product-links";
 import React from "react";
 
 function AboutPage() {
   return (
-    <div className="flex flex-col items-center min-h-screen gap-y-8">
-      <div className="absolute w-full bg-blue-800  h-40 top-16 -z-10" />
+    <div className="flex flex-col items-center min-h-screen ">
       <ClientNav />
-      <div className="flex flex-col gap-y-8 px-48">
-        <p className="uppercase text-2xl text-center font-semibold text-blue-600">
+      <div className="flex flex-col gap-y-8 px-48 py-8">
+        <p className="uppercase text-4xl text-center font-bold text-blue-900">
           О компании
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-          similique libero a, amet quaerat voluptate officiis, mollitia
-          consequatur eligendi alias ab repellendus dicta sequi? Expedita
-          excepturi nostrum tenetur unde vel. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Distinctio molestiae quaerat non vero
-          fugit possimus deleniti voluptates! Quam, beatae nihil necessitatibus
-          laboriosam voluptate odio minus non earum quo blanditiis mollitia.
+          Здесь будет отображаться текст о компании
+          <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+          praesentium sapiente, delectus mollitia exercitationem voluptates a
+          doloribus modi molestiae quis temporibus molestias. Tenetur fugiat rem
+          a quasi autem voluptas optio.
         </p>
-        <ProductLinks />
       </div>
+      <ProductLinks />
+      <ClientForm />
     </div>
   );
 }
