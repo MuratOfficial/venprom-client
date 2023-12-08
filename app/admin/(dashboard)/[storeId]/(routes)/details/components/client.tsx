@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { Plus } from "lucide-react";
+import { Plus, Upload } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { DetailColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
@@ -24,6 +24,15 @@ export const DetailClient: React.FC<DetailClientParams> = ({ data }) => {
           title={`Детали (${data.length})`}
           description="Управляйте деталями продукции"
         />
+        <Button
+          onClick={() =>
+            router.push(`/admin/${params.storeId}/details/dataparse`)
+          }
+          variant="secondary"
+        >
+          <Upload className="mr-2 h-4 w-4" />
+          Ввести данные с таблицами
+        </Button>
         <Button
           onClick={() => router.push(`/admin/${params.storeId}/details/new`)}
         >

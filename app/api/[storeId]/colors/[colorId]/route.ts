@@ -27,7 +27,7 @@ export async function GET(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { detailId: string; storeId: string } }
+  { params }: { params: { colorId: string; storeId: string } }
 ) {
   try {
     const { userId } = auth();
@@ -36,7 +36,7 @@ export async function DELETE(
       return new NextResponse("Unauthenticated", { status: 403 });
     }
 
-    if (!params.detailId) {
+    if (!params.colorId) {
       return new NextResponse("detail id is required", { status: 400 });
     }
 
@@ -53,7 +53,7 @@ export async function DELETE(
 
     const detail = await prismadb.detail.delete({
       where: {
-        id: params.detailId,
+        id: params.colorId,
       },
     });
 
