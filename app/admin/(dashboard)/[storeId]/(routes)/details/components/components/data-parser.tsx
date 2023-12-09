@@ -1,4 +1,4 @@
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Detail } from "@/types";
@@ -11,11 +11,14 @@ interface DetailFormProps {
 }
 
 const DataParser: React.FC<DetailFormProps> = ({ data }) => {
+  const router = useRouter();
   const onUpload = async (data: Detail[]) => {
     try {
       await axios.post(`/api/${params.storeId}/colors/upload`, data);
 
       toast.success("Категория обновлена");
+      router.push(`/admin/${params.storeId}/details`);
+      router.refresh();
     } catch (error) {
       toast.error("Что-то пошло не так...");
     }
@@ -33,7 +36,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
 
   const onUpdate = async (data: Detail[]) => {
     try {
-      await axios.patch(`/api/${params.storeId}/colors/upload`);
+      await axios.patch(`/api/${params.storeId}/colors/upload`, data);
 
       toast.success("Обновлено успешно");
     } catch (error) {
@@ -75,6 +78,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
         <table className="w-full border-collapse border border-gray-400 overflow-x-auto">
           <thead>
             <tr className="bg-gray-200">
+              <th className="border border-gray-400 p-2">#</th>
               <th className="border border-gray-400 p-2">Store ID</th>
               <th className="border border-gray-400 p-2">Detail ID</th>
               <th className="border border-gray-400 p-2">Price</th>
@@ -87,6 +91,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
           <tbody>
             {reformattedData?.map((detail, ind) => (
               <tr key={ind} className="bg-white">
+                <td className="border border-gray-400 p-2">{ind + 1}</td>
                 <td className="border border-gray-400 p-2">{params.storeId}</td>
                 <td className="border border-gray-400 p-2">
                   {detail.detailId}
@@ -122,7 +127,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
         <Button
           variant="destructive"
           className=" hover:opacity-90 text-lg"
-          onClick={() => onDelete}
+          onClick={() => onDelete()}
         >
           <Trash className="mr-4" /> Зачистить БД
         </Button>{" "}

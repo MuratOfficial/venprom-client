@@ -72,6 +72,9 @@ export async function DELETE(
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
     }
+    if (!params.storeId) {
+      return new NextResponse("Unauthenticated", { status: 403 });
+    }
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
@@ -84,9 +87,11 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const deleteDetail = prismadb.detail.deleteMany();
-
-    await prismadb?.$transaction([deleteDetail]);
+    const deleteDetail = await prismadb.detail.deleteMany({
+      where: {
+        storeId: params.storeId,
+      },
+    });
 
     return NextResponse.json(deleteDetail);
   } catch (error) {
@@ -130,19 +135,28 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const detail = await prismadb.detail.updateMany({
+    const detail = await prismadb.store.update({
       where: {
-        storeId: params.storeId,
+        id: params.storeId,
       },
-      data: formattedData.map((el) => ({
-        detailId: el.detailId,
-        price: el.price,
-        price1: el.price1 || "",
-        name: el.name,
-        value1: el.value1,
-        value2: el.value2 || "",
-        storeId: params.storeId,
-      })),
+      data: {
+        details: {
+          updateMany: {
+            data: formattedData.map((el) => ({
+              detailId: el.detailId,
+              price: el.price,
+              price1: el.price1 || "",
+              name: el.name,
+              value1: el.value1,
+              value2: el.value2 || "",
+              storeId: params.storeId,
+            })),
+            where: {
+              storeId: params.storeId,
+            },
+          },
+        },
+      },
     });
 
     return NextResponse.json(detail);
