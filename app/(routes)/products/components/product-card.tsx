@@ -50,7 +50,7 @@ function ProductCard({
           </Link>
           <Link
             href={`/products/${productId}`}
-            className="py-2 px-6 text-base transition delay-100 duration-500 bg-blue-50 border-2 border-sky-800 rounded-sm text-center w-fit  text-sky-800  hover:bg-sky-800 hover:text-blue-50"
+            className="py-2 px-6 text-base transition delay-100 duration-500 bg-blue-50 border-2 border-[#bbb157] rounded-sm text-center w-fit  text-[#bbb157]  hover:bg-[#bbb157] hover:text-blue-50"
           >
             <ShoppingCart size={24} />
           </Link>

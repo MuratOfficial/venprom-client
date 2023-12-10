@@ -26,7 +26,6 @@ function ProductsList() {
     listItems: item.listItems,
   }));
 
-  const items = useProducts().items;
   const itemsFilter = useProducts().filterItems;
 
   const handleItems = (store: string, category: string) => {
@@ -66,14 +65,12 @@ function ProductsList() {
       </button>
       <div className=" px-2 w-full h-1 rounded-md bg-blue-900" />{" "}
       {activeStore === "" ? (
-        <p className="text-center text-base text-blue-900">
-          Выберите категорию
-        </p>
+        <p className="text-center text-sm text-blue-900">Выберите категорию</p>
       ) : (
         <div>
           <div
             className={cn(
-              "flex flex-col transition opacity-100 duration-500 delay-100 collapse h-0",
+              "flex flex-col transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
               (activeStore === "Кабели" || activeStore === "Подшипники") &&
                 "visible h-full"
             )}
@@ -110,6 +107,155 @@ function ProductsList() {
           </div>
         </div>
       )}
+      <div className="h-full mt-4 flex flex-col gap-y-2   w-full border-t-2 border-[#bbb157] py-2 border-dashed">
+        <p className="text-center text-sm text-[#686230]">
+          Комплексное оснащение (снабжение) промышленных предприятий
+        </p>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Электротехническая продукция
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Приборы КИП и А
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Светотехническая продукция
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Запасные части к экскаваторам и прочей спецтехнике
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Грузоподъёмное оборудование и запчасти к ним
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Резинотехнические изделия
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Спецодежда и обувь
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Средства индивидуальной защиты
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Электрический и ручной инструменты
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Электроизоляционные материалы
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Асбестотехнические материалы
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Теплоизоляционные материалы
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Промышленные насосы
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Вентиляционное и отопительное оборудование
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Трубопроводная арматура
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Гидравлика
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Приводная техника и ремни
+        </button>
+        <button
+          onClick={() => console.log("#")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
+          )}
+        >
+          Конвейерные ленты
+        </button>
+      </div>
     </div>
   );
 }
