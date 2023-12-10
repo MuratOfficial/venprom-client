@@ -6,15 +6,16 @@ import {
   AnimateScrollDownHorizontalLeft,
 } from "../animations/another-scroll";
 import Link from "next/link";
+import { BadgePercent } from "lucide-react";
 
 function PopularCategory() {
   return (
-    <div className="w-full flex flex-col relative">
-      <div className=" w-full py-3 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-blue-800 inline-block relative"></div>
-      <div className="flex px-48 flex-col py-4 relative w-full before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-slate-50 inline-block">
+    <div className="w-full  flex flex-col relative">
+      <div className=" w-full py-3 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-[#271fc6] inline-block relative"></div>
+      <div className="flex px-48 h-screen flex-col py-4 relative w-full before:block before:absolute before:-inset-1 before:skew-y-3  before:bg-[#271fc6]  inline-block">
         <AnimateScrollDown>
-          <p className="uppercase text-5xl text-left font-bold text-blue-900 py-8 relative">
-            Поставляем по оптовым ценам
+          <p className="uppercase text-3xl items-center justify-center flex flex-row gap-x-4 text-center font-bold text-neutral-100 py-8 relative">
+            Поставляем по оптовым ценам <BadgePercent size={35} />
           </p>
         </AnimateScrollDown>
 

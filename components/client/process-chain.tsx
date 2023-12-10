@@ -4,6 +4,7 @@ import {
   Cog,
   FileCheck,
   PenSquare,
+  RefreshCcwDot,
   Truck,
 } from "lucide-react";
 import React from "react";
@@ -11,51 +12,69 @@ import { FadeInBlocks } from "../animations/basic-animations";
 
 function ProcessChain() {
   return (
-    <div className="flex flex-col px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-gradient-to-r before:from-blue-700 before:to-sky-500 inline-block relative">
-      <div className="w-full flex flex-row justify-start">
+    <div className="flex flex-col px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:bg-gradient-to-b  before:from-[#271fc6] before:to-sky-700 inline-block relative">
+      <div className="w-full flex flex-row justify-center">
         <FadeInBlocks>
-          <p className="uppercase text-4xl py-6 text-left w-fit font-semibold text-neutral-100 ">
-            Схема работы
+          <p className="uppercase flex flex-row gap-x-4 text-3xl py-6 text-center w-fit font-semibold text-[#bbb157] ">
+            Схема работы <RefreshCcwDot size={35} />
           </p>
         </FadeInBlocks>
       </div>
 
-      <div className="flex flex-row items-center gap-x-8 relative">
-        <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
-          <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">
-            Прием заявки
+      <div className="flex gap-y-2 text-[#bbb157] flex-col items-center rounded-lg justify-between relative w-full p-8">
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            1. Прием заявки
           </p>
-          <PenSquare size={50} className="absolute bottom-4 right-4" />
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url("/process/apply.svg")` }}
+          />
         </div>
-        <ArrowBigRight size={50} color="white" />
-        <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
-          <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">
-            Обработка заявки
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url("/process/process.svg")` }}
+          />
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            2. Обработка заявки
           </p>
-          <Cog size={50} className="absolute bottom-4 right-4" />
         </div>
-        <ArrowBigRight size={50} color="white" />
-        <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
-          <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">
-            Составление КП
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            3. Отправка коммерческого <br /> предложения
           </p>
-          <CheckSquare size={50} className="absolute bottom-4 right-4" />
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url("/process/sending.svg")` }}
+          />
         </div>
-      </div>
-      <div className="flex flex-row items-center gap-x-8 relative">
-        <ArrowBigRight size={50} color="white" />
-        <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
-          <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">
-            Заключение договора
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url("/process/deal.svg")` }}
+          />
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            4. Заключение договора
           </p>
-          <FileCheck size={50} className="absolute bottom-4 right-4" />
         </div>
-        <ArrowBigRight size={50} color="white" />
-        <div className="border-neutral-200 border-4 px-8 py-4 rounded-lg text-neutral-200 relative shadow-2xl flex flex-col items-center w-60 h-40 justify-center">
-          <p className="font-semibold text-lg text-left absolute uppercase top-4 left-4">
-            Поставка
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            5. Предоставление счёта <br /> на оплату
           </p>
-          <Truck size={50} className="absolute bottom-4 right-4" />
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url("/process/bank.svg")` }}
+          />
+        </div>
+        <div className="flex flex-row justify-evenly items-center w-full">
+          <div
+            className="w-60 h-60 bg-contain bg-no-repeat bg-center"
+            style={{ backgroundImage: `url("/process/deliver.svg")` }}
+          />
+          <p className="text-2xl w-fit font-semibold uppercase ">
+            6. Поставка товаров
+          </p>
         </div>
       </div>
     </div>

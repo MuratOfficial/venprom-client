@@ -22,9 +22,14 @@ function ProductCard({
 }: ProductCardProps) {
   return (
     <div className="w-full   relative flex flex-col h-[420px] bg-blue-50 justify-between hover:brightness-95 transition duration-500 delay-100">
-      <p className="w-full text-right px-4 absolute bg-transparent top-0">
-        logo
-      </p>
+      <Image
+        width={40}
+        height={40}
+        alt="logo"
+        src="logo.svg"
+        className="w-20 text-right px-4 absolute bg-transparent top-0 right-0"
+      />
+
       <div
         className="w-full h-[280px] bg-cover"
         style={{ backgroundImage: `url(${img})` }}

@@ -8,17 +8,15 @@ interface CategoryCardProps {
 
 function CategoryCard({ img, label }: CategoryCardProps) {
   return (
-    <div className="flex group h-full flex-row gap-x-4 col-span-1 py-8 transition delay-150 duration-500 cursor-pointer rounded-xl px-8 items-center justify-between bg-blue-600  hover:shadow-xl  hover:bg-blue-900">
-      <p className="uppercase text-neutral-200 font-semibold text-2xl text-left">
-        {label}
-      </p>
+    <div className="flex group h-full text-neutral-200 flex-col gap-y-16 col-span-1 py-8 transition delay-150 duration-1000 cursor-pointer rounded-xl px-8 items-center justify-between bg-[#bbb157] shadow-xl  hover:bg-neutral-100 hover:text-[#bbb157]">
       <Image
-        height={100}
-        width={100}
+        height={200}
+        width={200}
         alt={label}
         src={img}
-        className="group-hover:scale-125 transition delay-150 duration-500"
+        className="group-hover:scale-105 transition delay-150 duration-500"
       />
+      <p className="uppercase  font-semibold text-2xl text-center">{label}</p>
     </div>
   );
 }
