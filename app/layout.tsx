@@ -2,6 +2,7 @@ import ClientFooter from "@/components/client/client-footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["cyrillic"], variable: "--font-inter" });
 
@@ -18,10 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
-        {children}
-        <ClientFooter />
-      </body>
+      <ClerkProvider>
+        <body className={`${inter.variable} font-sans`}>
+          {children}
+          <ClientFooter />
+        </body>
+      </ClerkProvider>
     </html>
   );
 }

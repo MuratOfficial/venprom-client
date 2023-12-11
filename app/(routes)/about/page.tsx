@@ -8,10 +8,10 @@ function AboutPage() {
     <div className="flex flex-col items-center min-h-screen ">
       <ClientNav />
       <div className="flex flex-col gap-y-8 px-48 py-8">
-        <p className="uppercase text-4xl text-center font-bold text-blue-900">
+        <p className="uppercase text-3xl text-center font-bold text-blue-900">
           О компании
         </p>
-        <p>
+        <p className="text-sm text-blue-900 py-4">
           ТОО «Венпром» специализируется на оптовых поставках крупногабаритных
           подшипников и силовых кабелей большого сечения, а также на комплексном
           оснащении (снабжении) промышленных , производственных, и добывающих
