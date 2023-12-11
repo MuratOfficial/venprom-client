@@ -37,9 +37,10 @@ interface ProductProps {
 }
 
 const cabelsUrl =
-  "http://localhost:3000/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
+  "https://venprom-client.vercel.app/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
 
-const podUrl = "http://localhost:3000/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
+const podUrl =
+  "https://venprom-client.vercel.app/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
 // const fetchDataForStore = async () => {
 //   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
 //   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
