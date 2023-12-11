@@ -40,7 +40,7 @@ function ClientNav() {
           </Link>
         ))}
         <Link
-          href="/products"
+          href="mailto:venprom@inbox.ru"
           className="py-2 px-12 text-lg font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
         >
           Заказать

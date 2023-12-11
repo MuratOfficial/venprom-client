@@ -1,7 +1,7 @@
 import { IoLogoWhatsapp } from "react-icons/io";
 
 const WhatsAppWidget: React.FC = () => {
-  const phoneNumber = "1234567890"; // Replace with your WhatsApp phone number
+  const phoneNumber = "77773433718"; // Replace with your WhatsApp phone number
 
   const openWhatsApp = () => {
     window.open(`https://wa.me/${phoneNumber}`, "_blank");

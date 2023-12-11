@@ -2,6 +2,7 @@
 import useProducts from "@/hooks/use-products";
 import { cn } from "@/lib/utils";
 import { Category, CategoryList, Product } from "@/types";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 function ProductsList() {
@@ -112,148 +113,138 @@ function ProductsList() {
           Комплексное оснащение (снабжение) промышленных предприятий
         </p>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Электротехническая продукция
+          <a href="https://wa.link/0m0xhf">Электротехническая продукция</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Приборы КИП и А
+          <a href="https://wa.link/0f35l9">Приборы КИП и А</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Светотехническая продукция
+          <a href="https://wa.link/githjw">Светотехническая продукция</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Запасные части к экскаваторам и прочей спецтехнике
+          <a href="https://wa.link/9h7b2l">
+            Запасные части к экскаваторам и прочей спецтехнике
+          </a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Грузоподъёмное оборудование и запчасти к ним
+          <a href="https://wa.link/bitf4s">
+            Грузоподъёмное оборудование и запчасти к ним
+          </a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Резинотехнические изделия
+          <a href="https://wa.link/d9d8ra">Резинотехнические изделия</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Спецодежда и обувь
+          <a href="https://wa.link/yhbzqj">Спецодежда и обувь</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Средства индивидуальной защиты
+          <a href="https://wa.link/kdm89u">Средства индивидуальной защиты</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Электрический и ручной инструменты
+          <a href="https://wa.link/ry09at">
+            Электрический и ручной инструменты
+          </a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Электроизоляционные материалы
+          <a href="https://wa.link/ow68n6">Электроизоляционные материалы</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Асбестотехнические материалы
+          <a href="https://wa.link/8e6pna">Асбестотехнические материалы</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Теплоизоляционные материалы
+          <a href="https://wa.link/lbm0v3">Теплоизоляционные материалы</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Промышленные насосы
+          <a href="https://wa.link/1qhjvo">Промышленные насосы</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Вентиляционное и отопительное оборудование
+          <a href="https://wa.link/rz4w48">
+            Вентиляционное и отопительное оборудование
+          </a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Трубопроводная арматура
+          <a href="https://wa.link/r65c0j">Трубопроводная арматура</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Гидравлика
+          <a href="https://wa.link/40c642">Гидравлика</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Приводная техника и ремни
+          <a href="https://wa.link/ywlwob">Приводная техника и ремни</a>
         </button>
         <button
-          onClick={() => console.log("#")}
           className={cn(
             "py-2 transition duration-500 delay-150 px-12 text-sm rounded-lg text-center bg-[#bbb157] text-neutral-100 hover:bg-[#686230] "
           )}
         >
-          Конвейерные ленты
+          <a href="https://wa.link/rlui07">Конвейерные ленты</a>
         </button>
       </div>
     </div>

@@ -3,6 +3,7 @@ import ClientNav from "@/components/client/client-nav";
 import React, { useEffect, useState } from "react";
 import ProductsList from "./components/products-list";
 import ProductItems from "./components/product-item";
+import WhatsAppWidget from "@/components/whatsapp-widget";
 
 export const revalidate = 0;
 
@@ -23,6 +24,7 @@ function ProductsPage() {
         <ProductsList />
         <ProductItems />
       </div>
+      <WhatsAppWidget />
     </div>
   );
 }

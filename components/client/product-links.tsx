@@ -6,6 +6,7 @@ import {
 import AnimateFadeIn from "../animations/fade-in";
 import Image from "next/image";
 import { Container } from "lucide-react";
+import Link from "next/link";
 
 function ProductLinks() {
   const imgList = ["/indImg/1png3d.png", "/3png3d.png", "/2png3d.png"];
@@ -41,64 +42,118 @@ function ProductLinks() {
         <AnimateScrollDownHorizontalLeft>
           <div className="grid pb-4 grid-flow-row grid-cols-3 gap-4 text-sm">
             <ul className="flex flex-col gap-y-3">
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              <Link
+                href="https://wa.link/0m0xhf"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Электротехническую продукцию
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/0f35l9"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Приборы КИП и А
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/githjw"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Светотехническую продукцию
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/9h7b2l"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Запасные части к экскаваторам и прочей спецтехнике
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/bitf4s"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Грузоподъёмное оборудование и запчасти к ним
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/d9d8ra"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Резинотехнические изделия
-              </li>
+              </Link>
             </ul>
             <ul className="flex flex-col gap-y-3">
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              <Link
+                href="https://wa.link/yhbzqj"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Спецодежду и обувь
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/kdm89u"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Средства индивидуальной защиты
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/ry09at"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Электрический и ручной инструменты
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/ow68n6"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Электроизоляционные материалы
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/8e6pna"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Асбестотехнические материалы
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/lbm0v3"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Теплоизоляционные материалы
-              </li>
+              </Link>
             </ul>
             <ul className="flex flex-col gap-y-3">
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              <Link
+                href="https://wa.link/1qhjvo"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Промышленные насосы
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/rz4w48"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Вентиляционное и отопительное оборудование
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/r65c0j"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Трубопроводную арматуру
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/40c642"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Гидравлику
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/ywlwob"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Приводную технику и ремни
-              </li>
-              <li className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200">
+              </Link>
+              <Link
+                href="https://wa.link/rlui07"
+                className="px-4 py-2 rounded-lg border-2 shadow-2xl bg-slate-50 bg-opacity-80 text-sky-800 border-sky-800 cursor-pointer hover:bg-sky-800 transition delay-100 duration-300 hover:text-neutral-200"
+              >
                 Конвейерные ленты
-              </li>
+              </Link>
             </ul>
           </div>
         </AnimateScrollDownHorizontalLeft>

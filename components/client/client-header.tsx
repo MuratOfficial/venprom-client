@@ -26,7 +26,7 @@ function ClientHeader() {
               </Link>
             ))}
             <Link
-              href="/products"
+              href="mailto:venprom@inbox.ru"
               className="py-2 px-12 font-semibold text-base rounded-lg text-center bg-[#686230] text-neutral-200 hover:bg-neutral-200 hover:text-[#271fc6]"
             >
               Заказать

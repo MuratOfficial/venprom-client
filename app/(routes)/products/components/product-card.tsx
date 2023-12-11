@@ -49,7 +49,7 @@ function ProductCard({
             Подробнее
           </Link>
           <Link
-            href={`/products/${productId}`}
+            href={`https://api.whatsapp.com/send?phone=77773433718&text=Здравствуйте%20мне%20интересен%20товар%20https://venprom.kz/products/${productId}`}
             className="py-2 px-6 text-base transition delay-100 duration-500 bg-blue-50 border-2 border-[#bbb157] rounded-sm text-center w-fit  text-[#bbb157]  hover:bg-[#bbb157] hover:text-blue-50"
           >
             <ShoppingCart size={24} />

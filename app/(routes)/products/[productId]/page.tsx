@@ -348,10 +348,13 @@ const ProductItemPage = async ({
               </div>
             </div>
             <div className="items-center flex justify-center text-neutral-100">
-              <button className="flex flex-row gap-x-2 bg-blue-600  transition delay-150 duration-500 rounded-lg py-3 px-8 hover:bg-sky-800  shadow-xl">
+              <Link
+                href={`https://api.whatsapp.com/send?phone=77773433718&text=Здравствуйте%20мне%20интересен%20товар%20https://venprom.kz/products/${product?.id}`}
+                className="flex flex-row gap-x-2 bg-blue-600  transition delay-150 duration-500 rounded-lg py-3 px-8 hover:bg-sky-800  shadow-xl"
+              >
                 <ShoppingCart size={20} />
                 Купить
-              </button>{" "}
+              </Link>{" "}
             </div>
           </div>
           <div

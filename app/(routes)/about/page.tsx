@@ -1,6 +1,8 @@
+"use client";
 import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import ProductLinks from "@/components/client/product-links";
+import WhatsAppWidget from "@/components/whatsapp-widget";
 import React from "react";
 
 function AboutPage() {
@@ -27,6 +29,7 @@ function AboutPage() {
       </div>
       <ProductLinks />
       <ClientForm />
+      <WhatsAppWidget />
     </div>
   );
 }

@@ -17,13 +17,13 @@ function ClientForm() {
   const links = [
     {
       name: <IoLogoWhatsapp size={30} />,
-      href: "",
+      href: "https://wa.link/mphekk",
     },
     {
       name: <RiInstagramFill size={30} />,
       href: "",
     },
-    { name: <FaTelegram size={30} />, href: "https://wa.me/77472156675" },
+    { name: <FaTelegram size={30} />, href: "" },
   ];
 
   return (
