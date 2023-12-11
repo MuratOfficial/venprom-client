@@ -12,7 +12,7 @@ import { FadeInBlocks } from "../animations/basic-animations";
 
 function ProcessChain() {
   return (
-    <div className="flex flex-col px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:bg-gradient-to-b  before:from-[#271fc6] before:to-sky-700 inline-block relative">
+    <div className="flex flex-col xs:px-4 lg:px-48 items-center gap-y-8 w-full py-8 before:block before:absolute before:-inset-1 before:bg-gradient-to-b  before:from-[#271fc6] before:to-sky-700 inline-block relative">
       <div className="w-full flex flex-row justify-center">
         <FadeInBlocks>
           <p className="uppercase flex flex-row gap-x-4 text-3xl py-6 text-center w-fit font-semibold text-[#bbb157] ">

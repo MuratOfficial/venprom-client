@@ -9,8 +9,8 @@ function AboutPage() {
   return (
     <div className="flex flex-col items-center min-h-screen ">
       <ClientNav />
-      <div className="flex flex-col gap-y-8 px-48 py-8">
-        <p className="uppercase text-3xl text-center font-bold text-blue-900">
+      <div className="flex flex-col xs:gap-y-4 lg:gap-y-8 xs:px-4 lg:px-48 py-8">
+        <p className="uppercase xs:text-xl lg:text-3xl text-center font-bold text-blue-900">
           О компании
         </p>
         <p className="text-sm text-blue-900 py-4">

@@ -60,7 +60,7 @@ function ClientForm() {
         </FadeInBlocksVertical>
 
         <FadeInBlocksVertical>
-          <div className=" flex lg:flex-row xs:flex-col sm:flex-col gap-y-2 gap-x-6 text-base ">
+          <div className=" flex flex-row gap-y-2 gap-x-6 text-base ">
             {links.map((item, index) => (
               <Link key={index} href={item.href} className="w-fit">
                 <p className="hover:text-slate-700 transition-colors font-semibold duration-500 delay-150 w-fit">

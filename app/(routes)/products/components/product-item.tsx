@@ -28,24 +28,26 @@ function ProductItems() {
   const amount = useProducts().numsum;
   return (
     <div className="w-full h-full flex flex-col gap-y-4">
-      <div className="w-full h-12 flex flex-row justify-between px-2 rounded-xl bg-opacity-80 shadow-xl items-center bg-gradient-to-r from-blue-500 to-blue-600 relative">
-        <div className="flex flex-row gap-x-4 items-center">
+      <div className="w-full xs:h-8 lg:h-12 flex flex-row justify-between px-2 xs:rounded-md lg:rounded-xl bg-opacity-80 shadow-xl items-center bg-gradient-to-r from-blue-500 to-blue-600 relative">
+        <div className="flex flex-row xs:gap-x-1 lg:gap-x-4 items-center">
           <input
             type="text"
             value={searchTerm}
             onChange={handleInputChange}
             placeholder="Напишите искомый товар"
-            className="bg-white border-none w-80 rounded-xl h-10 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 px-2"
+            className="bg-white border-none xs:w-32 lg:text-base xs:text-xs lg:w-80 xs:rounded-md lg:rounded-xl xs:h-6 lg:h-10 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 px-2"
           />
           <Search
             size={30}
-            className="hover:text-slate-800 text-white cursor-pointer"
+            className="hover:text-slate-800 lg:w-fit xs:w-4 text-white cursor-pointer"
           />
         </div>
 
-        <p className="text-neutral-100 w-60">Всего найдено: {amount}</p>
+        <p className="text-neutral-100 xs:w-20 lg:text-base xs:text-xs lg:w-60">
+          Всего найдено: {amount}
+        </p>
       </div>
-      <div className="grid grid-flow-row grid-cols-3 gap-2 grid-rows-1 min-h-screen">
+      <div className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-3 gap-2 grid-rows-1 min-h-screen">
         {data.map((item, key) => (
           <AnimateFadeIn key={key}>
             <ProductCard

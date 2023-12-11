@@ -20,7 +20,7 @@ function HomePage() {
       <PopularCategory />
       <ProductLinks />
       <ProcessChain />
-      <div className="pt-20 w-full px-48">
+      <div className="pt-20 w-full xs:px-4 lg:px-48">
         <ClientForm />
       </div>
 

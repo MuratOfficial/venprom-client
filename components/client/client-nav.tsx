@@ -25,14 +25,14 @@ function ClientNav() {
     },
   ];
   return (
-    <div className="  flex px-48 flex-col w-full justify-center bg-blue-800 relative">
-      <ul className="flex flex-row justify-between py-4 items-center relative">
+    <div className="  flex xs:px-4 lg:px-48 flex-col w-full justify-center bg-blue-800 relative">
+      <ul className="flex xs:flex-col lg:flex-row justify-between xs:py-1 lg:py-4 items-center relative">
         {nav.map((item, index) => (
           <Link
             href={item.href}
             key={index}
             className={cn(
-              "text-lg font-medium py-2 px-12 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
+              "lg:text-lg xs:text-sm font-medium py-2 px-12 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
               item.active && "bg-slate-50 text-blue-700"
             )}
           >
@@ -41,7 +41,7 @@ function ClientNav() {
         ))}
         <Link
           href="mailto:venprom@inbox.ru"
-          className="py-2 px-12 text-lg font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
+          className="py-2 px-12 xs:text-sm lg:text-lg font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
         >
           Заказать
         </Link>

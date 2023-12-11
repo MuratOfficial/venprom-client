@@ -20,7 +20,7 @@ function ProductsPage() {
   return (
     <div className="h-full w-full flex flex-col h-min-screen bg-slate-50">
       <ClientNav />
-      <div className="flex flex-row justify-between px-16 py-4 gap-x-4">
+      <div className="flex flex-row justify-between xs:px-4 lg:px-16 py-4 gap-x-4">
         <ProductsList />
         <ProductItems />
       </div>

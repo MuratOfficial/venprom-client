@@ -12,14 +12,14 @@ function PopularCategory() {
   return (
     <div className="w-full  flex flex-col relative">
       <div className=" w-full py-3 before:block before:absolute before:-inset-1 before:skew-y-3 before:bg-[#271fc6] inline-block relative"></div>
-      <div className="flex px-48 h-screen flex-col py-4 relative w-full before:block before:absolute before:-inset-1 before:skew-y-3  before:bg-[#271fc6]  inline-block">
+      <div className="flex xs:px-4 lg:px-48 h-screen flex-col py-4 relative w-full before:block before:absolute before:-inset-1 before:skew-y-3  before:bg-[#271fc6]  inline-block">
         <AnimateScrollDown>
           <p className="uppercase text-3xl items-center justify-center flex flex-row gap-x-4 text-center font-bold text-neutral-100 py-8 relative">
             Поставляем по оптовым ценам <BadgePercent size={35} />
           </p>
         </AnimateScrollDown>
 
-        <div className=" grid grid-flow-row grid-cols-2 gap-8 py-4 relative">
+        <div className=" grid grid-flow-row xs:grid-cols-1 lg:grid-cols-2 gap-8 py-4 relative">
           <AnimateScrollDownHorizontalLeft>
             <Link href="/products">
               <CategoryCard
