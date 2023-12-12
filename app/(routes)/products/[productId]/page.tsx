@@ -1,42 +1,20 @@
+"use client";
 import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
+import useProducts from "@/hooks/use-products";
 import { cn } from "@/lib/utils";
-import getCategories from "@/services/get-categories";
-import getDetails from "@/services/get-details";
-import getProducts from "@/services/get-products";
 import { ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProductItemPage = async ({
-  params,
-}: {
-  params: { productId: string };
-}) => {
-  const cabelsUrl =
-    "https://venprom-client.vercel.app/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
+const ProductItemPage = ({ params }: { params: { productId: string } }) => {
+  const items = useProducts().items;
+  const detailItems = useProducts().details;
 
-  const podUrl =
-    "https://venprom-client.vercel.app/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
-  const cabelproducts = await getProducts(`${cabelsUrl}/products`);
-  const podProducts = await getProducts(`${podUrl}/products`);
-  const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
-
-  const podCategories = await getCategories(`${podUrl}/categories`);
-
-  const cabelDetails = await getDetails(`${cabelsUrl}/colors`);
-  const podDetails = await getDetails(`${podUrl}/colors`);
-
-  const data = [...cabelproducts, ...podProducts];
-  const categories = [...cabelCategories, ...podCategories];
-  const details = [...cabelDetails, ...podDetails];
-
-  const product = data.findLast((el) => el.id === params.productId);
-  const detail = details.findLast((el) => el.detailId === product?.detailId);
-  const descript = categories.findLast(
-    (el) => el.name === product?.category.name
-  );
+  const product = items.find((el) => el.id === params.productId);
+  const detail = detailItems.find((el) => el.detailId === product?.detailId);
+  const descript = product?.category;
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
       <ClientNav />
