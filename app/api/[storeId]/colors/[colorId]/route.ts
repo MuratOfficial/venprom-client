@@ -66,7 +66,7 @@ export async function DELETE(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { detailId: string; storeId: string } }
+  { params }: { params: { colorId: string; storeId: string } }
 ) {
   try {
     const { userId } = auth();
@@ -87,7 +87,7 @@ export async function PATCH(
       return new NextResponse("Value Id is required", { status: 400 });
     }
 
-    if (!params.detailId) {
+    if (!params.colorId) {
       return new NextResponse("detail id is required", { status: 400 });
     }
 
@@ -104,7 +104,7 @@ export async function PATCH(
 
     const detail = await prismadb.detail.update({
       where: {
-        id: params.detailId,
+        id: params.colorId,
       },
       data: {
         name,
