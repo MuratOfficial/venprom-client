@@ -2,7 +2,6 @@
 import useProducts from "@/hooks/use-products";
 import { cn } from "@/lib/utils";
 import { Category, CategoryList, Product } from "@/types";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 function ProductsList() {
@@ -84,7 +83,7 @@ function ProductsList() {
                   <p
                     onClick={() => handleItems(activeStore, item.label)}
                     className={cn(
-                      "cursor-pointer ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
+                      "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
                       activeCategory === item.label &&
                         "bg-blue-950 text-neutral-100"
                     )}

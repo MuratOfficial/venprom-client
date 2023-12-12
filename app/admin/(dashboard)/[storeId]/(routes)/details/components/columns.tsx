@@ -28,7 +28,7 @@ export const columns: ColumnDef<DetailColumn>[] = [
   },
 
   {
-    accessorKey: "value",
+    accessorKey: "value1",
     header: "Остаток",
   },
   {
