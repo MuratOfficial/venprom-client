@@ -40,80 +40,81 @@ function ProductsList() {
   // };
 
   return (
-    <div className="h-full  flex flex-col gap-y-2  rounded-lg p-4 xs:w-40 lg:w-80">
-      <p className="lg:text-2xl xs:text-lg uppercase text-center font-semibold text-blue-900">
+    <div className="h-full  flex flex-col gap-y-2  rounded-lg xs:w-40 lg:w-80 ">
+      <p className="lg:text-2xl xs:text-lg uppercase text-center font-bold text-blue-900">
         Продукция
       </p>
-      <div className=" px-2 w-full h-1 rounded-md bg-blue-900" />
-      <p className="text-center lg:text-base xs:text-xs text-blue-900">
-        По оптовым ценам
-      </p>
-      <button
-        onClick={() => handleStores("Кабели")}
-        className={cn(
-          "py-2 transition duration-500 delay-150 xs:px-2 lg:px-12 xs:text-sm lg:text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
-          activeStore === "Кабели" && "bg-blue-950"
-        )}
-      >
-        Кабели
-      </button>
-      <button
-        onClick={() => handleStores("Подшипники")}
-        className={cn(
-          "py-2 transition duration-500 delay-150 xs:px-2 lg:px-12 xs:text-sm lg:text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
-          activeStore === "Подшипники" && "bg-blue-950"
-        )}
-      >
-        Подшипники
-      </button>
-      <div className=" px-2 w-full h-1 rounded-md bg-blue-900" />{" "}
-      {activeStore === "" ? (
-        <p className="text-center xs:text-xs lg:text-sm text-blue-900">
-          Выберите категорию
+      <div className="h-full  flex flex-col gap-y-2  rounded-lg p-4 bg-blue-100 xs:w-40 lg:w-72">
+        <p className="text-center font-semibold lg:text-lg xs:text-xs text-blue-900">
+          По оптовым ценам
         </p>
-      ) : (
-        <div>
-          <div
-            className={cn(
-              "flex flex-col transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
-              (activeStore === "Кабели" || activeStore === "Подшипники") &&
-                "visible h-full"
-            )}
-          >
-            {itemListExam.map((item, index) => (
-              <div className="flex flex-col" key={index}>
-                <p
-                  onClick={() => handleItems(activeStore, item.label)}
-                  className={cn(
-                    "cursor-pointer lg:text-base xs:text-xs text-blue-950 transition bg-slate-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
-                    activeCategory === item.label &&
-                      "bg-blue-950 text-neutral-100"
-                  )}
-                >
-                  {item.label}
-                </p>
-                <ul
-                  className={cn(
-                    "collapse h-0",
-                    activeCategory === item.label && "visible h-full"
-                  )}
-                >
-                  {item.listItems.map((el, idx) => (
-                    <li
-                      className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
-                      key={idx}
-                    >
-                      {el}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        <button
+          onClick={() => handleStores("Кабели")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 xs:px-2 lg:px-12 xs:text-sm lg:text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
+            activeStore === "Кабели" && "bg-blue-950"
+          )}
+        >
+          Кабели
+        </button>
+        <button
+          onClick={() => handleStores("Подшипники")}
+          className={cn(
+            "py-2 transition duration-500 delay-150 xs:px-2 lg:px-12 xs:text-sm lg:text-lg rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-blue-950 ",
+            activeStore === "Подшипники" && "bg-blue-950"
+          )}
+        >
+          Подшипники
+        </button>
+        {activeStore === "" ? (
+          <p className="text-center xs:text-xs lg:text-sm text-blue-900">
+            Выберите категорию
+          </p>
+        ) : (
+          <div>
+            <div
+              className={cn(
+                "flex flex-col transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
+                (activeStore === "Кабели" || activeStore === "Подшипники") &&
+                  "visible h-full"
+              )}
+            >
+              {itemListExam.map((item, index) => (
+                <div className="flex flex-col" key={index}>
+                  <p
+                    onClick={() => handleItems(activeStore, item.label)}
+                    className={cn(
+                      "cursor-pointer ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
+                      activeCategory === item.label &&
+                        "bg-blue-950 text-neutral-100"
+                    )}
+                  >
+                    {item.label}
+                  </p>
+                  <ul
+                    className={cn(
+                      "collapse h-0",
+                      activeCategory === item.label && "visible p-1 h-full"
+                    )}
+                  >
+                    {item.listItems.map((el, idx) => (
+                      <li
+                        className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
+                        key={idx}
+                      >
+                        {el}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-      <div className="h-full mt-4 flex flex-col gap-y-2   w-full border-t-2 border-[#bbb157] py-2 border-dashed">
-        <p className="text-center xs:text-xs lg:text-sm text-[#686230]">
+        )}
+      </div>
+
+      <div className="h-full mt-2 flex flex-col gap-y-2   w-full  bg-[#f1efdd] px-4 p-2 py-4 rounded-lg">
+        <p className="text-center xs:text-xs lg:text-base font-semibold text-[#686230]">
           Комплексное оснащение (снабжение) промышленных предприятий
         </p>
         <button

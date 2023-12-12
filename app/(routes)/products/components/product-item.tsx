@@ -3,7 +3,6 @@ import { Search } from "lucide-react";
 import React from "react";
 import ProductCard from "./product-card";
 import useProducts from "@/hooks/use-products";
-import AnimateFadeIn from "@/components/animations/fade-in";
 
 function ProductItems() {
   const { searchTerm, updateSearchTerm } = useProducts();
@@ -48,17 +47,15 @@ function ProductItems() {
         </p>
       </div>
       <div className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-3 gap-2 grid-rows-1 min-h-screen">
-        {data.map((item, key) => (
-          <AnimateFadeIn key={key}>
-            <ProductCard
-              productId={item.product.id}
-              name={item.product.name}
-              price={item.detail?.price || ""}
-              balance={item.detail?.value1 || ""}
-              img={item.product.images[0].url}
-              detailId={item.product.detailId}
-            />
-          </AnimateFadeIn>
+        {data.map((item) => (
+          <ProductCard
+            productId={item.product.id}
+            name={item.product.name}
+            price={item.detail?.price || ""}
+            balance={item.detail?.value1 || ""}
+            img={item.product.images[0].url}
+            detailId={item.product.detailId}
+          />
         ))}
       </div>
     </div>

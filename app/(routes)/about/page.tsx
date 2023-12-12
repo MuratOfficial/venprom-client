@@ -13,7 +13,7 @@ function AboutPage() {
         <p className="uppercase xs:text-xl lg:text-3xl text-center font-bold text-blue-900">
           О компании
         </p>
-        <p className="text-sm text-blue-900 py-4">
+        <p className="lg:text-base xs:text-sm text-blue-900 py-4">
           ТОО «Венпром» специализируется на оптовых поставках крупногабаритных
           подшипников и силовых кабелей большого сечения, а также на комплексном
           оснащении (снабжении) промышленных , производственных, и добывающих

@@ -25,7 +25,7 @@ function ClientNav() {
     },
   ];
   return (
-    <div className="  flex xs:px-4 lg:px-48 flex-col w-full justify-center bg-blue-800 relative">
+    <div className="  flex xs:px-4 lg:px-48 flex-col w-full justify-center bg-gradient-to-r from-blue-800 to-sky-800 relative">
       <ul className="flex xs:flex-col lg:flex-row justify-between xs:py-1 lg:py-4 items-center relative">
         {nav.map((item, index) => (
           <Link
