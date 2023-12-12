@@ -47,8 +47,9 @@ function ProductItems() {
         </p>
       </div>
       <div className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-3 gap-2 grid-rows-1 min-h-screen">
-        {data.map((item) => (
+        {data.map((item, ind) => (
           <ProductCard
+            key={ind}
             productId={item.product.id}
             name={item.product.name}
             price={item.detail?.price || ""}
