@@ -263,7 +263,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
 
           <div className="grid grid-flow-row grid-cols-3 gap-4 pt-8 w-full">
             <div className="flex flex-row justify-evenly items-center text-xl">
-              <p>Остаток: </p>{" "}
+              <p className="text-sm">Остаток: </p>{" "}
               <p
                 className={cn(
                   "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500",
@@ -292,12 +292,12 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               </p>
             </div>
             <div className="flex flex-row justify-evenly text-blue-500 items-center text-xl">
-              <p className="font-medium">
+              <p className="font-medium text-sm">
                 Цена за{" "}
                 <span
                   className={cn(
                     "visible w-fit",
-                    detail?.value2 && "collapse w-0"
+                    detail?.value1 && "collapse w-0"
                   )}
                 >
                   {" "}
