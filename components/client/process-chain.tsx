@@ -22,57 +22,57 @@ function ProcessChain() {
       </div>
 
       <div className="flex gap-y-2 text-[#bbb157] flex-col items-center rounded-lg justify-between relative w-full p-8">
-        <div className="flex flex-row justify-evenly items-center w-full">
-          <p className="text-2xl w-fit font-semibold uppercase ">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             1. Прием заявки
           </p>
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat"
             style={{ backgroundImage: `url("/process/apply.svg")` }}
           />
         </div>
-        <div className="flex flex-row justify-evenly items-center w-full">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat"
             style={{ backgroundImage: `url("/process/process.svg")` }}
           />
-          <p className="text-2xl w-fit font-semibold uppercase ">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             2. Обработка заявки
           </p>
         </div>
-        <div className="flex flex-row justify-evenly items-center w-full">
-          <p className="text-2xl w-fit font-semibold uppercase ">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             3. Отправка коммерческого <br /> предложения
           </p>
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat"
             style={{ backgroundImage: `url("/process/sending.svg")` }}
           />
         </div>
-        <div className="flex flex-row justify-evenly items-center w-full">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat"
             style={{ backgroundImage: `url("/process/deal.svg")` }}
           />
-          <p className="text-2xl w-fit font-semibold uppercase ">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             4. Заключение договора
           </p>
         </div>
-        <div className="flex flex-row justify-evenly items-center w-full">
-          <p className="text-2xl w-fit font-semibold uppercase ">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             5. Предоставление счёта <br /> на оплату
           </p>
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat"
             style={{ backgroundImage: `url("/process/bank.svg")` }}
           />
         </div>
-        <div className="flex flex-row justify-evenly items-center w-full">
+        <div className="flex flex-row xs:justify-between lg:justify-evenly items-center w-full">
           <div
-            className="w-60 h-60 bg-contain bg-no-repeat bg-center"
+            className="lg:w-60 xs:w-24 xs:h-24 lg:h-60 bg-contain bg-no-repeat bg-center"
             style={{ backgroundImage: `url("/process/deliver.svg")` }}
           />
-          <p className="text-2xl w-fit font-semibold uppercase ">
+          <p className="xs:text-base lg:text-2xl xs:w-32 lg:w-fit font-semibold uppercase ">
             6. Поставка товаров
           </p>
         </div>

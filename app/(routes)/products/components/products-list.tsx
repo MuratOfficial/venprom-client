@@ -43,7 +43,7 @@ function ProductsList() {
       <p className="lg:text-2xl xs:text-lg uppercase text-center font-bold text-blue-900">
         Продукция
       </p>
-      <div className="h-full  flex flex-col gap-y-2  rounded-lg p-4 bg-blue-100 xs:w-40 lg:w-72">
+      <div className="h-full  flex flex-col gap-y-1  rounded-lg p-4 bg-blue-100 xs:w-40 lg:w-72">
         <p className="text-center font-semibold lg:text-lg xs:text-xs text-blue-900">
           По оптовым ценам
         </p>
@@ -56,6 +56,43 @@ function ProductsList() {
         >
           Кабели
         </button>
+        <div
+          className={cn(
+            "flex flex-col  gap-y-1 collapse h-0",
+            activeStore === "Кабели" &&
+              "visible h-full transition-[height] opacity-100 duration-1000 delay-100"
+          )}
+        >
+          {itemListExam.map((item, index) => (
+            <div className="flex flex-col" key={index}>
+              <p
+                onClick={() => handleItems(activeStore, item.label)}
+                className={cn(
+                  "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
+                  activeCategory === item.label &&
+                    "bg-blue-950 text-neutral-100"
+                )}
+              >
+                {item.label}
+              </p>
+              <ul
+                className={cn(
+                  "collapse h-0",
+                  activeCategory === item.label && "visible p-1 h-full"
+                )}
+              >
+                {item.listItems.map((el, idx) => (
+                  <li
+                    className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
+                    key={idx}
+                  >
+                    {el}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
         <button
           onClick={() => handleStores("Подшипники")}
           className={cn(
@@ -70,44 +107,41 @@ function ProductsList() {
             Выберите категорию
           </p>
         ) : (
-          <div>
-            <div
-              className={cn(
-                "flex flex-col transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
-                (activeStore === "Кабели" || activeStore === "Подшипники") &&
-                  "visible h-full"
-              )}
-            >
-              {itemListExam.map((item, index) => (
-                <div className="flex flex-col" key={index}>
-                  <p
-                    onClick={() => handleItems(activeStore, item.label)}
-                    className={cn(
-                      "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
-                      activeCategory === item.label &&
-                        "bg-blue-950 text-neutral-100"
-                    )}
-                  >
-                    {item.label}
-                  </p>
-                  <ul
-                    className={cn(
-                      "collapse h-0",
-                      activeCategory === item.label && "visible p-1 h-full"
-                    )}
-                  >
-                    {item.listItems.map((el, idx) => (
-                      <li
-                        className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
-                        key={idx}
-                      >
-                        {el}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+          <div
+            className={cn(
+              "flex flex-col gap-y-1 transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
+              activeStore === "Подшипники" && "visible h-full"
+            )}
+          >
+            {itemListExam.map((item, index) => (
+              <div className="flex flex-col" key={index}>
+                <p
+                  onClick={() => handleItems(activeStore, item.label)}
+                  className={cn(
+                    "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
+                    activeCategory === item.label &&
+                      "bg-blue-950 text-neutral-100"
+                  )}
+                >
+                  {item.label}
+                </p>
+                <ul
+                  className={cn(
+                    "collapse h-0",
+                    activeCategory === item.label && "visible p-1 h-full"
+                  )}
+                >
+                  {item.listItems.map((el, idx) => (
+                    <li
+                      className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
+                      key={idx}
+                    >
+                      {el}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         )}
       </div>

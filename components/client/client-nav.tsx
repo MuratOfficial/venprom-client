@@ -32,7 +32,7 @@ function ClientNav() {
             href={item.href}
             key={index}
             className={cn(
-              "lg:text-lg xs:text-sm font-medium py-2 px-12 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
+              "lg:text-base xs:text-sm font-medium py-2 px-10 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
               item.active && "bg-slate-50 text-blue-700"
             )}
           >
@@ -41,7 +41,7 @@ function ClientNav() {
         ))}
         <Link
           href="mailto:venprom@inbox.ru"
-          className="py-2 px-12 xs:text-sm lg:text-lg font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
+          className="py-2 px-12 xs:text-sm lg:text-base font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
         >
           Заказать
         </Link>

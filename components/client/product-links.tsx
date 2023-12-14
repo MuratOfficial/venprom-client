@@ -18,7 +18,7 @@ function ProductLinks() {
           Оказываем услуги по комплексному оснащению (снабжению) промышленных
           предприятий
         </p>
-        <div className="lg:w-full xs:w-40 h-fit flex flex-row justify-center items-center">
+        <div className="lg:w-full xs:w-60 h-fit flex flex-row justify-center items-center">
           <Image
             width={200}
             height={200}
@@ -28,7 +28,7 @@ function ProductLinks() {
         </div>
       </div>
       <div
-        className="flex flex-col xs:gap-y-1 lg:gap-y-8 xs:px-4 lg:px-48 items-center xs:py-1 lg:py-4 bg-left bg-contain bg-no-repeat"
+        className="flex flex-col xs:gap-y-1 lg:gap-y-8 xs:px-4 lg:px-48 items-center xs:py-1 lg:py-4 xs:bg-bottom lg:bg-left bg-contain bg-no-repeat"
         style={{ backgroundImage: `url("/indImg/portret1.jpg")` }}
       >
         <div className="w-full flex flex-row justify-center">

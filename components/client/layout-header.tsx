@@ -7,7 +7,7 @@ function LayoutHeader() {
   return (
     <div className="  flex flex flex-col w-full relative ">
       <div className="bg-slate-50 absolute top-0 w-full py-12"></div>
-      <div className="lg:px-48 xs:px-4 flex xs:flex-col lg:flex-row h-fit py-2  w-full justify-between xs:items-center lg:items-start before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-slate-50 inline-block relative">
+      <div className="lg:px-48 xs:px-4 flex gap-y-2 xs:flex-col lg:flex-row h-fit py-2  w-full justify-between xs:items-center lg:items-start before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-slate-50 inline-block relative">
         <div className="xs:w-10 lg:w-fit items-center h-fit relative text-blue-900">
           <Image height={120} width={120} alt="logo" src="logo.svg" />
         </div>

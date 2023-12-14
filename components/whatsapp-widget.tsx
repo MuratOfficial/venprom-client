@@ -8,7 +8,7 @@ const WhatsAppWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 left-10">
+    <div className="fixed xs:bottom-8 lg:bottom-6 left-10">
       <button
         onClick={openWhatsApp}
         className=" text-green-500 hover:text-blue-500 transition delay-100 duration-500 hover:scale-125 hover:translate-x-4 hover:-translate-y-4"

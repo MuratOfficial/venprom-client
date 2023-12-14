@@ -34,13 +34,16 @@ interface ProductProps {
   numsum: number;
   searchTerm: string;
   updateSearchTerm: (term: string) => void;
+  startPrice: number;
+  endPrice: number;
+  updateByPrice: (start: number, end: number) => void;
 }
 
 const cabelsUrl =
-  "https://venprom-client.vercel.app/api/510b3e4f-9539-4d5a-90c8-ced6b6ba8cdd";
+  "https://venprom-client.vercel.app/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
 
 const podUrl =
-  "https://venprom-client.vercel.app/api/17bf9dbd-132c-46ec-84aa-aec56ddee0f0";
+  "https://venprom-client.vercel.app/api/21e60451-fde6-4952-a435-489117888b84";
 // const fetchDataForStore = async () => {
 //   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
 //   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
@@ -108,6 +111,7 @@ const useProducts = create(
       items: [],
       categories: [],
       details: [],
+      shownOnPage: [],
       filterCategories: (storeName) => {
         const cabelCategories = get().data.cabelCategories || [];
         const podCategories = get().data.podCategories || [];
@@ -194,6 +198,29 @@ const useProducts = create(
           searchTerm: term,
           items: [...filteredList],
           numsum: filteredList.length,
+        });
+      },
+      startPrice: 1000,
+      endPrice: 999999,
+      updateByPrice(start, end) {
+        const cabelproducts = get().data.cabelproducts || [];
+        const podProducts = get().data.podProducts || [];
+        const cabelDetails = get().data.cabelDetails || [];
+        const podDetails = get().data.podDetails || [];
+
+        const allDetails = [...cabelDetails, ...podDetails];
+        const allProducts = [...cabelproducts, ...podProducts];
+        const filteredListPrice = allDetails.filter(
+          (el) => Number(el.price) > start && Number(el.price) < end
+        );
+        const filteredProducts = allProducts.filter((item) =>
+          filteredListPrice.find((el) => el.detailId === item.detailId)
+        );
+        set({
+          startPrice: start,
+          endPrice: end,
+          items: [...filteredProducts],
+          numsum: filteredProducts.length,
         });
       },
     }),

@@ -6,19 +6,35 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const ProductItemPage = ({ params }: { params: { productId: string } }) => {
   const items = useProducts().items;
   const detailItems = useProducts().details;
+  const [price, setPrice] = useState("");
 
   const product = items.find((el) => el.id === params.productId);
   const detail = detailItems.find((el) => el.detailId === product?.detailId);
   const descript = product?.category;
+
+  const currentStore = useProducts().activeStore;
+
+  const detPrice = detail?.price || "";
+  const detPrice1 = detail?.price1 || "";
+  const detBalance = detail?.value1 || "";
+
+  const numPrice: number = Math.ceil(
+    (parseFloat(detPrice) / 1000) * 5.1 * 1.12
+  );
+  const numPrice1: number = Math.ceil(
+    (parseFloat(detPrice1) / 1000) * 5.1 * 1.12
+  );
+  const numBalance = parseFloat(detBalance.replace(/,/g, ".")).toFixed(2);
+  const endBalance: number = parseFloat(numBalance);
   return (
     <div className="h-full w-full flex flex-col h-min-screen">
       <ClientNav />
-      <div className="h-8 w-full text-left py-8 flex flex-row items-center px-48 gap-x-4 text-slate-800 text-sm ">
+      <div className="xs:h-full lg:h-8 w-full text-left xs:py-1 lg:py-8 flex xs:flex-col lg:flex-row items-center xs:px-4 lg:px-48 gap-x-4 text-slate-800 text-sm ">
         <Link href="/" className="hover:text-blue-600">
           Главная
         </Link>
@@ -37,11 +53,11 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           {product?.name}
         </Link>
       </div>
-      <div className="px-48 flex flex-col gap-y-8">
+      <div className="xs:px-4 lg:px-48 flex flex-col gap-y-8">
         <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
           <p className="text-3xl font-semibold uppercase">{product?.name}</p>
           {/**Content Description */}
-          <div className=" columns-2">
+          <div className="xs:columns-1 lg:columns-2">
             <div className="flex flex-col gap-y-4 items-center justify-center">
               <Image
                 height={400}
@@ -261,8 +277,8 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
             </div>
           </div>
 
-          <div className="grid grid-flow-row grid-cols-3 gap-4 pt-8 w-full">
-            <div className="flex flex-row justify-evenly items-center text-xl">
+          <div className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-3 gap-4 pt-8 w-full">
+            <div className="flex flex-row justify-evenly items-center text-base">
               <p className="text-sm">Остаток: </p>{" "}
               <p
                 className={cn(
@@ -270,7 +286,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                   detail?.value2 && "collapse w-0"
                 )}
               >
-                {detail?.value1} шт.
+                {endBalance} шт.
               </p>
               <p
                 className={cn(
@@ -279,7 +295,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
-                {detail?.value1} км
+                {endBalance * 1000} м
               </p>
               <p
                 className={cn(
@@ -292,7 +308,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               </p>
             </div>
             <div className="flex flex-row justify-evenly text-blue-500 items-center text-xl">
-              <p className="font-medium text-sm">
+              <p className="font-medium text-base">
                 Цена за{" "}
                 <span
                   className={cn(
@@ -310,18 +326,23 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                   )}
                 >
                   {" "}
-                  км
+                  м
                 </span>
               </p>{" "}
               <div className="font-black flex flex-col gap-y-1 items-center px-4 py-3 text-2xl rounded-md bg-white ">
-                <p>{detail?.price} ₸</p>
+                <p>
+                  {currentStore === "Кабели"
+                    ? Math.ceil(numPrice * 1.2)
+                    : Math.ceil(numPrice * 1.35)}{" "}
+                  ₸
+                </p>
                 <p
                   className={cn(
                     " text-white collapse h-0 w-0 text-lg flex bg-red-700 p-0 rounded-md text-center",
                     detail?.price1 && "visible h-fit w-fit p-2"
                   )}
                 >
-                  распродажа {detail?.price1} ₸
+                  распродажа {Math.ceil(numPrice1 * 1.2)} ₸
                 </p>
               </div>
             </div>
@@ -337,17 +358,18 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           </div>
           <div
             className={cn(
-              "border-2 border-sky-900 shadow-inner text-center shadow-xl  rounded-lg collapse w-0 h-0 flex flex-row gap-x-4 items-center justify-center ",
+              "border-2 border-sky-900 shadow-inner text-center shadow-xl  rounded-lg collapse w-0 h-0 flex xs:flex-col lg:flex-row gap-x-4 items-center justify-center ",
               detail?.value2 && "visible w-full h-fit p-6"
             )}
           >
-            <p>Калькулятор массы: </p>
+            <p>Калькулятор цены: </p>
             <input
               type="text"
-              placeholder="Длина в км"
+              placeholder="Посчитать?"
               className="bg-white border-none w-40 rounded-lg h-10 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 px-2"
+              onChange={(e) => setPrice(e.target.value)}
             />
-            <p>4546546 kg</p>
+            <p>{price === "" ? 0 : parseInt(price) * numPrice} ₸</p>
           </div>
         </div>
         <ClientForm />

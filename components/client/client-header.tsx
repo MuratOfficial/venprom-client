@@ -13,7 +13,7 @@ function ClientHeader() {
     <div className="  flex flex flex-col w-full">
       <PhotoCollage />
 
-      <div className="flex px-48 flex-row w-full h-[320px] justify-end items-center relative">
+      <div className="flex xs:px-4 lg:px-48 flex-row w-full h-[320px] justify-end items-center relative">
         <div className="p-6 bg-[#bbb157] bg-opacity-80 backdrop-blur-sm rounded-lg">
           <ul className="flex flex-col gap-y-4">
             {nav.map((item, index) => (

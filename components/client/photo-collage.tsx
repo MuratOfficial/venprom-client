@@ -17,7 +17,7 @@ function PhotoCollage() {
   const heroImgList = ["/heroImg/1.jpg", "/heroImg/2.jpg", "/heroImg/4.jpg"];
   return (
     <div
-      className="-z-10 top-16 absolute w-full h-[500px] transition-all duration-500 delay-150 ease-in-out bg-cover"
+      className="-z-10 top-16 absolute w-full min-h-screen transition-all duration-500 delay-150 ease-in-out bg-cover"
       style={{ backgroundImage: `url(${heroImgList[count]})` }}
     ></div>
   );
