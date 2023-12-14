@@ -3,7 +3,6 @@ import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import React, { useEffect } from "react";
 import ProductCard from "./product-card";
 import useProducts from "@/hooks/use-products";
-import Pagination from "@/components/client/pagination";
 
 function ProductItems() {
   const { searchTerm, updateSearchTerm } = useProducts();
