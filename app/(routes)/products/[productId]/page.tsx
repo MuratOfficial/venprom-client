@@ -57,8 +57,8 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
         <div className="bg-blue-50 rounded-lg w-full h-full py-8 px-8 flex flex-col gap-y-10">
           <p className="text-3xl font-semibold uppercase">{product?.name}</p>
           {/**Content Description */}
-          <div className="xs:columns-1 lg:columns-2">
-            <div className="flex flex-col gap-y-4 items-center justify-center">
+          <div className="grid  xs:grid-cols-1 lg:grid-cols-2">
+            <div className="flex flex-col gap-y-4 items-center justify-center cols-span-1">
               <Image
                 height={400}
                 width={400}
@@ -78,9 +78,12 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               />
             </div>
 
-            {product?.characteristics10 === "" ? (
+            {product?.characteristics10 === "" &&
+            product?.category.description1 === "" ? (
               <div
-                className={cn(" flex flex-col justify-between visible w-full")}
+                className={cn(
+                  " flex flex-col justify-between visible w-full col-span-1"
+                )}
               >
                 <p className="dropdown-shadow-sm py-4 w-full  text-center text-lg font-semibold">
                   Характеристики подшипника {product.name}
@@ -160,7 +163,9 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               </div>
             ) : (
               <div
-                className={cn("flex flex-col justify-between visible w-full")}
+                className={cn(
+                  "flex flex-col justify-between visible w-full col-span-1"
+                )}
               >
                 <p className="dropdown-shadow-sm py-6 w-full text-center text-lg font-semibold">
                   Характеристики
@@ -283,7 +288,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               <p
                 className={cn(
                   "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500",
-                  detail?.value2 && "collapse w-0"
+                  detail?.value2 && detail.value2 !== " " && "collapse w-0"
                 )}
               >
                 {endBalance} шт.
@@ -292,6 +297,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 className={cn(
                   "collapse w-0",
                   detail?.value2 &&
+                    detail.value2 !== " " &&
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
@@ -301,6 +307,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 className={cn(
                   "collapse w-0",
                   detail?.value2 &&
+                    detail.value2 !== " " &&
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
@@ -322,7 +329,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 <span
                   className={cn(
                     "collapse w-0",
-                    detail?.value2 && "visible w-fit"
+                    detail?.value2 && detail.value2 !== " " && "visible w-fit"
                   )}
                 >
                   {" "}
@@ -339,7 +346,9 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 <p
                   className={cn(
                     " text-white collapse h-0 w-0 text-lg flex bg-red-700 p-0 rounded-md text-center",
-                    detail?.price1 && "visible h-fit w-fit p-2"
+                    detail?.price1 &&
+                      detail?.price1 !== " " &&
+                      "visible h-fit w-fit p-2"
                   )}
                 >
                   распродажа {Math.ceil(numPrice1 * 1.2)} ₸
@@ -359,7 +368,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           <div
             className={cn(
               "border-2 border-sky-900 shadow-inner text-center shadow-xl  rounded-lg collapse w-0 h-0 flex xs:flex-col lg:flex-row gap-x-4 items-center justify-center ",
-              detail?.value2 && "visible w-full h-fit p-6"
+              "visible w-full h-fit p-6"
             )}
           >
             <p>Калькулятор цены: </p>
@@ -369,7 +378,15 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               className="bg-white border-none w-40 rounded-lg h-10 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 px-2"
               onChange={(e) => setPrice(e.target.value)}
             />
-            <p>{price === "" ? 0 : parseInt(price) * numPrice} ₸</p>
+            <p>
+              {price === ""
+                ? 0
+                : parseInt(price) *
+                  (currentStore === "Кабели"
+                    ? Math.ceil(numPrice * 1.2)
+                    : Math.ceil(numPrice * 1.35))}{" "}
+              ₸
+            </p>
           </div>
         </div>
         <ClientForm />

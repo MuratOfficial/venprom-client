@@ -73,14 +73,10 @@ export async function PATCH(
 
     const body = await req.json();
 
-    const { name, detailId, price, price1, value1, value2 } = body;
+    const { detailId, price, price1, value1, value2 } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
-    }
-
-    if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
     }
 
     if (!value1) {
@@ -107,7 +103,6 @@ export async function PATCH(
         id: params.colorId,
       },
       data: {
-        name,
         detailId,
         price,
         price1,

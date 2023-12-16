@@ -6,10 +6,16 @@ import PopularCategory from "@/components/client/popular-category";
 import ProcessChain from "@/components/client/process-chain";
 import ProductLinks from "@/components/client/product-links";
 import WhatsAppWidget from "@/components/whatsapp-widget";
+import useProducts from "@/hooks/use-products";
 import Script from "next/script";
-import React from "react";
+import React, { useEffect } from "react";
 
 function HomePage() {
+  const { data, fetchDataForStore } = useProducts();
+
+  useEffect(() => {
+    fetchDataForStore();
+  }, [fetchDataForStore]);
   return (
     <div className="flex flex-col items-center min-h-screen ">
       <Script src="//code.jivo.ru/widget/HI9geWNiQL" async></Script>

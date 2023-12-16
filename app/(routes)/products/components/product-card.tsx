@@ -23,8 +23,11 @@ function ProductCard({
 }: ProductCardProps) {
   const currentStore = useProducts().activeStore;
 
-  const numPrice: number = Math.ceil((parseFloat(price) / 1000) * 5.1 * 1.12);
-  const numBalance = parseFloat(balance.replace(/,/g, ".")).toFixed(2);
+  const newPrice = parseFloat(price.replace(/,/g, ".")).toFixed(10);
+  const numPrice: number = Math.ceil(
+    (parseFloat(newPrice) / 1000) * 5.1 * 1.12
+  );
+  const numBalance = parseFloat(balance.replace(/,/g, ".")).toFixed(10);
   const endBalance: number = parseFloat(numBalance);
 
   return (
@@ -38,26 +41,47 @@ function ProductCard({
       />
 
       <div
-        className="xs:w-[180px] lg:w-full xs:h-[220px] lg:h-[280px] bg-center bg-cover"
+        className="xs:w-[180px] lg:w-full xs:h-[220px] lg:h-[280px] bg-center bg-contain bg-no-repeat"
         style={{ backgroundImage: `url(${img})` }}
       />
 
       <div className="flex flex-col text-blue-950 py-2">
-        <p className="xs:px-2 lg:px-6 xs:py-0 lg:py-2 xs:text-sm lg:text-left xs:text-center lg:text-lg font-medium uppercase">
+        <p className="xs:px-2 lg:px-6 xs:py-0 lg:py-2 xs:text-sm lg:text-center xs:text-center lg:text-lg font-medium uppercase">
           {name}
         </p>
-        <div className="lg:px-6 xs:px-2 flex xs:flex-col lg:flex-row justify-between items-center py-2">
-          <p className="xs:text-base lg:text-xl font-bold">
-            {currentStore === "Кабели"
-              ? Math.ceil(numPrice * 1.2)
-              : Math.ceil(numPrice * 1.35)}{" "}
-            {currentStore === "Кабели" ? <span>₸/м</span> : <span>₸/шт</span>}
-          </p>
-          <p className="text-sm">
-            Наличие:{" "}
-            {currentStore === "Кабели" ? endBalance * 1000 : endBalance}{" "}
-            {currentStore === "Кабели" ? <span>м</span> : <span>шт</span>}
-          </p>
+        <div className="lg:px-6 xs:px-2 flex xs:flex-col lg:flex-row justify-evenly items-center py-2">
+          {!Number.isNaN(numPrice) ? (
+            <p className="xs:text-base lg:text-xl font-bold">
+              {currentStore === "Кабели"
+                ? Math.ceil(numPrice * 1.2)
+                : Math.ceil(numPrice * 1.35)}{" "}
+              {currentStore === "Кабели" ? (
+                <span>₸/м</span>
+              ) : <span>₸/шт</span> || currentStore === "" ? (
+                <span>₸</span>
+              ) : (
+                <span></span>
+              )}
+            </p>
+          ) : (
+            <span className="text-sm">Цену уточняйте</span>
+          )}
+
+          {!Number.isNaN(endBalance) ? (
+            <p className="text-sm">
+              Наличие:{" "}
+              {currentStore === "Кабели" ? endBalance * 1000 : endBalance}{" "}
+              {currentStore === "Кабели" ? (
+                <span>м</span>
+              ) : <span>шт</span> || currentStore === "" ? (
+                <span>м/шт</span>
+              ) : (
+                <span></span>
+              )}
+            </p>
+          ) : (
+            <span className="text-sm">Н/о</span>
+          )}
         </div>
         <div className="px-4 flex xs:gap-x-4 flex-row justify-evenly items-center py-2 ">
           <Link

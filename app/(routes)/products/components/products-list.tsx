@@ -5,11 +5,6 @@ import { Category, CategoryList, Product } from "@/types";
 import React, { useEffect, useState } from "react";
 
 function ProductsList() {
-  const { data, fetchDataForStore } = useProducts();
-
-  useEffect(() => {
-    fetchDataForStore();
-  }, [fetchDataForStore]);
   const activeStore = useProducts().activeStore;
   const activeCategory = useProducts().activeCategory;
 
@@ -70,6 +65,7 @@ function ProductsList() {
                 className={cn(
                   "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
                   activeCategory === item.label &&
+                    activeStore === "Кабели" &&
                     "bg-blue-950 text-neutral-100"
                 )}
               >
@@ -78,7 +74,9 @@ function ProductsList() {
               <ul
                 className={cn(
                   "collapse h-0",
-                  activeCategory === item.label && "visible p-1 h-full"
+                  activeStore === "Кабели" &&
+                    activeCategory === item.label &&
+                    "visible p-1 h-full"
                 )}
               >
                 {item.listItems.map((el, idx) => (
@@ -102,47 +100,50 @@ function ProductsList() {
         >
           Подшипники
         </button>
+        <div
+          className={cn(
+            "flex flex-col  gap-y-1 collapse h-0",
+            activeStore === "Подшипники" &&
+              "visible h-full transition-[height] opacity-100 duration-1000 delay-100"
+          )}
+        >
+          {itemListExam.map((item, index) => (
+            <div className="flex flex-col" key={index}>
+              <p
+                onClick={() => handleItems(activeStore, item.label)}
+                className={cn(
+                  "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
+                  activeStore === "Подшипники" &&
+                    activeCategory === item.label &&
+                    "bg-blue-950 text-neutral-100"
+                )}
+              >
+                {item.label}
+              </p>
+              <ul className={cn()}>
+                {item.listItems.map((el, idx) => (
+                  <li
+                    className={cn(
+                      "collapse h-0",
+                      activeStore === "Подшипники" &&
+                        activeCategory === item.label &&
+                        "visible p-1 h-full pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
+                    )}
+                    key={idx}
+                  >
+                    {el}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
         {activeStore === "" ? (
           <p className="text-center xs:text-xs lg:text-sm text-blue-900">
             Выберите категорию
           </p>
         ) : (
-          <div
-            className={cn(
-              "flex flex-col gap-y-1 transition-[height] opacity-100 duration-500 delay-100 collapse h-0",
-              activeStore === "Подшипники" && "visible h-full"
-            )}
-          >
-            {itemListExam.map((item, index) => (
-              <div className="flex flex-col" key={index}>
-                <p
-                  onClick={() => handleItems(activeStore, item.label)}
-                  className={cn(
-                    "cursor-pointer font-semibold ml-4 lg:text-sm xs:text-xs text-blue-950 transition bg-blue-200 duration-500 delay-150 hover:text-neutral-100 hover:bg-blue-800 p-2 px-2 rounded-md",
-                    activeCategory === item.label &&
-                      "bg-blue-950 text-neutral-100"
-                  )}
-                >
-                  {item.label}
-                </p>
-                <ul
-                  className={cn(
-                    "collapse h-0",
-                    activeCategory === item.label && "visible p-1 h-full"
-                  )}
-                >
-                  {item.listItems.map((el, idx) => (
-                    <li
-                      className="pl-8 xs:text-xs lg:text-sm py-1 hover:text-blue-600 cursor-pointer"
-                      key={idx}
-                    >
-                      {el}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          ""
         )}
       </div>
 

@@ -41,7 +41,7 @@ export const DetailClient: React.FC<DetailClientParams> = ({ data }) => {
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="name" columns={columns} data={data} />
+      <DataTable searchKey="detailId" columns={columns} data={data} />
       <Separator />
       <Heading title="API" description="API list row" />
       <ApiList entityName="colors" entityIdName="colorId" />

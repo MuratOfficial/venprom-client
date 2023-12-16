@@ -61,7 +61,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
     detailId: el.detailId?.toString() || "",
     price: el.price?.toString() || "",
     price1: el.price1?.toString() || "",
-    name: el.name,
+    name: el.name?.toString() || "",
     value1: el.value1?.toString() || "",
     value2: el.value2?.toString() || "",
   }));
