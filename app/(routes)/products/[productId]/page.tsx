@@ -23,12 +23,8 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
   const detPrice1 = detail?.price1 || "";
   const detBalance = detail?.value1 || "";
 
-  const numPrice: number = Math.ceil(
-    (parseFloat(detPrice) / 1000) * 5.1 * 1.12
-  );
-  const numPrice1: number = Math.ceil(
-    (parseFloat(detPrice1) / 1000) * 5.1 * 1.12
-  );
+  const numPrice: number = Math.ceil(parseFloat(detPrice) * 5.1 * 1.12);
+  const numPrice1: number = Math.ceil(parseFloat(detPrice1) * 5.1 * 1.12);
   const numBalance = parseFloat(detBalance.replace(/,/g, ".")).toFixed(2);
   const endBalance: number = parseFloat(numBalance);
   return (
@@ -78,8 +74,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               />
             </div>
 
-            {product?.characteristics10 === "" &&
-            product?.category.description1 === "" ? (
+            {product?.detailId.includes("p") ? (
               <div
                 className={cn(
                   " flex flex-col justify-between visible w-full col-span-1"
@@ -244,7 +239,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           <div
             className={cn(
               "flex flex-col   collapse h-0 w-0 p-0",
-              descript?.heading1 && " visible w-full h-fit"
+              product?.detailId.includes("c") && " visible w-full h-fit"
             )}
           >
             <div
@@ -288,7 +283,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               <p
                 className={cn(
                   "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500",
-                  detail?.value2 && detail.value2 !== " " && "collapse w-0"
+                  product?.detailId.includes("c") && "collapse w-0"
                 )}
               >
                 {endBalance} шт.
@@ -296,8 +291,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               <p
                 className={cn(
                   "collapse w-0",
-                  detail?.value2 &&
-                    detail.value2 !== " " &&
+                  product?.detailId.includes("c") &&
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
@@ -306,8 +300,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               <p
                 className={cn(
                   "collapse w-0",
-                  detail?.value2 &&
-                    detail.value2 !== " " &&
+                  product?.detailId.includes("c") &&
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
@@ -320,7 +313,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 <span
                   className={cn(
                     "visible w-fit",
-                    detail?.value1 && "collapse w-0"
+                    product?.detailId.includes("c") && "collapse w-0"
                   )}
                 >
                   {" "}
@@ -329,7 +322,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 <span
                   className={cn(
                     "collapse w-0",
-                    detail?.value2 && detail.value2 !== " " && "visible w-fit"
+                    product?.detailId.includes("c") && "visible w-fit"
                   )}
                 >
                   {" "}
@@ -338,20 +331,21 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               </p>{" "}
               <div className="font-black flex flex-col gap-y-1 items-center px-4 py-3 text-2xl rounded-md bg-white ">
                 <p>
-                  {currentStore === "Кабели"
-                    ? Math.ceil(numPrice * 1.2)
+                  {product?.detailId.includes("c")
+                    ? Math.ceil(numPrice * 1.2) / 1000
                     : Math.ceil(numPrice * 1.35)}{" "}
                   ₸
                 </p>
                 <p
                   className={cn(
                     " text-white collapse h-0 w-0 text-lg flex bg-red-700 p-0 rounded-md text-center",
-                    detail?.price1 &&
+                    product?.detailId.includes("c") &&
+                      detail?.price1 !== "" &&
                       detail?.price1 !== " " &&
                       "visible h-fit w-fit p-2"
                   )}
                 >
-                  распродажа {Math.ceil(numPrice1 * 1.2)} ₸
+                  распродажа {Math.ceil(numPrice1 * 1.2) / 1000} ₸
                 </p>
               </div>
             </div>
@@ -382,7 +376,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               {price === ""
                 ? 0
                 : parseInt(price) *
-                  (currentStore === "Кабели"
+                  (product?.detailId.includes("c")
                     ? Math.ceil(numPrice * 1.2)
                     : Math.ceil(numPrice * 1.35))}{" "}
               ₸

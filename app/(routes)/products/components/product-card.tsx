@@ -21,12 +21,8 @@ function ProductCard({
   balance,
   detailId,
 }: ProductCardProps) {
-  const currentStore = useProducts().activeStore;
-
   const newPrice = parseFloat(price.replace(/,/g, ".")).toFixed(10);
-  const numPrice: number = Math.ceil(
-    (parseFloat(newPrice) / 1000) * 5.1 * 1.12
-  );
+  const numPrice: number = Math.ceil(parseFloat(newPrice) * 5.1 * 1.12);
   const numBalance = parseFloat(balance.replace(/,/g, ".")).toFixed(10);
   const endBalance: number = parseFloat(numBalance);
 
@@ -52,16 +48,11 @@ function ProductCard({
         <div className="lg:px-6 xs:px-2 flex xs:flex-col lg:flex-row justify-evenly items-center py-2">
           {!Number.isNaN(numPrice) ? (
             <p className="xs:text-base lg:text-xl font-bold">
-              {currentStore === "Кабели"
-                ? Math.ceil(numPrice * 1.2)
+              {detailId.includes("c")
+                ? Math.ceil((numPrice * 1.2) / 1000)
                 : Math.ceil(numPrice * 1.35)}{" "}
-              {currentStore === "Кабели" ? (
-                <span>₸/м</span>
-              ) : <span>₸/шт</span> || currentStore === "" ? (
-                <span>₸</span>
-              ) : (
-                <span></span>
-              )}
+              {detailId.includes("c") ? <span>₸/м</span> : ""}{" "}
+              {detailId.includes("p") ? <span>₸/шт</span> : ""}
             </p>
           ) : (
             <span className="text-sm">Цену уточняйте</span>
@@ -69,15 +60,9 @@ function ProductCard({
 
           {!Number.isNaN(endBalance) ? (
             <p className="text-sm">
-              Наличие:{" "}
-              {currentStore === "Кабели" ? endBalance * 1000 : endBalance}{" "}
-              {currentStore === "Кабели" ? (
-                <span>м</span>
-              ) : <span>шт</span> || currentStore === "" ? (
-                <span>м/шт</span>
-              ) : (
-                <span></span>
-              )}
+              Наличие: {detailId.includes("c") ? endBalance * 1000 : endBalance}{" "}
+              {detailId.includes("c") ? <span>м</span> : ""}{" "}
+              {detailId.includes("p") ? <span>шт</span> : ""}
             </p>
           ) : (
             <span className="text-sm">Н/о</span>

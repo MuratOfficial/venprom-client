@@ -208,13 +208,22 @@ const useProducts = create(
         const cabelDetails = get().data.cabelDetails || [];
         const podDetails = get().data.podDetails || [];
 
-        const allDetails = [...cabelDetails, ...podDetails];
         const allProducts = [...cabelproducts, ...podProducts];
-        const filteredListPrice = allDetails.filter(
-          (el) => Number(el.price) > start && Number(el.price) < end
+
+        const filteredListPriceCab = cabelDetails.filter(
+          (el) =>
+            parseInt(el.price) * 5.1 * 1.12 * 1.2 * 0.001 > start &&
+            parseFloat(el.price) * 5.1 * 1.12 * 1.2 * 0.001 < end
         );
+        const filteredListPricePod = podDetails.filter(
+          (el) =>
+            parseInt(el.price) * 5.1 * 1.12 * 1.35 > start &&
+            parseFloat(el.price) * 5.1 * 1.12 * 1.35 < end
+        );
+
+        const endList = [...filteredListPriceCab, ...filteredListPricePod];
         const filteredProducts = allProducts.filter((item) =>
-          filteredListPrice.find((el) => el.detailId === item.detailId)
+          endList.find((el) => el.detailId === item.detailId)
         );
         set({
           startPrice: start,
