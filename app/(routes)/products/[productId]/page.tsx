@@ -239,7 +239,9 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           <div
             className={cn(
               "flex flex-col   collapse h-0 w-0 p-0",
-              product?.detailId.includes("c") && " visible w-full h-fit"
+              product?.detailId.includes("c") &&
+                descript?.heading1 &&
+                " visible w-full h-fit"
             )}
           >
             <div
