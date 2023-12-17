@@ -39,9 +39,11 @@ interface ProductProps {
   updateByPrice: (start: number, end: number) => void;
 }
 
-const cabelsUrl = "https://venprom.kz/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
+const cabelsUrl =
+  "https://www.venprom.kz/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
 
-const podUrl = "https://venprom.kz/api/21e60451-fde6-4952-a435-489117888b84";
+const podUrl =
+  "https://www.venprom.kz/api/21e60451-fde6-4952-a435-489117888b84";
 // const fetchDataForStore = async () => {
 //   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
 //   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
