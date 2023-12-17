@@ -334,7 +334,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               <div className="font-black flex flex-col gap-y-1 items-center px-4 py-3 text-2xl rounded-md bg-white ">
                 <p>
                   {product?.detailId.includes("c")
-                    ? Math.ceil(numPrice * 1.2) / 1000
+                    ? Math.ceil(numPrice * 1.2 * 0.001)
                     : Math.ceil(numPrice * 1.35)}{" "}
                   ₸
                 </p>
@@ -347,7 +347,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                       "visible h-fit w-fit p-2"
                   )}
                 >
-                  распродажа {Math.ceil(numPrice1 * 1.2) / 1000} ₸
+                  распродажа {Math.ceil(numPrice1 * 1.2 * 0.001)} ₸
                 </p>
               </div>
             </div>
