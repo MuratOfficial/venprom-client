@@ -379,7 +379,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                 ? 0
                 : parseInt(price) *
                   (product?.detailId.includes("c")
-                    ? Math.ceil(numPrice * 1.2)
+                    ? Math.ceil(numPrice * 1.2 * 0.001)
                     : Math.ceil(numPrice * 1.35))}{" "}
               ₸
             </p>
