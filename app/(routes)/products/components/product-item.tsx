@@ -33,7 +33,7 @@ function ProductItems() {
   const amount = useProducts().numsum;
   return (
     <div className="w-full h-full flex flex-col gap-y-4">
-      <div className="w-full xs:h-16 lg:h-12 flex xs:flex-col lg:flex-row justify-between px-2 xs:rounded-md lg:rounded-xl bg-opacity-80 items-center bg-gradient-to-r from-blue-500 to-blue-600 relative">
+      <div className="w-full xs:h-full lg:h-12 gap-y-2 flex xs:flex-col lg:flex-row justify-between px-2 xs:rounded-md lg:rounded-xl bg-opacity-80 items-center bg-gradient-to-r from-blue-500 to-blue-600 relative">
         <div className="flex flex-row xs:gap-x-1 lg:gap-x-4 items-center">
           <input
             type="text"
@@ -47,8 +47,8 @@ function ProductItems() {
             className="hover:text-slate-800 lg:w-fit xs:w-4 text-white cursor-pointer"
           />
         </div>
-        <div className="flex flex-row xs:gap-x-1 lg:gap-x-2 items-center ">
-          <p className="text-neutral-100">Цена от</p>
+        <div className="flex xs:flex-col lg:flex-row xs:gap-x-1 lg:gap-x-2 items-center ">
+          <p className="text-neutral-100 lg:text-base xs:text-xs">Цена от</p>
           <input
             type="number"
             value={startPrice}
@@ -56,7 +56,7 @@ function ProductItems() {
             placeholder="0 ₸"
             className="bg-white text-neutral-400 border-none xs:w-12 lg:text-base xs:text-xs lg:w-24 xs:rounded-sm lg:rounded-md xs:h-6 lg:h-9 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0 px-2"
           />
-          <p className="text-neutral-100">до</p>
+          <p className="text-neutral-100 lg:text-base xs:text-xs">до</p>
           <input
             type="number"
             value={endPrice}
