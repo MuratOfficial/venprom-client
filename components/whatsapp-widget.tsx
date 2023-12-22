@@ -8,11 +8,13 @@ const WhatsAppWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed xs:bottom-8 lg:bottom-6 left-10">
+    <div className="fixed xs:bottom-8 lg:bottom-8 lg:right-14 lg:left-auto xs:left-10 w-fit ">
       <button
         onClick={openWhatsApp}
-        className=" text-green-500 hover:text-blue-500 transition delay-100 duration-500 hover:scale-125 hover:translate-x-4 hover:-translate-y-4"
+        className=" text-green-400 relative hover:text-blue-500 transition delay-100 duration-500 hover:scale-125 hover:-translate-x-4 hover:-translate-y-4"
       >
+        <div className="rounded-full w-10 h-10 left-3 bottom-3  animate-ping-slow  -z-10 bg-neutral-50 absolute"></div>
+        <div className="rounded-full w-10 h-10 left-2 bottom-2   -z-10 bg-neutral-50 absolute"></div>
         <IoLogoWhatsapp size={60} />
       </button>
     </div>

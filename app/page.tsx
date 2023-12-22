@@ -18,7 +18,7 @@ function HomePage() {
   }, [fetchDataForStore]);
   return (
     <div className="flex flex-col items-center min-h-screen ">
-      <Script src="//code.jivo.ru/widget/HI9geWNiQL" async></Script>
+      {/* <Script src="//code.jivo.ru/widget/HI9geWNiQL" async></Script> */}
       <LayoutHeader />
       <div className=" w-full py-2 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-800 inline-block relative"></div>
 
