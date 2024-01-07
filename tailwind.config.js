@@ -9,6 +9,7 @@ module.exports = {
   ],
   theme: {
     screens: {
+      xxs: "280px",
       xs: "360px",
 
       lg: "1200px",
@@ -18,6 +19,7 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
+        xxs: "280px",
         xs: "360px",
         lg: "1200px",
         "2xl": "1400px",
@@ -81,8 +83,8 @@ module.exports = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 0.5s ease-out",
+        "accordion-up": "accordion-up 0.5s ease-out",
         "ping-slow": "ping 2s ease-in-out infinite",
       },
       fontFamily: {

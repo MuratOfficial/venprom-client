@@ -1,6 +1,7 @@
 "use client";
 import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
+import useCurrency from "@/hooks/use-currency";
 import useProducts from "@/hooks/use-products";
 import { cn } from "@/lib/utils";
 import { ChevronRight, ShoppingCart } from "lucide-react";
@@ -11,10 +12,13 @@ import React, { useState } from "react";
 const ProductItemPage = ({ params }: { params: { productId: string } }) => {
   const items = useProducts().items;
   const detailItems = useProducts().details;
-  const [price, setPrice] = useState("");
-
   const product = items.find((el) => el.id === params.productId);
-  const detail = detailItems.find((el) => el.detailId === product?.detailId);
+  const detail = detailItems.find((el) =>
+    el.detailId
+      .replace(/\s/g, "")
+      .toLowerCase()
+      .includes(product?.name.replace(/\s/g, "").toLowerCase() || "")
+  );
   const descript = product?.category;
 
   const currentStore = useProducts().activeStore;
@@ -23,8 +27,10 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
   const detPrice1 = detail?.price1 || "";
   const detBalance = detail?.value1 || "";
 
-  const numPrice: number = Math.ceil(parseFloat(detPrice) * 5.1 * 1.12);
-  const numPrice1: number = Math.ceil(parseFloat(detPrice1) * 5.1 * 1.12);
+  const currency = useCurrency()?.curr || 5.1;
+
+  const numPrice: number = Math.ceil(parseFloat(detPrice) * currency * 1.12);
+  const numPrice1: number = Math.ceil(parseFloat(detPrice1) * currency * 1.12);
   const numBalance = parseFloat(detBalance.replace(/,/g, ".")).toFixed(2);
   const endBalance: number = parseFloat(numBalance);
   return (

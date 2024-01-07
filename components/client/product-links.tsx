@@ -13,8 +13,8 @@ function ProductLinks() {
   return (
     <div className="flex  flex-col w-full relative w-full relative">
       <div className="py-4 w-full before:block before:absolute before:-inset-1 before:skew-y-3  before:bg-[#bbb157] inline-block relative"></div>
-      <div className="lg:py-10 xs:py-4 xs:px-4 lg:px-48 grid xs:grid-cols-1 lg:grid-cols-2 gap-6 justify-between items-center rounded-lg  w-full before:block before:absolute before:-inset-1 before:skew-y-3 inline-block relative">
-        <p className="xs:text-sm lg:text-2xl font-semibold flex items-center col-span-1 text-right text-sky-800 uppercase w-full h-full relative">
+      <div className="lg:py-10 xs:py-4 xxs:py-4 xxs:px-4 xs:px-4 lg:px-48 grid xs:grid-cols-1 lg:grid-cols-2 gap-6 justify-between items-center rounded-lg  w-full before:block before:absolute before:-inset-1 before:skew-y-3 inline-block relative">
+        <p className="xs:text-sm xxs:text-sm lg:text-2xl font-semibold flex items-center col-span-1 text-right text-sky-800 uppercase w-full h-full relative">
           Оказываем услуги по комплексному оснащению (снабжению) промышленных
           предприятий
         </p>
@@ -28,19 +28,19 @@ function ProductLinks() {
         </div>
       </div>
       <div
-        className="flex flex-col xs:gap-y-1 lg:gap-y-8 xs:px-4 lg:px-48 items-center xs:py-1 lg:py-4 xs:bg-bottom lg:bg-left bg-contain bg-no-repeat"
+        className="flex flex-col xs:gap-y-1 xxs:gap-y-1 lg:gap-y-8 xs:px-4 xxs:px-4 lg:px-48 items-center xs:py-1 xxs:py-1 lg:py-4 xxs:bg-bottom xs:bg-bottom lg:bg-left bg-contain bg-no-repeat"
         style={{ backgroundImage: `url("/indImg/portret1.jpg")` }}
       >
         <div className="w-full flex flex-row justify-center">
           <AnimateScrollDownHorizontal>
-            <p className="w-fit flex flex-row gap-x-4 font-bold text-center text-sky-800 xs:text-xl lg:text-3xl uppercase font-semobold">
+            <p className="w-fit flex flex-row gap-x-4 font-bold text-center text-sky-800 xxs:text-xl xs:text-xl lg:text-3xl uppercase font-semobold">
               Поставляем <Container size={35} />
             </p>
           </AnimateScrollDownHorizontal>
         </div>
 
         <AnimateScrollDownHorizontalLeft>
-          <div className="grid pb-4 grid-flow-row grid-cols-3 gap-4 xs:text-[8px] lg:text-sm">
+          <div className="grid pb-4 grid-flow-row xs:grid-cols-3 xxs:grid-cols-1 lg:grid-cols-3 gap-4 xs:text-[8px] xxs:text-sm lg:text-sm">
             <ul className="flex flex-col gap-y-3">
               <Link
                 href="https://wa.link/0m0xhf"

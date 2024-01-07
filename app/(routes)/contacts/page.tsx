@@ -9,8 +9,8 @@ function ContactsPage() {
   return (
     <div className="flex flex-col items-center min-h-screen gap-y-8">
       <ClientNav />
-      <div className="flex flex-col xs:gap-y-4 lg:gap-y-8 xs:px-4 lg:px-48 w-full">
-        <p className="uppercase xs:text-xl lg:text-4xl text-center font-bold text-blue-900">
+      <div className="flex flex-col xs:gap-y-4 xxs:gap-y-4 lg:gap-y-8 xs:px-4 lg:px-48 w-full">
+        <p className="uppercase xs:text-xl xxs:text-xl lg:text-4xl text-center font-bold text-blue-900">
           Контакты
         </p>
         <div className="py-4 px-6 bg-sky-100 bg-opacity-80 rounded-lg text-blue-900 w-full">

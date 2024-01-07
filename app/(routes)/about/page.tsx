@@ -3,17 +3,17 @@ import ClientForm from "@/components/client/client-form";
 import ClientNav from "@/components/client/client-nav";
 import ProductLinks from "@/components/client/product-links";
 import WhatsAppWidget from "@/components/whatsapp-widget";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function AboutPage() {
   return (
     <div className="flex flex-col items-center min-h-screen ">
       <ClientNav />
-      <div className="flex flex-col xs:gap-y-4 lg:gap-y-8 xs:px-4 lg:px-48 py-8">
+      <div className="flex flex-col xs:gap-y-4 xxs:gap-y-4 lg:gap-y-8 xs:px-4 xxs:px-2 lg:px-48 py-8">
         <p className="uppercase xs:text-xl lg:text-3xl text-center font-bold text-blue-900">
           О компании
         </p>
-        <p className="lg:text-base xs:text-sm text-blue-900 py-4">
+        <p className="lg:text-base xs:text-sm xxs:text-sm text-blue-900 py-4">
           ТОО «Венпром» специализируется на оптовых поставках крупногабаритных
           подшипников и силовых кабелей большого сечения, а также на комплексном
           оснащении (снабжении) промышленных , производственных, и добывающих

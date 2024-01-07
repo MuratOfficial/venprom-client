@@ -25,14 +25,14 @@ function ClientNav() {
     },
   ];
   return (
-    <div className="  flex xs:px-4 lg:px-48 flex-col w-full justify-center bg-gradient-to-r from-blue-800 to-sky-800 relative">
-      <ul className="flex xs:flex-col lg:flex-row justify-between xs:py-1 lg:py-4 items-center relative">
+    <div className="  flex xs:px-4 xxs:px-2 lg:px-48 flex-col w-full justify-center bg-gradient-to-r from-blue-800 to-sky-800 relative">
+      <ul className="flex xs:flex-col xxs:flex-col lg:flex-row justify-between xxs:py-1 xs:py-1 lg:py-4 items-center relative">
         {nav.map((item, index) => (
           <Link
             href={item.href}
             key={index}
             className={cn(
-              "lg:text-base xs:text-sm font-medium py-2 px-10 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
+              "lg:text-base xs:text-sm xxs:text-sm font-medium py-2 px-10 text-slate-50 hover:text-blue-700 rounded-lg hover:bg-slate-50 transition duration-500 delay-150",
               item.active && "bg-slate-50 text-blue-700"
             )}
           >
@@ -41,7 +41,7 @@ function ClientNav() {
         ))}
         <Link
           href="mailto:venprom@inbox.ru"
-          className="py-2 px-12 xs:text-sm lg:text-base font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
+          className="py-2 px-12 xs:text-sm xxs:text-sm lg:text-base font-medium rounded-lg text-center bg-blue-700 text-neutral-200 hover:bg-neutral-200 hover:text-blue-600"
         >
           Заказать
         </Link>

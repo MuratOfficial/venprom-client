@@ -3,7 +3,15 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Detail } from "@/types";
 import { Button } from "@/components/ui/button";
-import { RefreshCcw, Trash } from "lucide-react";
+import { Plus, RefreshCcw, Trash } from "lucide-react";
+import { useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 // components/DataParser.tsx
 
 interface DetailFormProps {
@@ -46,18 +54,14 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
 
   const params = useParams();
   // const newData = JSON.stringify()
-  const newData = JSON.parse(JSON.stringify(data, null, 2));
 
-  const anotherData: Detail[] = data.map((item) => ({
-    detailId: item.detailId,
-    price: item.price,
-    price1: item.price1 || "",
-    name: item.name,
-    value1: item.value1,
-    value2: item.value2 || "",
-  }));
+  const newData = JSON.stringify(data, null, 2);
 
-  const formattedData: Detail[] = anotherData.map((el) => ({
+  ///There is a filter of cabel types of uploaded data
+
+  const cabelTypes = [];
+
+  const formattedData: Detail[] = data.map((el) => ({
     detailId: el.detailId?.toString() || "",
     price: el.price?.toString() || "",
     price1: el.price1?.toString() || "",
@@ -66,56 +70,75 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
     value2: el.value2?.toString() || "",
   }));
 
-  const reformattedData = formattedData.slice(0, formattedData.length - 1);
+  const reformattedData = formattedData.slice(2, formattedData.length - 1);
 
   return (
     <div>
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Таблица данных</h2>
-        <p className="text-neutral-500 text-sm">
-          Название полей должны оставаться на английском языке
-        </p>
-        <table className="w-full border-collapse border border-gray-400 overflow-x-auto">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="border border-gray-400 p-2">#</th>
-              <th className="border border-gray-400 p-2">Store ID</th>
-              <th className="border border-gray-400 p-2">Detail ID</th>
-              <th className="border border-gray-400 p-2">Price</th>
-              <th className="border border-gray-400 p-2">Price1</th>
-              <th className="border border-gray-400 p-2">Name</th>
-              <th className="border border-gray-400 p-2">Value1</th>
-              <th className="border border-gray-400 p-2">Value2</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reformattedData?.map((detail, ind) => (
-              <tr key={ind} className="bg-white">
-                <td className="border border-gray-400 p-2">{ind + 1}</td>
-                <td className="border border-gray-400 p-2">{params.storeId}</td>
-                <td className="border border-gray-400 p-2">
-                  {detail.detailId}
-                </td>
-                <td className="border border-gray-400 p-2">{detail.price}</td>
-                <td className="border border-gray-400 p-2">{detail.price1}</td>
-                <td className="border border-gray-400 p-2">{detail.name}</td>
-                <td className="border border-gray-400 p-2">{detail.value1}</td>
-                <td className="border border-gray-400 p-2">{detail.value2}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Запарсированные данные</h2>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>
+            <h2 className="text-xl font-semibold mb-2">Таблица данных</h2>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="mt-0">
+              <p className="text-neutral-500 text-sm">
+                Название полей должны оставаться на английском языке
+              </p>
+              <table className="w-full border-collapse border border-gray-400 overflow-x-auto">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="border border-gray-400 p-2">#</th>
+                    <th className="border border-gray-400 p-2">Store ID</th>
+                    <th className="border border-gray-400 p-2">DetailId</th>
+                    <th className="border border-gray-400 p-2">Price</th>
+                    <th className="border border-gray-400 p-2">Name</th>
+                    <th className="border border-gray-400 p-2">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reformattedData?.map((detail, ind) => (
+                    <tr key={ind} className="bg-white">
+                      <td className="border border-gray-400 p-2">{ind + 1}</td>
+                      <td className="border border-gray-400 p-2">
+                        {params.storeId}
+                      </td>
+                      <td className="border border-gray-400 p-2">
+                        {detail.detailId}
+                      </td>
+                      <td className="border border-gray-400 p-2">
+                        {detail.price}
+                      </td>
+                      <td className="border border-gray-400 p-2">
+                        {detail.name}
+                      </td>
+                      <td className="border border-gray-400 p-2">
+                        {detail.value1}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>
+            <h2 className="text-xl font-semibold mb-2">
+              Запарсированные данные
+            </h2>
+          </AccordionTrigger>
+          <AccordionContent>
+            <pre>{newData}</pre>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
       <div className="w-full justify-between items-center flex flex-row">
         <button
           onClick={() => onUpload(reformattedData)}
           className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md"
         >
-          Обновить БД
+          Обновить категорию
         </button>
         <Button
           variant="outline"
@@ -129,7 +152,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
           className=" hover:opacity-90 text-lg"
           onClick={() => onDelete()}
         >
-          <Trash className="mr-4" /> Зачистить БД
+          <Trash className="mr-4" /> Очистить категорию
         </Button>{" "}
       </div>
     </div>
