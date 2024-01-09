@@ -303,7 +303,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                     "visible w-fit rounded-md font-bold bg-white px-4 py-3 text-blue-500"
                 )}
               >
-                {endBalance * 1000} м
+                {endBalance * 1000 || "Н/о"} м
               </p>
               {/* <p
                 className={cn(
@@ -339,12 +339,12 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
               </p>{" "}
               <div className="font-black flex flex-col gap-y-1 items-center px-4 py-3 text-2xl rounded-md bg-white ">
                 <p>
-                  {product?.detailId.includes("c")
+                  {(product?.detailId.includes("c")
                     ? Math.ceil(numPrice * 1.2 * 0.001)
-                    : Math.ceil(numPrice * 1.35)}{" "}
+                    : Math.ceil(numPrice * 1.35)) || "Цену уточняйте"}{" "}
                   ₸
                 </p>
-                <p
+                {/* <p
                   className={cn(
                     " text-white collapse h-0 w-0 text-lg flex bg-red-700 p-0 rounded-md text-center",
                     product?.detailId.includes("c") &&
@@ -354,7 +354,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
                   )}
                 >
                   распродажа {Math.ceil(numPrice1 * 1.2 * 0.001)} ₸
-                </p>
+                </p> */}
               </div>
             </div>
             <div className="items-center flex justify-center text-neutral-100">

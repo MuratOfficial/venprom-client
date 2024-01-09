@@ -32,14 +32,17 @@ function LayoutHeader() {
             </div>
           </div>
         </div>
-        <div className="xs:py-1 xxs:py-1 lg:py-4 px-8 text-neutral-50 flex flex-col gap-y-1 w-fit relative bg-[#bbb157] rounded-lg relative">
+        <div className="xs:py-3 xxs:py-3 lg:py-4 px-8 text-neutral-50 flex flex-col gap-y-2 w-fit relative bg-[#bbb157] rounded-lg relative">
           <p className="text-xs relative w-fit">Связаться с нами:</p>
-          <p className="text-xs flex flex-row gap-x-2 relative w-fit">
+          <Link
+            href="tel:+77057527151"
+            className="text-xs flex flex-row gap-x-2 relative w-fit"
+          >
             <PhoneCall size={12} /> +7 705 752 71 51
-          </p>
-          <p className="text-xs flex flex-row gap-x-2 relative w-fit">
+          </Link>
+          {/* <p className="text-xs flex flex-row gap-x-2 relative w-fit">
             <PhoneCall size={12} /> +7 777 343 37 18
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

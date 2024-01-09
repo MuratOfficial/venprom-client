@@ -18,10 +18,10 @@ function ProductLinks() {
           Оказываем услуги по комплексному оснащению (снабжению) промышленных
           предприятий
         </p>
-        <div className="lg:w-full xs:w-60 h-fit flex flex-row justify-center items-center">
+        <div className="lg:w-full xs:w-full h-fit flex flex-row justify-center items-center">
           <Image
-            width={200}
-            height={200}
+            width={900}
+            height={540}
             alt="prtret4"
             src="/indImg/portret4.jpg"
           />
@@ -40,7 +40,7 @@ function ProductLinks() {
         </div>
 
         <AnimateScrollDownHorizontalLeft>
-          <div className="grid pb-4 grid-flow-row xs:grid-cols-3 xxs:grid-cols-1 lg:grid-cols-3 gap-4 xs:text-[8px] xxs:text-sm lg:text-sm">
+          <div className="grid pb-4 grid-flow-row xs:grid-cols-1 xxs:grid-cols-1 lg:grid-cols-3 gap-4 xs:text-sm xxs:text-sm lg:text-sm">
             <ul className="flex flex-col gap-y-3">
               <Link
                 href="https://wa.link/0m0xhf"
