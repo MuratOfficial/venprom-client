@@ -63,7 +63,7 @@ const DataParser: React.FC<DetailFormProps> = ({ data }) => {
 
   const formattedData: Detail[] = data.map((el) => ({
     detailId: el.detailId?.toString() || "",
-    price: el.price?.toString() || "",
+    price: el.price?.toString()?.replace(/[^\d,\.]/g, "") || "",
     price1: el.price1?.toString() || "",
     name: el.name?.toString() || "",
     value1: el.value1?.toString() || "",

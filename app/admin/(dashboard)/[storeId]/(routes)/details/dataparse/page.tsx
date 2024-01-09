@@ -286,7 +286,7 @@ const DataUpdate: NextPage = () => {
   } else {
     transformedData = uploadedData.map((el) => ({
       name: el[0],
-      price: el[4]?.replace(/[^\d,\.]/g, ""),
+      price: el[4],
       value: el[2],
     }));
   }
