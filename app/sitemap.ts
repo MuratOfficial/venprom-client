@@ -24,22 +24,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const cabelsUrl = "/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
+  const cabelsUrl = `${baseUrl}/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0`;
 
-  const podUrl = "/api/21e60451-fde6-4952-a435-489117888b84";
+  const podUrl = `${baseUrl}/api/21e60451-fde6-4952-a435-489117888b84`;
 
-  const productsCabelPromise = getProducts(cabelsUrl).then((products) =>
-    products.map((product) => ({
-      url: `${baseUrl}/products/${product.id}`,
-      lastModified: new Date().toISOString(),
-    }))
+  const productsCabelPromise = await getProducts(`${cabelsUrl}/products`).then(
+    (products) =>
+      products.map((product) => ({
+        url: `${baseUrl}/products/${product.id}`,
+        lastModified: new Date().toISOString(),
+      }))
   );
 
-  const productsPodPromise = getProducts(podUrl).then((products) =>
-    products.map((product) => ({
-      url: `${baseUrl}/products/${product.id}`,
-      lastModified: new Date().toISOString(),
-    }))
+  const productsPodPromise = await getProducts(`${podUrl}/products`).then(
+    (products) =>
+      products.map((product) => ({
+        url: `${baseUrl}/products/${product.id}`,
+        lastModified: new Date().toISOString(),
+      }))
   );
 
   let fetchedRoutes: Route[] = [];
