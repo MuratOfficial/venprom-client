@@ -279,14 +279,14 @@ const DataUpdate: NextPage = () => {
     transformedData = uploadedData
       .map((el) => ({
         name: el[0],
-        price: el[1].replace(/[^\d,\.]/g, ""),
+        price: el[1]?.replace(/[^\d,\.]/g, ""),
         value: el[2],
       }))
       .filter((item) => parseInt(item.price) > 5000);
   } else {
     transformedData = uploadedData.map((el) => ({
       name: el[0],
-      price: el[4].replace(/[^\d,\.]/g, ""),
+      price: el[4]?.replace(/[^\d,\.]/g, ""),
       value: el[2],
     }));
   }
