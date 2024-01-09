@@ -5,7 +5,7 @@ import DataParser from "../components/components/data-parser";
 import Papa from "papaparse";
 import { NextPage } from "next";
 import { useParams } from "next/navigation";
-import { Detail } from "@/types";
+import { Detail, Product } from "@/types";
 import { Plus, Trash, Trash2 } from "lucide-react";
 import {
   Accordion,
@@ -13,6 +13,45 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+function mergeAndSumDuplicates(arr: Detail[]): Detail[] {
+  const map = new Map<string, Detail>();
+
+  arr.forEach((obj) => {
+    const keyValue = obj["name"];
+    if (map.has(keyValue)) {
+      // If the key already exists, update the value1 by summing the values
+      const existingObj = map.get(keyValue)!;
+      if (
+        existingObj.name
+          ?.replace(/\s/g, "")
+          .toLowerCase()
+          .includes("Подшипник".toLowerCase())
+      ) {
+        existingObj.value1 = (
+          parseInt(existingObj?.value1) + parseInt(obj?.value1)
+        )
+          .toFixed(3)
+          .replace(".", ",");
+      } else {
+        existingObj.value1 = (
+          parseFloat(existingObj?.value1?.replace(",", ".")) +
+          parseFloat(obj?.value1?.replace(",", "."))
+        )
+          .toFixed(3)
+          .replace(".", ",");
+      }
+    } else {
+      // If the key doesn't exist, add the object to the map
+      map.set(keyValue, { ...obj });
+    }
+  });
+
+  // Convert the map values back to an array
+  const resultArray = Array.from(map.values());
+
+  return resultArray;
+}
 
 const DataUpdate: NextPage = () => {
   const [keywords, setKeywords] = useState<string[]>([
@@ -280,6 +319,8 @@ const DataUpdate: NextPage = () => {
       }
     });
 
+  const resultData: Detail[] = mergeAndSumDuplicates(anotherData);
+
   return (
     <div className="container mx-auto my-8">
       <div className="w-full flex flex-row justify-between">
@@ -337,7 +378,7 @@ const DataUpdate: NextPage = () => {
       </div>
       {anotherData.length > 0 && (
         <>
-          <DataParser data={anotherData} />
+          <DataParser data={resultData} />
         </>
       )}
     </div>
