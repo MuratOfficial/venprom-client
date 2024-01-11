@@ -47,9 +47,6 @@ function ClientForm() {
             <span className="flex flex-row gap-x-4">
               <PhoneCall /> +7 705 752 71 51{" "}
             </span>
-            <span className="flex flex-row gap-x-4">
-              <PhoneCall /> +7 777 343 37 18{" "}
-            </span>
             <Link
               href="mailto:toimetm@gmail.com"
               className="flex flex-row gap-x-4"
