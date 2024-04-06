@@ -87,9 +87,6 @@ module.exports = {
         "accordion-up": "accordion-up 0.5s ease-out",
         "ping-slow": "ping 2s ease-in-out infinite",
       },
-      fontFamily: {
-        sans: ["var(--font-inter)", "Arial"],
-      },
     },
   },
   plugins: [require("tailwindcss-animate")],

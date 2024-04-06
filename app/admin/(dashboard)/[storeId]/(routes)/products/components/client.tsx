@@ -20,7 +20,7 @@ export const ProductClient: React.FC<ProductClientParams> = ({ data }) => {
 
   const downloadAsExcel = async () => {
     const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet("Details");
+    const worksheet = workbook.addWorksheet("Products");
 
     // Add headers
     const headers = Object.keys(data[0]);
@@ -40,7 +40,7 @@ export const ProductClient: React.FC<ProductClientParams> = ({ data }) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "details.xlsx";
+    a.download = "products.xlsx";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -66,7 +66,7 @@ export const ProductClient: React.FC<ProductClientParams> = ({ data }) => {
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
       <Separator />
-      <Heading title="API" description="API list row" />
+      <Heading title="API" description="Список API запросов" />
       <ApiList entityName="products" entityIdName="productId" />
     </>
   );
