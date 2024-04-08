@@ -46,7 +46,7 @@ const ProductItemPage = ({ params }: { params: { productId: string } }) => {
           Продукция
         </Link>
         <ChevronRight size={15} />
-        <p>{product?.category.name}</p>
+        <p>{product?.category?.name}</p>
         <ChevronRight size={15} />
         <Link
           href={`/products/${params.productId}`}

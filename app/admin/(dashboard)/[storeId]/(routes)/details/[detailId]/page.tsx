@@ -8,11 +8,18 @@ const SizePage = async ({
     detailId: string;
   };
 }) => {
-  const detail = await prismadb.detail.findUnique({
-    where: {
-      id: params.detailId,
-    },
-  });
+  let detail;
+
+  if (params.detailId === "new") {
+    detail = null;
+  } else {
+    detail = await prismadb.detail.findUnique({
+      where: {
+        id: params.detailId,
+      },
+    });
+  }
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">

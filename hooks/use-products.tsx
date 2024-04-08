@@ -39,9 +39,9 @@ interface ProductProps {
   updateByPrice: (start: number, end: number) => void;
 }
 
-const cabelsUrl = "/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
+const cabelsUrl = "/api/66140b237b2794a77f1604d7";
 
-const podUrl = "/api/21e60451-fde6-4952-a435-489117888b84";
+const podUrl = "/api/661409697b2794a77f1604d6";
 // const fetchDataForStore = async () => {
 //   const cabelCategories = await getCategories(`${cabelsUrl}/categories`);
 //   const cabelproducts = await getProducts(`${cabelsUrl}/products`);
@@ -153,13 +153,13 @@ const useProducts = create(
         ).map((item) => ({
           label: item.name,
           listItems: (storeName === "Кабели" ? cabelproducts : podProducts)
-            .filter((item) => item.category.name === category)
+            .filter((item) => item?.category?.name === category)
             .map((item) => item.name),
         }));
 
         const formattedProducts = (
           storeName === "Кабели" ? cabelproducts : podProducts
-        ).filter((item) => item.category.name === category);
+        ).filter((item) => item?.category?.name === category);
 
         const detailsList = storeName === "Кабели" ? cabelDetails : podDetails;
 

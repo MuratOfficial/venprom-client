@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { Download, Plus } from "lucide-react";
+import { Download, Plus, Upload } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { ProductColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
@@ -55,6 +55,15 @@ export const ProductClient: React.FC<ProductClientParams> = ({ data }) => {
         <Button onClick={downloadAsExcel} variant="secondary">
           <Download className="mr-2 h-4 w-4" />
           Выгрузить xlsx., xls.
+        </Button>
+        <Button
+          onClick={() =>
+            router.push(`/admin/${params.storeId}/products/dataparse`)
+          }
+          variant="secondary"
+        >
+          <Upload className="mr-2 h-4 w-4" />
+          Ввести данные с таблицами
         </Button>
         <Button
           onClick={() => router.push(`/admin/${params.storeId}/products/new`)}

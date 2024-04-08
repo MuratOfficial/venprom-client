@@ -9,11 +9,17 @@ const CategoryPage = async ({
     storeId: string;
   };
 }) => {
-  const category = await prismadb.category.findUnique({
-    where: {
-      id: params.categoryId,
-    },
-  });
+  let category;
+
+  if (params.categoryId === "new") {
+    category = null;
+  } else {
+    category = await prismadb.category.findUnique({
+      where: {
+        id: params.categoryId,
+      },
+    });
+  }
 
   return (
     <div className="flex-col">

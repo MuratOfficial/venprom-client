@@ -17,7 +17,6 @@ export async function GET(
         id: params.productId,
       },
       include: {
-        images: true,
         category: true,
       },
     });
@@ -153,9 +152,7 @@ export async function PATCH(
         characteristics12,
         characteristics13,
 
-        images: {
-          deleteMany: {},
-        },
+        images: [],
         isArchived,
       },
     });
@@ -165,11 +162,7 @@ export async function PATCH(
         id: params.productId,
       },
       data: {
-        images: {
-          createMany: {
-            data: [...images.map((image: { url: string }) => image)],
-          },
-        },
+        images: [...images.map((image: { url: string }) => image)],
       },
     });
 

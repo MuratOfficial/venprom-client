@@ -86,11 +86,6 @@ export async function POST(
 
         isArchived,
         storeId: params.storeId,
-        images: {
-          createMany: {
-            data: [...images.map((image: { url: string }) => image)],
-          },
-        },
       },
     });
 
@@ -122,8 +117,6 @@ export async function GET(
       },
       include: {
         category: true,
-
-        images: true,
       },
       orderBy: {
         createdAt: "desc",

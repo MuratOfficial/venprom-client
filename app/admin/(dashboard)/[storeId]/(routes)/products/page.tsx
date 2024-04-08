@@ -10,7 +10,6 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     },
     include: {
       category: true,
-      images: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -23,8 +22,8 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     isArchived: item.isArchived,
     category: item.category.name,
     detailId: item.detailId,
-    picture1Url: item?.images[0].url,
-    picture2Url: item?.images[0].url,
+    picture1Url: item?.images[0]?.url || "",
+    picture2Url: item?.images[1]?.url || "",
     categoryId: item.categoryId,
     characteristics1: item?.characteristics1,
     characteristics2: item?.characteristics2,

@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Админ-панель Управления",
-  description: "System Admin Panel for making changes",
 };
 
 export default function AdminLayout({

@@ -6,11 +6,9 @@ export async function generateMetadata({
 }: {
   params: { productId: string };
 }): Promise<Metadata> {
-  const cabelsUrl =
-    "https://www.venprom.kz/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0";
+  const cabelsUrl = "https://www.venprom.kz/api/66140b237b2794a77f1604d7";
 
-  const podUrl =
-    "https://www.venprom.kz/api/21e60451-fde6-4952-a435-489117888b84";
+  const podUrl = "https://www.venprom.kz/api/661409697b2794a77f1604d6";
 
   const cabelsProducts = await getProducts(`${cabelsUrl}/products`);
   const podProducts = await getProducts(`${podUrl}/products`);
@@ -23,7 +21,7 @@ export async function generateMetadata({
 
   return {
     title: product?.name,
-    description: product?.category.description1,
+    description: product?.category?.description1,
     robots: {
       index: true,
       follow: true,

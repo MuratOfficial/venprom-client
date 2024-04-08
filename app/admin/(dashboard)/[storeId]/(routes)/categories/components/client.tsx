@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { Download, Plus } from "lucide-react";
+import { Download, Plus, Upload } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { CategoryColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
@@ -57,6 +57,15 @@ export const CategoryClient: React.FC<CategoryClientParams> = ({ data }) => {
           Выгрузить xlsx., xls.
         </Button>
         <Button
+          onClick={() =>
+            router.push(`/admin/${params.storeId}/categories/dataparse`)
+          }
+          variant="secondary"
+        >
+          <Upload className="mr-2 h-4 w-4" />
+          Ввести данные с таблицами
+        </Button>
+        <Button
           onClick={() => router.push(`/admin/${params.storeId}/categories/new`)}
         >
           <Plus className="mr-2 h-4 w-4" />
@@ -66,7 +75,7 @@ export const CategoryClient: React.FC<CategoryClientParams> = ({ data }) => {
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
       <Separator />
-      <Heading title="API" description="API lсписок" />
+      <Heading title="API" description="API список" />
       <ApiList entityName="categories" entityIdName="categoryId" />
     </>
   );

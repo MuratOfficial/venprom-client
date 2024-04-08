@@ -5,7 +5,8 @@ export interface Store {
 
 export interface Product {
   id: string;
-  category: Category;
+  category?: Category;
+  categoryId?: string;
   name: string;
   images: Image[];
   detailId: string;
@@ -25,14 +26,14 @@ export interface Product {
 }
 
 export interface Image {
-  id: string;
+  id?: string;
   url: string;
 }
 
 export interface Category {
   id: string;
   name: string;
-  store: Store;
+  store?: Store;
   heading1?: string;
   description1?: string;
   heading2?: string;

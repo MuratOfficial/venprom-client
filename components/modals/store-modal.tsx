@@ -41,7 +41,7 @@ export const StoreModal = () => {
       setLoading(true);
       const response = await axios.post("/api/stores", values);
 
-      window.location.assign(`${response.data.id}`);
+      window.location.assign(`/admin/${response.data.id}`);
     } catch (error) {
       toast.error("Что-то пошло не так ...");
     } finally {
@@ -65,7 +65,7 @@ export const StoreModal = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Название</FormLabel>
                     <FormControl>
                       <Input
                         disabled={loading}
