@@ -24,9 +24,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const cabelsUrl = `${baseUrl}/api/ebd3c431-589b-4cda-88f4-5f85eb183ff0`;
+  const cabelsUrl = `${baseUrl}/api/66140b237b2794a77f1604d7`;
 
-  const podUrl = `${baseUrl}/api/21e60451-fde6-4952-a435-489117888b84`;
+  const podUrl = `${baseUrl}/api/661409697b2794a77f1604d6`;
 
   const productsCabelPromise = await getProducts(`${cabelsUrl}/products`).then(
     (products) =>
