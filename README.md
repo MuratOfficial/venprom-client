@@ -114,7 +114,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ---
 
 ## 🙌 Acknowledgements
-[Next.js](https://nextjs.org/docs)
-[Tailwind CSS](https://tailwindcss.com/)
-[Prisma](http://prisma.io/docs)
-[Vercel](https://vercel.com/)
+- [Next.js](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](http://prisma.io/docs)
+- [Vercel](https://vercel.com/)
